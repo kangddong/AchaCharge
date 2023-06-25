@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BackgroundTasks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,7 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             print("Permission granted: \(granted)")
         }
+        
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.Arex.Controllers.refresh",
+                                        using: nil) { task in
+            self.handleAppRefresh(task: task as! BGAppRefreshTask)
+        }
         return true
+    }
+    
+    func handleAppRefresh(task: BGAppRefreshTask) {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        
+        
     }
 
     // MARK: UISceneSession Lifecycle
