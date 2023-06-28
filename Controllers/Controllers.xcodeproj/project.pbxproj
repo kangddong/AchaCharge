@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		369B34072A4C4B4500DBCC29 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
+		369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B34082A4C511E00DBCC29 /* ProgressBar.swift */; };
 		EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */; };
 		EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */; };
 		EF789B762A24D6DC006EC6D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B752A24D6DC006EC6D8 /* ViewController.swift */; };
@@ -48,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		369B34082A4C511E00DBCC29 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		EF1D09C22A4180EB00DCDDDB /* Controllers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controllers.entitlements; sourceTree = "<group>"; };
 		EF789B6E2A24D6DC006EC6D8 /* Controllers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controllers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 			children = (
 				EF789B922A30ABFA006EC6D8 /* ControllersWidgetBundle.swift */,
 				EF789B942A30ABFA006EC6D8 /* ControllersWidget.swift */,
+				369B34082A4C511E00DBCC29 /* ProgressBar.swift */,
 				EF789B962A30ABFB006EC6D8 /* Assets.xcassets */,
 				EF789B982A30ABFB006EC6D8 /* Info.plist */,
 			);
@@ -259,6 +263,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF789B932A30ABFA006EC6D8 /* ControllersWidgetBundle.swift in Sources */,
+				369B34072A4C4B4500DBCC29 /* GameControllerManager.swift in Sources */,
+				369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */,
 				EF789B952A30ABFA006EC6D8 /* ControllersWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

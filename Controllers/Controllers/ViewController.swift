@@ -36,6 +36,7 @@ final class ViewController: UIViewController {
         didSet {
             if batteryInfo.state != -1 {
                 batteryStateLabel.text = "\(Int(batteryInfo.level * 100)) %"
+                circularProgressBarView.progressAnimation(duration: circularViewDuration)
             }
             
         }
@@ -43,6 +44,7 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpCircularProgressBarView()
         indicatorView.hidesWhenStopped = true
         indicatorView.startAnimating()
@@ -77,7 +79,7 @@ extension ViewController {
         // align to the center of the screen
         circularProgressBarView.center = view.center
         // call the animation with circularViewDuration
-        circularProgressBarView.progressAnimation(duration: circularViewDuration)
+//        circularProgressBarView.progressAnimation(duration: circularViewDuration)
         // add this view to the view controller
         view.addSubview(circularProgressBarView)
     }
@@ -85,7 +87,6 @@ extension ViewController {
     @objc
     private func didConnectedController() {
         didConnected = true
-        
     }
     
     private func updateBatteryInfo(_ info :(level: Float, state: Int)?) {
