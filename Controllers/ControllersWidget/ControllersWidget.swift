@@ -70,7 +70,7 @@ struct Provider: TimelineProvider {
         func addScehdule(identifier: String, body: String) {
             let center = UNUserNotificationCenter.current()
             let content = UNMutableNotificationContent()
-            content.title = "아차 충전!"
+            content.title = "아차 충전 !"
             content.body = body
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
@@ -121,7 +121,7 @@ struct ControllersWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             ControllersWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("아차 충전!")
+        .configurationDisplayName("아차 충전 !")
         .description("배경화면에서 배터리 상태를 확인하세요 !")
     }
 }
