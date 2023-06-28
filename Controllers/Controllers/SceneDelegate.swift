@@ -27,10 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        print(#function)
         isBackground = false
         guard let vc = window?.rootViewController as? ViewController else { return }
-        print("pass guard")
+        vc.updateBatteryInfo()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

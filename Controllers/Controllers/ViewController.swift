@@ -76,8 +76,7 @@ extension ViewController {
         updateBatteryInfo()
     }
     
-    private func updateBatteryInfo() {
-        
+    public func updateBatteryInfo() {
         guard let info = manager.getBatteryInfo() else { return }
         batteryInfo = info
         

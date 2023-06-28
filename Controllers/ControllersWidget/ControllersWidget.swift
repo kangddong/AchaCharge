@@ -31,13 +31,11 @@ struct Provider: TimelineProvider {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
-        print(#function)
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         if let info = GameControllerManager.shared.getBatteryInfo(), info.state != -1 {
-            print("case if let called")
             let level = info.level
             
-            if level < 20.0 {
+            if level < 0.2 {
                 addScehdule(identifier: "batteryState", body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
             }
             
@@ -51,10 +49,9 @@ struct Provider: TimelineProvider {
             let timeline = Timeline(entries: entries, policy: .never)
             completion(timeline)
         } else {
-            print("case else called")
             let level = (UserDefaults.shared.value(forKey: "batteryLevel") as? Float) ?? 0
             
-            if level < 20.0 {
+            if level < 0.2 {
                 addScehdule(identifier: "batteryState", body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
             }
             
@@ -71,7 +68,6 @@ struct Provider: TimelineProvider {
         }
         
         func addScehdule(identifier: String, body: String) {
-            print(#function, "called")
             let center = UNUserNotificationCenter.current()
             let content = UNMutableNotificationContent()
             content.title = "아차 충전!"
