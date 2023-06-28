@@ -52,12 +52,12 @@ extension CircularProgressBarView {
         layer.addSublayer(progressLayer)
     }
     
-    func progressAnimation(duration: TimeInterval) {
+    func progressAnimation(duration: TimeInterval, value: Float) {
         // created circularProgressAnimation with keyPath
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         // set the end time
         circularProgressAnimation.duration = duration
-        circularProgressAnimation.toValue = 1.0
+        circularProgressAnimation.toValue = value
         circularProgressAnimation.fillMode = .forwards
         circularProgressAnimation.isRemovedOnCompletion = false
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")

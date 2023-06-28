@@ -14,9 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        let _ = GameControllerManager.shared
         
-        UIApplication.shared.registerForRemoteNotifications()
+//        UIApplication.shared.registerForRemoteNotifications()
         UNUserNotificationCenter.current().delegate = self
         
         let center = UNUserNotificationCenter.current()
@@ -28,18 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Permission granted: \(granted)")
         }
         
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.Arex.Controllers.refresh",
-                                        using: nil) { task in
-            self.handleAppRefresh(task: task as! BGAppRefreshTask)
-        }
         return true
-    }
-    
-    func handleAppRefresh(task: BGAppRefreshTask) {
-        let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
-        
-        
     }
 
     // MARK: UISceneSession Lifecycle

@@ -7,6 +7,7 @@
 
 import UIKit
 import GameController
+import NotificationCenter
 
 enum BatteryState: Int {
     case unknown = -1
@@ -21,26 +22,12 @@ final class ViewController: UIViewController {
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     var circularProgressBarView: CircularProgressBarView!
-    var circularViewDuration: TimeInterval = 2
+    var circularViewDuration: TimeInterval = 1
     
     let manager = GameControllerManager.shared
-    private var didConnected: Bool = false {
-        didSet {
-            indicatorView.stopAnimating()
-            manager.getControllerCount()
-            updateBatteryInfo(manager.getBatteryInfo())
-        }
-    }
-    
-    private var batteryInfo: (level: Float, state: Int) = (0.0, -1) {
-        didSet {
-            if batteryInfo.state != -1 {
-                batteryStateLabel.text = "\(Int(batteryInfo.level * 100)) %"
-                circularProgressBarView.progressAnimation(duration: circularViewDuration)
-            }
-            
-        }
-    }
+
+    private var isConnected: Bool = false
+    private var batteryInfo: (level: Float, state: Int) = (0.0, -1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,23 +63,29 @@ extension ViewController {
     private func setUpCircularProgressBarView() {
         // set view
         circularProgressBarView = CircularProgressBarView(frame: .zero)
-        // align to the center of the screen
         circularProgressBarView.center = view.center
-        // call the animation with circularViewDuration
-//        circularProgressBarView.progressAnimation(duration: circularViewDuration)
-        // add this view to the view controller
         view.addSubview(circularProgressBarView)
     }
     
     @objc
     private func didConnectedController() {
-        didConnected = true
+        
+        isConnected = true
+        indicatorView.stopAnimating()
+        manager.getControllerCount()
+        updateBatteryInfo()
     }
     
-    private func updateBatteryInfo(_ info :(level: Float, state: Int)?) {
-        guard let info = info else { return }
+    private func updateBatteryInfo() {
+        
+        guard let info = manager.getBatteryInfo() else { return }
         batteryInfo = info
         
+        if batteryInfo.state != -1 {
+            batteryStateLabel.text = "\(Int(batteryInfo.level * 100)) %"
+            circularProgressBarView.progressAnimation(duration: circularViewDuration, value: batteryInfo.level)
+            UserDefaults.shared.setValue(batteryInfo.level, forKey: "batteryLevel")
+        }
     }
 }
 

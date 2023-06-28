@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProgressBar: View {
     @Binding var progress: Float
+    @State var isAnimating: Bool = false
     
     var body: some View {
         ZStack {
@@ -21,6 +22,11 @@ struct ProgressBar: View {
                 .trim(from: 0.0, to: CGFloat(self.progress))
                 .stroke(style: StrokeStyle(lineWidth: 11.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(Color.green)
+                .rotationEffect(Angle(degrees: 270.0))
+                .animation(.linear(duration: 2.0), value: isAnimating)
+        }
+        .onAppear {
+            isAnimating = true
         }
     }
 }

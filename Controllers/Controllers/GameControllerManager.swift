@@ -13,16 +13,22 @@ final class GameControllerManager {
     private init() {}
     
     static let shared = GameControllerManager.init()
-    private var controllers: [GCController] = []
-    @objc dynamic var batteryObserver: GCDeviceBattery?
+    
     public var vendorName: String? {
         return GCController.current?.vendorName
     }
+    
+    private var controllers: [GCController] = []
     
     public func add(observer: Any, selector: Selector) {
         NotificationCenter.default.addObserver(observer,
                                                selector: selector,
                                                name: .GCControllerDidConnect,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(observer,
+                                               selector: selector,
+                                               name: .GCControllerDidDisconnect,
                                                object: nil)
     }
     
