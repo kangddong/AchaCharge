@@ -120,14 +120,14 @@
 			children = (
 				EF1D09C22A4180EB00DCDDDB /* Controllers.entitlements */,
 				EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */,
+				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
 				EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */,
 				EF789B752A24D6DC006EC6D8 /* ViewController.swift */,
+				EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */,
 				EF789B772A24D6DC006EC6D8 /* Main.storyboard */,
 				EF789B7A2A24D6DD006EC6D8 /* Assets.xcassets */,
 				EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */,
 				EF789B7F2A24D6DD006EC6D8 /* Info.plist */,
-				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
-				EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */,
 				EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */,
 			);
 			path = Controllers;

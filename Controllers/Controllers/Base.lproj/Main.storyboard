@@ -26,27 +26,48 @@
                                     <constraint firstAttribute="height" constant="130" id="ygb-Al-8hP"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J10-J9-laT">
-                                <rect key="frame" x="176.66666666666666" y="541" width="39.666666666666657" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not connected.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J10-J9-laT">
+                                <rect key="frame" x="104" y="541" width="185" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Qad-AD-pNX">
-                                <rect key="frame" x="156.66666666666666" y="223.66666666666663" width="80" height="80"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCM-VI-Gbz">
+                                <rect key="frame" x="0.0" y="59" width="393" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serach for Controller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPF-Ki-rFe">
+                                        <rect key="frame" x="75.666666666666686" y="80" width="242" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Qad-AD-pNX">
+                                        <rect key="frame" x="156.66666666666666" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="332-Bf-E7z"/>
+                                            <constraint firstAttribute="width" constant="80" id="jqk-zW-fm9"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="332-Bf-E7z"/>
-                                    <constraint firstAttribute="width" constant="80" id="jqk-zW-fm9"/>
+                                    <constraint firstItem="uPF-Ki-rFe" firstAttribute="centerX" secondItem="Qad-AD-pNX" secondAttribute="centerX" id="8R9-LL-BUL"/>
+                                    <constraint firstItem="Qad-AD-pNX" firstAttribute="centerX" secondItem="sCM-VI-Gbz" secondAttribute="centerX" id="I74-Yd-eAO"/>
+                                    <constraint firstItem="uPF-Ki-rFe" firstAttribute="top" secondItem="Qad-AD-pNX" secondAttribute="bottom" id="JXa-w6-ydD"/>
+                                    <constraint firstAttribute="height" constant="120" id="KvA-wg-ohz"/>
+                                    <constraint firstItem="Qad-AD-pNX" firstAttribute="top" secondItem="sCM-VI-Gbz" secondAttribute="top" id="vsf-y4-UtT"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uPF-Ki-rFe" secondAttribute="bottom" constant="10" id="xmi-um-g0q"/>
                                 </constraints>
-                            </activityIndicatorView>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="sCM-VI-Gbz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0jq-OA-wsH"/>
+                            <constraint firstItem="sCM-VI-Gbz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4fV-2p-ZYE"/>
                             <constraint firstItem="J10-J9-laT" firstAttribute="top" secondItem="1Gx-So-qM5" secondAttribute="bottom" constant="37.333333333333258" id="73L-YP-JYD"/>
-                            <constraint firstItem="Qad-AD-pNX" firstAttribute="centerX" secondItem="1Gx-So-qM5" secondAttribute="centerX" id="995-Ex-5TR"/>
+                            <constraint firstItem="sCM-VI-Gbz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9bX-bC-0OW"/>
                             <constraint firstItem="1Gx-So-qM5" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="aYI-7W-Fml"/>
-                            <constraint firstItem="1Gx-So-qM5" firstAttribute="top" secondItem="Qad-AD-pNX" secondAttribute="bottom" constant="70" id="l60-dR-zkD"/>
                             <constraint firstItem="J10-J9-laT" firstAttribute="centerX" secondItem="1Gx-So-qM5" secondAttribute="centerX" id="njS-4x-yOn"/>
                             <constraint firstItem="1Gx-So-qM5" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xxW-m2-k7V"/>
                         </constraints>
@@ -54,6 +75,7 @@
                     <connections>
                         <outlet property="batteryStateLabel" destination="J10-J9-laT" id="FeS-W4-U5f"/>
                         <outlet property="indicatorView" destination="Qad-AD-pNX" id="IOa-cX-SgW"/>
+                        <outlet property="loadingView" destination="sCM-VI-Gbz" id="XDs-Fv-IzM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

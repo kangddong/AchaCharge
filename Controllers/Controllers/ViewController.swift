@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import GameController
-import NotificationCenter
 
 enum BatteryState: Int {
     case unknown = -1
@@ -20,23 +18,27 @@ final class ViewController: UIViewController {
 
     @IBOutlet weak var batteryStateLabel: UILabel!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var loadingView: UIView!
     
-    var circularProgressBarView: CircularProgressBarView!
-    var circularViewDuration: TimeInterval = 1
+    private var circularProgressBarView: CircularProgressBarView!
+    private var circularViewDuration: TimeInterval = 1
     
-    let manager = GameControllerManager.shared
+    private let manager = GameControllerManager.shared
 
-    private var isConnected: Bool = false
+    private var isConnected: Bool = false {
+        didSet {
+            loadingView.isHidden = isConnected
+            UserDefaults.shared.setValue(isConnected, forKey: "isConnected")
+        }
+    }
     private var batteryInfo: (level: Float, state: Int) = (0.0, -1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpCircularProgressBarView()
-        indicatorView.hidesWhenStopped = true
-        indicatorView.startAnimating()
-        manager.add(observer: self, selector: #selector(didConnectedController))
-        print(multitaskingSupported())
+        UserDefaults.shared.setValue(false, forKey: "isConnected")
+        setUpIndicatoreView()
+        addControllerObservers()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -45,26 +47,35 @@ final class ViewController: UIViewController {
         manager.remove(observer: self)
     }
     
-    func multitaskingSupported() -> Bool {
-            let device = UIDevice.current
-            var backgroundIsSupported = false
+    public func updateBatteryInfo() {
+        guard let info = manager.getBatteryInfo() else { return }
+        batteryInfo = info
+        
+        if batteryInfo.state != -1 {
+            batteryStateLabel.text = "\(Int(batteryInfo.level * 100)) %"
+            setUpCircularProgressBarView()
             
-            if device.responds(to: #selector(getter: UIDevice.isMultitaskingSupported)){
-                backgroundIsSupported = device.isMultitaskingSupported
-            }
-            return backgroundIsSupported
-            
-            
+            UserDefaults.shared.setValue(batteryInfo.level, forKey: "batteryLevel")
+        } else {
+            batteryStateLabel.text = "Not Connected.."
+            circularProgressBarView.removeFromSuperview()
         }
+    }
 }
 
 extension ViewController {
 
-    private func setUpCircularProgressBarView() {
-        // set view
-        circularProgressBarView = CircularProgressBarView(frame: .zero)
-        circularProgressBarView.center = view.center
-        view.addSubview(circularProgressBarView)
+    private func addControllerObservers() {
+        
+        manager.addDidConnect(
+            observer: self,
+            selector: #selector(didConnectedController)
+        )
+        
+        manager.addDidDisconnect(
+            observer: self,
+            selector: #selector(didDisConnectedController)
+        )
     }
     
     @objc
@@ -76,15 +87,28 @@ extension ViewController {
         updateBatteryInfo()
     }
     
-    public func updateBatteryInfo() {
-        guard let info = manager.getBatteryInfo() else { return }
-        batteryInfo = info
+    @objc
+    private func didDisConnectedController() {
         
-        if batteryInfo.state != -1 {
-            batteryStateLabel.text = "\(Int(batteryInfo.level * 100)) %"
-            circularProgressBarView.progressAnimation(duration: circularViewDuration, value: batteryInfo.level)
-            UserDefaults.shared.setValue(batteryInfo.level, forKey: "batteryLevel")
-        }
+        isConnected = false
+        indicatorView.startAnimating()
+        manager.getControllerCount()
+        updateBatteryInfo()
+    }
+    
+    private func setUpCircularProgressBarView() {
+        // set view
+        circularProgressBarView = CircularProgressBarView(frame: .zero)
+        circularProgressBarView.center = view.center
+        circularProgressBarView.progressAnimation(duration: circularViewDuration, value: batteryInfo.level)
+        
+        view.addSubview(circularProgressBarView)
+    }
+    
+    private func setUpIndicatoreView() {
+     
+        indicatorView.hidesWhenStopped = true
+        indicatorView.startAnimating()
     }
 }
 

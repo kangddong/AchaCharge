@@ -20,46 +20,44 @@ final class GameControllerManager {
     
     private var controllers: [GCController] = []
     
-    public func add(observer: Any, selector: Selector) {
-        NotificationCenter.default.addObserver(observer,
-                                               selector: selector,
-                                               name: .GCControllerDidConnect,
-                                               object: nil)
+    public func addDidConnect(observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(
+            observer,
+            selector: selector,
+            name: .GCControllerDidConnect,
+            object: nil
+        )
+    }
+    
+    public func addDidDisconnect(observer: Any, selector: Selector) {
         
-        NotificationCenter.default.addObserver(observer,
-                                               selector: selector,
-                                               name: .GCControllerDidDisconnect,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            observer,
+            selector: selector,
+            name: .GCControllerDidDisconnect,
+            object: nil
+        )
     }
     
     public func remove(observer: Any) {
-        NotificationCenter.default.removeObserver(observer,
-                                                  name: .GCControllerDidConnect, object: nil)
+        NotificationCenter.default.removeObserver(
+            observer,
+            name: .GCControllerDidConnect,
+            object: nil
+        )
+        
+        NotificationCenter.default.removeObserver(
+            observer,
+            name: .GCControllerDidDisconnect,
+            object: nil
+        )
     }
     
     public func getControllerCount() {
         updateController()
-        print("controllers.count = \(controllers.count)")
-        print("GCController.current?.isAttachedToDevice =\(GCController.current?.isAttachedToDevice)")
-        
-        
-        
-//        if #available(iOS 14.5, *) {
-//            let pad = GCDualSenseGamepad()
-//            print(pad.leftTrigger)
-//        } else {
-//            // Fallback on earlier versions
-//        }
-        
-    }
-    
-    public func getCurrentInfo() {
-        
-    }
-    
+    }  
     
     public func getBatteryInfo() -> (level: Float, state: Int)? {
-        GCController.current?.battery[keyPath: \.?.batteryLevel]
         guard let battery = GCController.current?.battery else {
             return nil
         }
@@ -74,7 +72,6 @@ final class GameControllerManager {
 
 extension GameControllerManager {
     
-    @objc
     private func updateController() {
         controllers = GCController.controllers()
     }
