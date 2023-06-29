@@ -28,7 +28,7 @@ final class ViewController: UIViewController {
     private var isConnected: Bool = false {
         didSet {
             loadingView.isHidden = isConnected
-            UserDefaults.shared.setValue(isConnected, forKey: "isConnected")
+            UserDefaults.shared.setValue(isConnected, forKey: StringKey.CONTROLLER_CONNECTED)
         }
     }
     private var batteryInfo: (level: Float, state: Int) = (0.0, -1)
@@ -36,7 +36,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UserDefaults.shared.setValue(false, forKey: "isConnected")
+        UserDefaults.shared.setValue(false, forKey: StringKey.CONTROLLER_CONNECTED)
         setUpIndicatoreView()
         addControllerObservers()
     }
@@ -55,7 +55,7 @@ final class ViewController: UIViewController {
             batteryStateLabel.text = "\(Int(batteryInfo.level * 100)) %"
             setUpCircularProgressBarView()
             
-            UserDefaults.shared.setValue(batteryInfo.level, forKey: "batteryLevel")
+            UserDefaults.shared.setValue(batteryInfo.level, forKey: StringKey.BATTERY_LEVEL)
         } else {
             batteryStateLabel.text = "Not Connected.."
             circularProgressBarView.removeFromSuperview()

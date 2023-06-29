@@ -13,7 +13,7 @@ struct Provider: TimelineProvider {
         if let info = GameControllerManager.shared.getBatteryInfo(), info.state != -1 {
             return SimpleEntry(date: Date(), batteryLevel: info.level)
         } else {
-            let level = UserDefaults.shared.value(forKey: "batteryLevel") as? Float
+            let level = UserDefaults.shared.value(forKey: StringKey.BATTERY_LEVEL) as? Float
             return SimpleEntry(date: Date(), batteryLevel: level ?? 0.0)
         }
     }
@@ -23,7 +23,7 @@ struct Provider: TimelineProvider {
             let entry = SimpleEntry(date: Date(), batteryLevel: info.level)
             completion(entry)
         } else {
-            let level = UserDefaults.shared.value(forKey: "batteryLevel") as? Float
+            let level = UserDefaults.shared.value(forKey: StringKey.BATTERY_LEVEL) as? Float
             let entry = SimpleEntry(date: Date(), batteryLevel: level ?? 0.0)
             completion(entry)
         }
@@ -49,10 +49,10 @@ struct Provider: TimelineProvider {
             let timeline = Timeline(entries: entries, policy: .never)
             completion(timeline)
         } else {
-            let level = (UserDefaults.shared.value(forKey: "batteryLevel") as? Float) ?? 0
+            let level = (UserDefaults.shared.value(forKey: StringKey.BATTERY_LEVEL) as? Float) ?? 0
             
             if level < 0.2 {
-                addScehdule(identifier: "batteryState", body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
+                addScehdule(identifier: StringKey.BATTERY_STATE, body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
             }
             
             
@@ -121,8 +121,8 @@ struct ControllersWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             ControllersWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("아차 충전 !")
-        .description("배경화면에서 배터리 상태를 확인하세요 !")
+        .configurationDisplayName("연결 및 배터리 상태 확인")
+        .description("배터리 상태를 확인하세요 !")
     }
 }
 

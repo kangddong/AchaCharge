@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		369B34072A4C4B4500DBCC29 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
 		369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B34082A4C511E00DBCC29 /* ProgressBar.swift */; };
+		369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
+		369B340D2A4D146500DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		EF38A0982A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */; };
@@ -53,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		369B34082A4C511E00DBCC29 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		369B340B2A4D13B300DBCC29 /* StringKey+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringKey+.swift"; sourceTree = "<group>"; };
 		EF1D09C22A4180EB00DCDDDB /* Controllers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controllers.entitlements; sourceTree = "<group>"; };
 		EF38A0952A4C736500DF1AF9 /* ControllersWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ControllersWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 				EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */,
 				EF789B7F2A24D6DD006EC6D8 /* Info.plist */,
 				EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */,
+				369B340B2A4D13B300DBCC29 /* StringKey+.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -261,6 +265,7 @@
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
 				EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */,
 				EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */,
+				369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */,
 				EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,6 +276,7 @@
 			files = (
 				EF789B932A30ABFA006EC6D8 /* ControllersWidgetBundle.swift in Sources */,
 				369B34072A4C4B4500DBCC29 /* GameControllerManager.swift in Sources */,
+				369B340D2A4D146500DBCC29 /* StringKey+.swift in Sources */,
 				EF38A0982A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */,
 				369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */,
 				EF789B952A30ABFA006EC6D8 /* ControllersWidget.swift in Sources */,
