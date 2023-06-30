@@ -32,52 +32,59 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        if let info = GameControllerManager.shared.getBatteryInfo(), info.state != -1 {
-            let level = info.level
-            
-            if level < 0.2 {
-                addScehdule(identifier: "batteryState", body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
-            }
-            
-            let currentDate = Date()
-            for hourOffset in 0 ..< 5 {
-                let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, batteryLevel: level)
-                entries.append(entry)
-            }
-            
-            let timeline = Timeline(entries: entries, policy: .never)
-            completion(timeline)
-        } else {
-            let level = (UserDefaults.shared.value(forKey: StringKey.BATTERY_LEVEL) as? Float) ?? 0
-            
-            if level < 0.2 {
-                addScehdule(identifier: StringKey.BATTERY_STATE, body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
-            }
-            
-            
-            let currentDate = Date()
-            for hourOffset in 0 ..< 5 {
-                let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, batteryLevel: level)
-                entries.append(entry)
-            }
-            
-            let timeline = Timeline(entries: entries, policy: .never)
-            completion(timeline)
-        }
+        let isConnected = UserDefaults.shared.value(forKey: StringKey.CONTROLLER_CONNECTED) as? Bool ?? false
         
-        func addScehdule(identifier: String, body: String) {
-            let center = UNUserNotificationCenter.current()
-            let content = UNMutableNotificationContent()
-            content.title = "아차 충전 !"
-            content.body = body
+        if isConnected {
+            if let info = GameControllerManager.shared.getBatteryInfo(), info.state != -1 {
+                let level = info.level
+                
+                if level < 0.2 {
+                    addScehdule(identifier: "batteryState", body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
+                }
+                
+                let currentDate = Date()
+                for hourOffset in 0 ..< 5 {
+                    let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset, to: currentDate)!
+                    let entry = SimpleEntry(date: entryDate, batteryLevel: level)
+                    entries.append(entry)
+                }
+                
+                let timeline = Timeline(entries: entries, policy: .never)
+                completion(timeline)
+            } else {
+                let level = (UserDefaults.shared.value(forKey: StringKey.BATTERY_LEVEL) as? Float) ?? 0
+                
+                if level < 0.2 {
+                    addScehdule(identifier: StringKey.BATTERY_STATE, body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
+                }
+                
+                
+                let currentDate = Date()
+                
+            }
+        } else {
+            let currentDate = Date()
+            for hourOffset in 0 ..< 5 {
+                let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset, to: currentDate)!
+                let entry = SimpleEntry(date: entryDate, batteryLevel: 0.0)
+                entries.append(entry)
+            }
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            center.add(request)
+            let timeline = Timeline(entries: entries, policy: .never)
+            completion(timeline)
         }
+    }
+    
+    func addScehdule(identifier: String, body: String) {
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = "아차 충전 !"
+        content.body = body
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        center.add(request)
     }
 }
 
