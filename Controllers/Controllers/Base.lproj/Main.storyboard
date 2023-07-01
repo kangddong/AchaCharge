@@ -59,23 +59,36 @@
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uPF-Ki-rFe" secondAttribute="bottom" constant="10" id="xmi-um-g0q"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0v-6V-TTF">
+                                <rect key="frame" x="145.33333333333334" y="628" width="102.66666666666666" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Refresh" image="arrow.clockwise" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sCM-VI-Gbz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0jq-OA-wsH"/>
+                            <constraint firstItem="q0v-6V-TTF" firstAttribute="centerX" secondItem="J10-J9-laT" secondAttribute="centerX" id="1OG-YW-jWb"/>
                             <constraint firstItem="sCM-VI-Gbz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4fV-2p-ZYE"/>
                             <constraint firstItem="J10-J9-laT" firstAttribute="top" secondItem="1Gx-So-qM5" secondAttribute="bottom" constant="37.333333333333258" id="73L-YP-JYD"/>
                             <constraint firstItem="sCM-VI-Gbz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9bX-bC-0OW"/>
                             <constraint firstItem="1Gx-So-qM5" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="aYI-7W-Fml"/>
                             <constraint firstItem="J10-J9-laT" firstAttribute="centerX" secondItem="1Gx-So-qM5" secondAttribute="centerX" id="njS-4x-yOn"/>
+                            <constraint firstItem="q0v-6V-TTF" firstAttribute="top" secondItem="J10-J9-laT" secondAttribute="bottom" constant="57" id="pvV-rW-1AT"/>
                             <constraint firstItem="1Gx-So-qM5" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xxW-m2-k7V"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="batteryStateLabel" destination="J10-J9-laT" id="FeS-W4-U5f"/>
+                        <outlet property="gamePadImageView" destination="1Gx-So-qM5" id="rvg-ga-u9o"/>
                         <outlet property="indicatorView" destination="Qad-AD-pNX" id="IOa-cX-SgW"/>
                         <outlet property="loadingView" destination="sCM-VI-Gbz" id="XDs-Fv-IzM"/>
+                        <outlet property="refreshButton" destination="q0v-6V-TTF" id="GXR-zv-6dU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -84,10 +97,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
         <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
         <namedColor name="Controller">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
