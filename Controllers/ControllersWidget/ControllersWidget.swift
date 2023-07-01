@@ -38,39 +38,44 @@ struct Provider: TimelineProvider {
             if let info = GameControllerManager.shared.getBatteryInfo(), info.state != -1 {
                 let level = info.level
                 
-                if level < 0.2 {
+                if level < 0.3 {
                     addScehdule(identifier: "batteryState", body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
                 }
                 
                 let currentDate = Date()
-                for hourOffset in 0 ..< 5 {
-                    let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset, to: currentDate)!
+                for _ in 0 ..< 25 {
+                    let entryDate = Calendar.current.date(byAdding: .minute, value: 30, to: currentDate)!
                     let entry = SimpleEntry(date: entryDate, batteryLevel: level)
                     entries.append(entry)
                 }
                 
-                let timeline = Timeline(entries: entries, policy: .never)
+                let timeline = Timeline(entries: entries, policy: .atEnd)
                 completion(timeline)
             } else {
                 let level = (UserDefaults.shared.value(forKey: StringKey.BATTERY_LEVEL) as? Float) ?? 0
                 
-                if level < 0.2 {
+                if level < 0.3 {
                     addScehdule(identifier: StringKey.BATTERY_STATE, body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
                 }
                 
-                
                 let currentDate = Date()
-                
+                for _ in 0 ..< 25 {
+                    let entryDate = Calendar.current.date(byAdding: .minute, value: 30, to: currentDate)!
+                    let entry = SimpleEntry(date: entryDate, batteryLevel: level)
+                    entries.append(entry)
+                }
+                let timeline = Timeline(entries: entries, policy: .atEnd)
+                completion(timeline)
             }
         } else {
             let currentDate = Date()
-            for hourOffset in 0 ..< 5 {
-                let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset, to: currentDate)!
+            for _ in 0 ..< 25 {
+                let entryDate = Calendar.current.date(byAdding: .minute, value: 30, to: currentDate)!
                 let entry = SimpleEntry(date: entryDate, batteryLevel: 0.0)
                 entries.append(entry)
             }
             
-            let timeline = Timeline(entries: entries, policy: .never)
+            let timeline = Timeline(entries: entries, policy: .atEnd)
             completion(timeline)
         }
     }

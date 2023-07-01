@@ -23,7 +23,7 @@ final class ViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIButton!
     
     private var circularProgressBarView: CircularProgressBarView!
-    private var circularViewDuration: TimeInterval = 1
+    private var circularViewDuration: TimeInterval = 0.5
     
     private let manager = GameControllerManager.shared
     private let _CIRCLEARVIEW_TAG = 20230701
