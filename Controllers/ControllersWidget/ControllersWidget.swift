@@ -33,8 +33,9 @@ struct Provider: TimelineProvider {
         var entries: [SimpleEntry] = []
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let isConnected = UserDefaults.shared.value(forKey: StringKey.CONTROLLER_CONNECTED) as? Bool ?? false
-        
+        print("filter", #function, "isConnected: \(isConnected)")
         if isConnected {
+            print("filter", "getBatteryInfo(): \(GameControllerManager.shared.getBatteryInfo())")
             if let info = GameControllerManager.shared.getBatteryInfo(), info.state != -1 {
                 let level = info.level
                 
@@ -50,6 +51,7 @@ struct Provider: TimelineProvider {
                 }
                 
                 let timeline = Timeline(entries: entries, policy: .atEnd)
+                print("filter", "entries.count: \(entries.count)")
                 completion(timeline)
             } else {
                 let level = (UserDefaults.shared.value(forKey: StringKey.BATTERY_LEVEL) as? Float) ?? 0
@@ -65,6 +67,7 @@ struct Provider: TimelineProvider {
                     entries.append(entry)
                 }
                 let timeline = Timeline(entries: entries, policy: .atEnd)
+                print("filter", "entries.count: \(entries.count)")
                 completion(timeline)
             }
         } else {
@@ -76,11 +79,13 @@ struct Provider: TimelineProvider {
             }
             
             let timeline = Timeline(entries: entries, policy: .atEnd)
+            print("filter", "entries.count: \(entries.count)")
             completion(timeline)
         }
     }
     
     func addScehdule(identifier: String, body: String) {
+        print("filter",#function)
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         content.title = "아차 충전 !"
