@@ -18,7 +18,7 @@ final class GameControllerManager {
         return GCController.current?.vendorName
     }
     
-    private var controllers: [GCController] = []
+    public var controllers: [GCController] = []
     
     public func addDidConnect(observer: Any, selector: Selector) {
         NotificationCenter.default.addObserver(
