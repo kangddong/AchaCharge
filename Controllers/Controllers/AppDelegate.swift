@@ -6,12 +6,11 @@
 //
 
 import UIKit
+import UserNotifications
 import BackgroundTasks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -42,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Perform background fetch here
             
         // Be sure to call the completion handler when the task is complete
-        
+        scheduleAppRefresh()
         GameControllerManager.shared.getControllerCount()
         if GameControllerManager.shared.controllers.count > 0 {
             let info = GameControllerManager.shared.getBatteryInfo()
@@ -51,9 +50,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             content.title = "아차 충전 !"
             content.body = "level: \(info?.level), state: \(info?.state)"
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             
             let request = UNNotificationRequest(identifier: "batterPush", content: content, trigger: trigger)
+            center.add(request)
+        } else {
+            let center = UNUserNotificationCenter.current()
+            let content = UNMutableNotificationContent()
+            content.title = "아차 충전 !"
+            content.body = "컨트롤러 연결 안되어있음 !"
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: "batterPush.off", content: content, trigger: trigger)
             center.add(request)
         }
         
@@ -94,10 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        scheduleAppRefresh()
     }
 }
 
