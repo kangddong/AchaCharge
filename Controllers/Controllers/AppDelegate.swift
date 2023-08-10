@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // STEP1
         // Register for background app refresh task
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.controller.battery", using: nil) { task in
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: StringKey.BATTERY_IDENTIFIER, using: nil) { task in
             // Perform your background fetch here
             self.handleAppRefreshTask(task: task as! BGAppRefreshTask)
         }
@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func scheduleAppRefresh() {
         
         //1. 원하는 형태의 TaskRequest를 만듭니다. 이 때, 사용되는 identifier는 위의 1, 2과정에서 등록한 info.plist의 identifier여야 해요!
-        let request = BGAppRefreshTaskRequest(identifier: "com.controller.battery")
+        let request = BGAppRefreshTaskRequest(identifier: StringKey.BATTERY_IDENTIFIER)
         
         //2. 리퀘스트가 언제 실행되면 좋겠는지 지정합니다. 기존의 setMinimumFetchInterval과 동일하다고 합니다.
         //여전히, 언제 실행될지는 시스템의 마음입니다...

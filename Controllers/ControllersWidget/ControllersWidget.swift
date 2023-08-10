@@ -40,7 +40,7 @@ struct Provider: TimelineProvider {
                 let level = info.level
                 
                 if level < 0.3 {
-                    addScehdule(identifier: "batteryState", body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
+                    addScehdule(identifier: StringKey.BATTERY_IDENTIFIER, body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
                 }
                 
                 let currentDate = Date()
@@ -57,7 +57,7 @@ struct Provider: TimelineProvider {
                 let level = (UserDefaults.shared.value(forKey: StringKey.BATTERY_LEVEL) as? Float) ?? 0
                 
                 if level < 0.3 {
-                    addScehdule(identifier: StringKey.BATTERY_STATE, body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
+                    addScehdule(identifier: StringKey.BATTERY_IDENTIFIER, body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
                 }
                 
                 let currentDate = Date()

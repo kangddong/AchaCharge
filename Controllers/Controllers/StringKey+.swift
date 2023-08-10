@@ -13,5 +13,6 @@ final class StringKey {
     static let CONTROLLER_CONNECTED: String = "isConnected"
     static let BATTERY_LEVEL: String = "batteryLevel"
     static let BATTERY_STATE: String = "batteryState"
+    static let BATTERY_IDENTIFIER: String = "com.controller.battery"
     
 }
