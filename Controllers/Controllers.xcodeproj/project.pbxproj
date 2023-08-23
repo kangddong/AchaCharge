@@ -27,6 +27,7 @@
 		EF789B9B2A30ABFB006EC6D8 /* ControllersWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF789B8B2A30ABFA006EC6D8 /* ControllersWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362292A9645100009E8E8 /* MainTabBarController.swift */; };
 		EF93622C2A9646D50009E8E8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622B2A9646D50009E8E8 /* SettingViewController.swift */; };
+		EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		EF789B982A30ABFB006EC6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF9362292A9645100009E8E8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EF93622B2A9646D50009E8E8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
 		EFC1A1312A83D6E00023754E /* ControllersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControllersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC1A1332A83D6E00023754E /* ControllersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersTests.swift; sourceTree = "<group>"; };
 		EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				369B340B2A4D13B300DBCC29 /* StringKey+.swift */,
 				EF9362292A9645100009E8E8 /* MainTabBarController.swift */,
 				EF93622B2A9646D50009E8E8 /* SettingViewController.swift */,
+				EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF789B762A24D6DC006EC6D8 /* ViewController.swift in Sources */,
+				EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */,
 				EF789B862A24DC24006EC6D8 /* GameControllerManager.swift in Sources */,
 				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
