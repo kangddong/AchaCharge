@@ -28,6 +28,7 @@
 		EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362292A9645100009E8E8 /* MainTabBarController.swift */; };
 		EF93622C2A9646D50009E8E8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622B2A9646D50009E8E8 /* SettingViewController.swift */; };
 		EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */; };
+		EF9362302A978B090009E8E8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF93622F2A978B090009E8E8 /* StoreKit.framework */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		EF9362292A9645100009E8E8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EF93622B2A9646D50009E8E8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
+		EF93622F2A978B090009E8E8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EFC1A1312A83D6E00023754E /* ControllersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControllersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC1A1332A83D6E00023754E /* ControllersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersTests.swift; sourceTree = "<group>"; };
 		EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF9362302A978B090009E8E8 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +168,7 @@
 		EF789B8C2A30ABFA006EC6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF93622F2A978B090009E8E8 /* StoreKit.framework */,
 				EF789B8D2A30ABFA006EC6D8 /* WidgetKit.framework */,
 				EF789B8F2A30ABFA006EC6D8 /* SwiftUI.framework */,
 			);
