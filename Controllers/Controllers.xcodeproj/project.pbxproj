@@ -30,6 +30,7 @@
 		EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */; };
 		EF9362302A978B090009E8E8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF93622F2A978B090009E8E8 /* StoreKit.framework */; };
 		EF9362322A9A56D50009E8E8 /* ProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF9362312A9A56D50009E8E8 /* ProductIDs.plist */; };
+		EF9362342A9A63890009E8E8 /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362332A9A63890009E8E8 /* StoreKitManager.swift */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
 		EF93622F2A978B090009E8E8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EF9362312A9A56D50009E8E8 /* ProductIDs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ProductIDs.plist; sourceTree = "<group>"; };
+		EF9362332A9A63890009E8E8 /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		EFC1A1312A83D6E00023754E /* ControllersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControllersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC1A1332A83D6E00023754E /* ControllersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersTests.swift; sourceTree = "<group>"; };
 		EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				EF93622B2A9646D50009E8E8 /* SettingViewController.swift */,
 				EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */,
 				EF9362312A9A56D50009E8E8 /* ProductIDs.plist */,
+				EF9362332A9A63890009E8E8 /* StoreKitManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
 				EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */,
 				EF93622C2A9646D50009E8E8 /* SettingViewController.swift in Sources */,
+				EF9362342A9A63890009E8E8 /* StoreKitManager.swift in Sources */,
 				EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */,
 				369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */,
 				EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */,
