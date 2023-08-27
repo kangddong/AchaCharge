@@ -30,6 +30,9 @@
 		EF9362342A9A63890009E8E8 /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362332A9A63890009E8E8 /* StoreKitManager.swift */; };
 		EF9362362A9B49B70009E8E8 /* ColorAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */; };
 		EF9362382A9B4A860009E8E8 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362372A9B4A860009E8E8 /* UIColor+.swift */; };
+		EF93623F2A9B9A690009E8E8 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
+		EF9362402A9B9A770009E8E8 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
+		EF9362412A9B9A8A0009E8E8 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -406,7 +409,10 @@
 			files = (
 				EF789B932A30ABFA006EC6D8 /* ControllersWidgetBundle.swift in Sources */,
 				369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */,
+				EF9362412A9B9A8A0009E8E8 /* StringKey+.swift in Sources */,
+				EF9362402A9B9A770009E8E8 /* UserDefaults+.swift in Sources */,
 				EF789B952A30ABFA006EC6D8 /* ControllersWidget.swift in Sources */,
+				EF93623F2A9B9A690009E8E8 /* GameControllerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
