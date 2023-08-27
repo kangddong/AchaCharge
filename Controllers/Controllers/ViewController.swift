@@ -97,6 +97,8 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = MainTabBarController.TabType.controlelr.title
+        
         addSubViews()
         addConstraints()
         setUpIndicatoreView()

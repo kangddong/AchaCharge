@@ -107,7 +107,7 @@ extension SceneDelegate {
         let tabBarController = MainTabBarController()
         let tabItem = MainTabBarController.TabType.allCases
         var viewControllers: [UIViewController] = []
-        tabItem.forEach { viewControllers.append($0.viewController) }
+        tabItem.forEach { viewControllers.append(UINavigationController(rootViewController: $0.viewController)) }
         
         tabBarController.setViewControllers(viewControllers, animated: true)
         

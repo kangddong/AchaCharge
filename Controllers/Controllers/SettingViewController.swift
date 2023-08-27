@@ -27,6 +27,7 @@ final class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = MainTabBarController.TabType.setting.title
         print(#fileID, #function)
         view.addSubview(testButton)
         NSLayoutConstraint.activate([
