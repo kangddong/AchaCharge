@@ -56,9 +56,15 @@ final class SettingItemCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setData() {
-        typeImageView.image = UIImage(systemName: "sun")
-        titleLabel.text = "text"
+    public func setData(_ info: SettingItemDTO) {
+        typeImageView.image = UIImage(systemName: info.typeImageName)
+        titleLabel.text = info.title
+        if let buttonTitle = info.buttonTitle {
+            // TODO: Button Title
+            addButton()
+            rightButton.setTitle(buttonTitle, for: .normal)
+            rightButton.setTitleColor(UIColor.label, for: .normal)
+        }
     }
 }
 
@@ -71,7 +77,6 @@ extension SettingItemCell {
     private func addSubViews() {
         [typeImageView,
             titleLabel,].forEach { addSubview($0) }
-        
     }
     
     private func addConstraints() {
@@ -82,6 +87,15 @@ extension SettingItemCell {
             
             titleLabel.leadingAnchor.constraint(equalTo: typeImageView.trailingAnchor, constant: 20),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+        ])
+    }
+    
+    private func addButton() {
+        addSubview(rightButton)
+        
+        NSLayoutConstraint.activate([
+            rightButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            rightButton.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }
 }

@@ -17,7 +17,7 @@ final class SettingViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(SettingItemCell.self, forCellReuseIdentifier: SettingItemCell.reuseIdentifier)
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .systemBackground
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50.0
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,39 +39,62 @@ final class SettingViewController: UIViewController {
     
     private let storKitManager: StoreKitManager = StoreKitManager()
     private var sectionType: [SectionType] = [.premium, .csInfo]
-    private var premiumSections: [SectionType] = [.premium, .csInfo]
-    private var csInfoSections: [SectionType] = [.premium, .csInfo]
+    private var settingItems: [SettingItemDTO] = []
+    
+    private var premiumItems: [SettingItemDTO] = []
+    private var csInfoItems: [SettingItemDTO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchJSON()
+        initLayout()
+        configureTableView()
+    }
+    
+    @objc
+    private func tappedTestButton() {
+        storKitManager.requestMonthSubscription()
+    }
+}
+
+extension SettingViewController {
+    private func fetchJSON() {
+        var settingItemsDataDecoder = CustomJSONDecoder<[SettingItemDTO]>()
+        guard let decodedItems = settingItemsDataDecoder.decode(jsonFileName: "SettingItems") else { return }
+        settingItems = decodedItems
+        premiumItems = settingItems.filter { $0.sectionTypeCode == 0 }
+        csInfoItems = settingItems.filter { $0.sectionTypeCode == 1 }
+    }
+    
+    private func initLayout() {
         title = MainTabBarController.TabType.setting.title
-        print(#fileID, #function)
+        view.backgroundColor = .systemBackground
+        addSubViews()
+        addConstraints()
+    }
+    
+    private func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
+    private func addSubViews() {
         view.addSubview(tableView)
+    }
+    
+    private func addConstraints() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-        
-        view.backgroundColor = .systemBackground
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-    @objc
-    private func tappedTestButton() {
-        print(#function)
-        
-        storKitManager.requestMonthSubscription()
     }
 }
 
 // MARK: UITableViewDataSource, UITableViewDelegate Method
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionType.count
     }
@@ -79,19 +102,29 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch sectionType[section] {
         case .premium:
-            return premiumSections.count
+            return premiumItems.count
         case .csInfo:
-            return csInfoSections.count
+            return csInfoItems.count
         }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingItemCell.reuseIdentifier, for: indexPath)
+        guard let convertedCell = cell as? SettingItemCell else { return cell }
+        
         switch sectionType[indexPath.section] {
         case .premium:
-            return UITableViewCell()
+            guard let item = premiumItems[safe: indexPath.row] else { return cell }
+            convertedCell.setData(item)
+            
+            return convertedCell
+            
         case .csInfo:
-            return UITableViewCell()
+            guard let item = csInfoItems[safe: indexPath.row] else { return cell }
+            convertedCell.setData(item)
+            
+            return convertedCell
         }
     }
     
