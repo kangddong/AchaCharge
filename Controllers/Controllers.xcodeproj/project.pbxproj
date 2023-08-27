@@ -34,6 +34,7 @@
 		EF9362402A9B9A770009E8E8 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		EF9362412A9B9A8A0009E8E8 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */; };
+		EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362472A9BA5270009E8E8 /* SettingDTO.swift */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -99,6 +100,7 @@
 		EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAsset.xcassets; sourceTree = "<group>"; };
 		EF9362372A9B4A860009E8E8 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemCell.swift; sourceTree = "<group>"; };
+		EF9362472A9BA5270009E8E8 /* SettingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDTO.swift; sourceTree = "<group>"; };
 		EFC1A1312A83D6E00023754E /* ControllersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControllersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC1A1332A83D6E00023754E /* ControllersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersTests.swift; sourceTree = "<group>"; };
 		EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
@@ -160,11 +162,7 @@
 				EF1D09C22A4180EB00DCDDDB /* Controllers.entitlements */,
 				EF9362392A9B99670009E8E8 /* Applications */,
 				EF93623A2A9B99990009E8E8 /* Sources */,
-				EF789B7A2A24D6DD006EC6D8 /* Assets.xcassets */,
-				EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */,
-				EF789B7F2A24D6DD006EC6D8 /* Info.plist */,
-				EF9362312A9A56D50009E8E8 /* ProductIDs.plist */,
-				EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */,
+				EF9362442A9BA1D90009E8E8 /* Supporting Files */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,6 +224,7 @@
 			children = (
 				EF93622B2A9646D50009E8E8 /* SettingViewController.swift */,
 				EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */,
+				EF9362472A9BA5270009E8E8 /* SettingDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -248,6 +247,18 @@
 				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EF9362442A9BA1D90009E8E8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EF789B7A2A24D6DD006EC6D8 /* Assets.xcassets */,
+				EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */,
+				EF789B7F2A24D6DD006EC6D8 /* Info.plist */,
+				EF9362312A9A56D50009E8E8 /* ProductIDs.plist */,
+				EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		EFC1A1322A83D6E00023754E /* ControllersTests */ = {
@@ -399,6 +410,7 @@
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
 				EF9362382A9B4A860009E8E8 /* UIColor+.swift in Sources */,
 				EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */,
+				EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */,
 				EF93622C2A9646D50009E8E8 /* SettingViewController.swift in Sources */,
 				EF9362342A9A63890009E8E8 /* StoreKitManager.swift in Sources */,
 				EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */,
@@ -580,7 +592,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_TEAM = FL4QTRRKMD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Controllers/Info.plist;
+				INFOPLIST_FILE = "Controllers/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "아차 충전 !";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -616,7 +628,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_TEAM = FL4QTRRKMD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Controllers/Info.plist;
+				INFOPLIST_FILE = "Controllers/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "아차 충전 !";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

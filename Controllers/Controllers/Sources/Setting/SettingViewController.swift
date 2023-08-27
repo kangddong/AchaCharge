@@ -9,13 +9,18 @@ import UIKit
 
 final class SettingViewController: UIViewController {
     
-    enum SectionType {
-        case premium
-        case csInfo
+    enum SectionType: Int {
+        case premium = 0
+        case csInfo = 1
     }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
+        tableView.register(SettingItemCell.self, forCellReuseIdentifier: SettingItemCell.reuseIdentifier)
+        tableView.backgroundColor = .red
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50.0
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -42,13 +47,14 @@ final class SettingViewController: UIViewController {
         
         title = MainTabBarController.TabType.setting.title
         print(#fileID, #function)
-        view.addSubview(testButton)
+        view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            testButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            testButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            testButton.widthAnchor.constraint(equalToConstant: 100),
-            testButton.heightAnchor.constraint(equalToConstant: 100),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+        
         view.backgroundColor = .systemBackground
         
         tableView.delegate = self
