@@ -26,41 +26,57 @@ class MainTabBarController: UITabBarController {
         var title: String {
             switch self {
             case .controlelr:
-                return "Controlelr"
+                return "Controller"
             
             case .setting:
                 return "Setting"
             }
         }
         
-        var deSelectedImage: UIImage {
+        var deSelectedImage: UIImage? {
             switch self {
             case .controlelr:
-                return UIImage()
+                return UIImage(systemName: "gamecontroller")
             
             case .setting:
-                return UIImage()
+                return UIImage(systemName: "gearshape")
             }
         }
         
-        var selectedImage: UIImage {
+        var selectedImage: UIImage? {
             switch self {
             case .controlelr:
-                return UIImage()
+                return UIImage(systemName: "gamecontroller.fill")
             
             case .setting:
-                return UIImage()
+                return UIImage(systemName: "gearshape.fill")
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        initLyaout()
         delegate = self
     }
 }
 
+extension MainTabBarController {
+    
+    private func initLyaout() {
+        
+        tabBar.layer.borderWidth = 1.0
+        tabBar.layer.borderColor = UIColor.color(name: .tabBarTintColor).cgColor
+        tabBar.tintColor = .label
+        tabBar.isTranslucent = false
+        tabBar.backgroundColor = .color(name: .tabBarBackgroundColor)
+    }
+}
+
+// MARK: UITabBarControllerDelegate Method
 extension MainTabBarController: UITabBarControllerDelegate {
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print(#function)
     }
