@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		369B34072A4C4B4500DBCC29 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
 		369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B34082A4C511E00DBCC29 /* ProgressBar.swift */; };
 		369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
-		369B340D2A4D146500DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
-		EF38A0982A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */; };
 		EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */; };
 		EF789B762A24D6DC006EC6D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B752A24D6DC006EC6D8 /* ViewController.swift */; };
@@ -156,23 +153,13 @@
 			isa = PBXGroup;
 			children = (
 				EF1D09C22A4180EB00DCDDDB /* Controllers.entitlements */,
-				EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */,
-				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
-				EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */,
-				EF789B752A24D6DC006EC6D8 /* ViewController.swift */,
-				EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */,
+				EF9362392A9B99670009E8E8 /* Applications */,
+				EF93623A2A9B99990009E8E8 /* Sources */,
 				EF789B7A2A24D6DD006EC6D8 /* Assets.xcassets */,
 				EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */,
 				EF789B7F2A24D6DD006EC6D8 /* Info.plist */,
-				EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */,
-				369B340B2A4D13B300DBCC29 /* StringKey+.swift */,
-				EF9362292A9645100009E8E8 /* MainTabBarController.swift */,
-				EF93622B2A9646D50009E8E8 /* SettingViewController.swift */,
-				EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */,
 				EF9362312A9A56D50009E8E8 /* ProductIDs.plist */,
-				EF9362332A9A63890009E8E8 /* StoreKitManager.swift */,
 				EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */,
-				EF9362372A9B4A860009E8E8 /* UIColor+.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -197,6 +184,64 @@
 				EF789B982A30ABFB006EC6D8 /* Info.plist */,
 			);
 			path = ControllersWidget;
+			sourceTree = "<group>";
+		};
+		EF9362392A9B99670009E8E8 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */,
+				EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		EF93623A2A9B99990009E8E8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EF93623D2A9B9A010009E8E8 /* Extensions */,
+				EF93623E2A9B9A1E0009E8E8 /* Models */,
+				EF9362292A9645100009E8E8 /* MainTabBarController.swift */,
+				EF93623B2A9B99DD0009E8E8 /* Controller */,
+				EF93623C2A9B99EA0009E8E8 /* Setting */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		EF93623B2A9B99DD0009E8E8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF789B752A24D6DC006EC6D8 /* ViewController.swift */,
+				EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EF93623C2A9B99EA0009E8E8 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				EF93622B2A9646D50009E8E8 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		EF93623D2A9B9A010009E8E8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */,
+				369B340B2A4D13B300DBCC29 /* StringKey+.swift */,
+				EF9362372A9B4A860009E8E8 /* UIColor+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EF93623E2A9B9A1E0009E8E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */,
+				EF9362332A9A63890009E8E8 /* StoreKitManager.swift */,
+				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EFC1A1322A83D6E00023754E /* ControllersTests */ = {
@@ -360,9 +405,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF789B932A30ABFA006EC6D8 /* ControllersWidgetBundle.swift in Sources */,
-				369B34072A4C4B4500DBCC29 /* GameControllerManager.swift in Sources */,
-				369B340D2A4D146500DBCC29 /* StringKey+.swift in Sources */,
-				EF38A0982A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */,
 				369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */,
 				EF789B952A30ABFA006EC6D8 /* ControllersWidget.swift in Sources */,
 			);
