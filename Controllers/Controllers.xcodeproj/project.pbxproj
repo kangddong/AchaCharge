@@ -35,6 +35,7 @@
 		EF9362412A9B9A8A0009E8E8 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */; };
 		EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362472A9BA5270009E8E8 /* SettingDTO.swift */; };
+		EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		EF9362372A9B4A860009E8E8 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemCell.swift; sourceTree = "<group>"; };
 		EF9362472A9BA5270009E8E8 /* SettingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDTO.swift; sourceTree = "<group>"; };
+		EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSONDecoder.swift; sourceTree = "<group>"; };
 		EFC1A1312A83D6E00023754E /* ControllersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControllersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC1A1332A83D6E00023754E /* ControllersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersTests.swift; sourceTree = "<group>"; };
 		EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */,
 				EF9362332A9A63890009E8E8 /* StoreKitManager.swift */,
 				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
+				EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 			files = (
 				EF789B762A24D6DC006EC6D8 /* ViewController.swift in Sources */,
 				EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */,
+				EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */,
 				EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */,
 				EF789B862A24DC24006EC6D8 /* GameControllerManager.swift in Sources */,
 				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
