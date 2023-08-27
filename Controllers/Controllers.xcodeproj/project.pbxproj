@@ -36,6 +36,7 @@
 		EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */; };
 		EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362472A9BA5270009E8E8 /* SettingDTO.swift */; };
 		EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */; };
+		EF93624C2A9BA8DA0009E8E8 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93624B2A9BA8DA0009E8E8 /* Array+.swift */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemCell.swift; sourceTree = "<group>"; };
 		EF9362472A9BA5270009E8E8 /* SettingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDTO.swift; sourceTree = "<group>"; };
 		EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSONDecoder.swift; sourceTree = "<group>"; };
+		EF93624B2A9BA8DA0009E8E8 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		EFC1A1312A83D6E00023754E /* ControllersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControllersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC1A1332A83D6E00023754E /* ControllersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersTests.swift; sourceTree = "<group>"; };
 		EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */,
 				369B340B2A4D13B300DBCC29 /* StringKey+.swift */,
 				EF9362372A9B4A860009E8E8 /* UIColor+.swift */,
+				EF93624B2A9BA8DA0009E8E8 /* Array+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF789B762A24D6DC006EC6D8 /* ViewController.swift in Sources */,
+				EF93624C2A9BA8DA0009E8E8 /* Array+.swift in Sources */,
 				EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */,
 				EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */,
 				EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */,
