@@ -33,6 +33,7 @@
 		EF93623F2A9B9A690009E8E8 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
 		EF9362402A9B9A770009E8E8 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		EF9362412A9B9A8A0009E8E8 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
+		EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		EF9362332A9A63890009E8E8 /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAsset.xcassets; sourceTree = "<group>"; };
 		EF9362372A9B4A860009E8E8 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemCell.swift; sourceTree = "<group>"; };
 		EFC1A1312A83D6E00023754E /* ControllersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControllersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC1A1332A83D6E00023754E /* ControllersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersTests.swift; sourceTree = "<group>"; };
 		EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				EF93622B2A9646D50009E8E8 /* SettingViewController.swift */,
+				EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			files = (
 				EF789B762A24D6DC006EC6D8 /* ViewController.swift in Sources */,
 				EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */,
+				EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */,
 				EF789B862A24DC24006EC6D8 /* GameControllerManager.swift in Sources */,
 				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
