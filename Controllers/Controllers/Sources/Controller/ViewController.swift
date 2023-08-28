@@ -7,13 +7,6 @@
 
 import UIKit
 
-enum BatteryState: Int {
-    case unknown = -1
-    case discharging = 0
-    case charging = 1
-    case full = 2
-}
-
 final class ViewController: UIViewController {
 
     // MARK: UI Properties
@@ -57,6 +50,17 @@ final class ViewController: UIViewController {
         return label
     }()
     
+    private let controllerVendorNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textAlignment = .center
+        label.textColor = .label
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     private let refreshButton: UIButton = {
         let button = UIButton()
         button.setTitle("Refresh", for: .normal)
@@ -64,6 +68,11 @@ final class ViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         button.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
         button.tintColor = .label
+        button.layer.borderColor = UIColor.label.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -123,16 +132,17 @@ final class ViewController: UIViewController {
         manager.remove(observer: self)
     }
     
-    public func updateBatteryInfo() {
-        guard let info = manager.getBatteryInfo() else { return }
-        batteryInfo = info
+    public func updateControllerInfo() {
+        guard let info = manager.getControlelrInfo() else { return }
+        
         if isConnected {
-            batteryStateLabel.text = "\(Int(batteryInfo.level * 100)) %"
+            batteryStateLabel.text = "\(Int(info.batteryLevel * 100)) %"
+            controllerVendorNameLabel.text = info.vendorName
+            circularProgressBarView.progressAnimation(duration: circularViewDuration, value: info.batteryLevel)
             
-            circularProgressBarView.progressAnimation(duration: circularViewDuration, value: batteryInfo.level)
-            
-            UserDefaults.shared.setValue(batteryInfo.level, forKey: StringKey.BATTERY_LEVEL)
+            UserDefaults.shared.setValue(info.batteryLevel, forKey: StringKey.BATTERY_LEVEL)
         } else {
+            controllerVendorNameLabel.text = ""
             batteryStateLabel.text = "Not Connected.."
         }
     }
@@ -153,6 +163,7 @@ extension ViewController {
             gamePadImageView,
             circularProgressBarView,
             batteryStateLabel,
+            controllerVendorNameLabel,
             refreshButton,
         ].forEach { view.addSubview($0) }
         loadingView.addSubview(indicatorView)
@@ -182,7 +193,10 @@ extension ViewController {
             batteryStateLabel.topAnchor.constraint(equalTo: gamePadImageView.bottomAnchor, constant: 36),
             batteryStateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            refreshButton.topAnchor.constraint(equalTo: batteryStateLabel.bottomAnchor, constant: 57),
+            controllerVendorNameLabel.topAnchor.constraint(equalTo: batteryStateLabel.bottomAnchor, constant: 57),
+            controllerVendorNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            refreshButton.topAnchor.constraint(equalTo: controllerVendorNameLabel.bottomAnchor, constant: 20),
             refreshButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
@@ -192,6 +206,8 @@ extension ViewController {
         indicatorView.startAnimating()
     }
 }
+
+// MARK: Controller Logic
 extension ViewController {
 
     private func addControllerObservers() {
@@ -212,8 +228,7 @@ extension ViewController {
         
         isConnected = true
         indicatorView.stopAnimating()
-        manager.getControllerCount()
-        updateBatteryInfo()
+        updateControllerInfo()
     }
     
     @objc
@@ -221,13 +236,13 @@ extension ViewController {
         
         isConnected = false
         indicatorView.startAnimating()
-        manager.getControllerCount()
-        updateBatteryInfo()
+        updateControllerInfo()
     }
     
     @objc
     private func tappedRefresh() {
-        circularProgressBarView.progressAnimation(duration: circularViewDuration, value: batteryInfo.level)
+        guard let info = manager.getBatteryInfo() else { return }
+        circularProgressBarView.progressAnimation(duration: circularViewDuration, value: info.level)
     }
 }
 

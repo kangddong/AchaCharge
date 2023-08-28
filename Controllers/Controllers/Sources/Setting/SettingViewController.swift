@@ -38,7 +38,6 @@ final class SettingViewController: UIViewController {
     private var sectionType: [SectionType] = [.premium, .csInfo]
     private var settingItems: [SettingItemDTO] = []
     
-    private var settingItems: [SettingItemDTO] = []
     private var premiumItems: [SettingItemDTO] = []
     private var csInfoItems: [SettingItemDTO] = []
     
