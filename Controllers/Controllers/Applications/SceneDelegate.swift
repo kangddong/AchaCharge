@@ -31,17 +31,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         isBackground = false
-        guard let vc = window?.rootViewController as? ViewController else { return }
-        vc.updateBatteryInfo()
-        let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        content.title = "아차 충전 !"
-        content.body = "포어그라운드 들어감"
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "enter.background", content: content, trigger: trigger)
-        center.add(request)
+        guard let vc = UIApplication.topViewController() as? ViewController else { return }
+        vc.updateControllerInfo()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
