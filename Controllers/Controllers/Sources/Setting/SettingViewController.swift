@@ -14,6 +14,15 @@ final class SettingViewController: UIViewController {
         case csInfo = 1
     }
     
+    enum PremiumSectionType: String {
+        case premium
+        case restorepurchase
+    }
+    
+    enum CsInfoSectionType: String {
+        case info
+    }
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(SettingItemCell.self, forCellReuseIdentifier: SettingItemCell.reuseIdentifier)
@@ -24,23 +33,11 @@ final class SettingViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var testButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("IAP Test", for: .normal)
-        button.setTitleColor(UIColor.label, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-        
-        button.tintColor = .label
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedTestButton), for: .touchUpInside)
-        
-        return button
-    }()
-    
     private let storKitManager: StoreKitManager = StoreKitManager()
-    private var sectionType: [SectionType] = [.premium, .csInfo]
-    private var settingItems: [SettingItemDTO] = []
     
+    private var sectionType: [SectionType] = [.premium, .csInfo]
+    
+    private var settingItems: [SettingItemDTO] = []
     private var premiumItems: [SettingItemDTO] = []
     private var csInfoItems: [SettingItemDTO] = []
     
@@ -52,7 +49,6 @@ final class SettingViewController: UIViewController {
         configureTableView()
     }
     
-    @objc
     private func tappedTestButton() {
         storKitManager.requestMonthSubscription()
     }
@@ -129,11 +125,36 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         switch sectionType[indexPath.section] {
         case .premium:
-            break //return UITableViewCell()
+            
+            guard let title = premiumItems[safe: indexPath.row]?.title else { return }
+            let typeString = title.replacingOccurrences(of: " ", with: "").lowercased()
+            
+            guard let type = PremiumSectionType(rawValue: typeString) else { return }
+            switch type {
+            case .premium:
+                tappedTestButton()
+                print("premium tapped!")
+            case .restorepurchase:
+                print("restorePurchase tapped!")
+            }
+            
+            
+            
         case .csInfo:
-            break //return UITableViewCell()
+            guard let title = csInfoItems[safe: indexPath.row]?.title else { return }
+            print("item.title: \(title)")
+            let typeString = title.replacingOccurrences(of: " ", with: "").lowercased()
+            
+            guard let type = CsInfoSectionType(rawValue: typeString) else { return }
+            
+            switch type {
+            case .info:
+                print("premium tapped!")
+            }
         }
     }
     
