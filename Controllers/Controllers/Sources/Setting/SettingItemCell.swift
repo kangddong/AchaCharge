@@ -37,7 +37,6 @@ final class SettingItemCell: UITableViewCell {
         
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(tappedTestButton), for: .touchUpInside)
         
         return button
     }()
