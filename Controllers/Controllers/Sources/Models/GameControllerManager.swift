@@ -14,10 +14,6 @@ final class GameControllerManager {
     
     static let shared = GameControllerManager.init()
     
-    public var vendorName: String? {
-        return GCController.current?.vendorName
-    }
-    
     public var controllers: [GCController] = []
     
     public func addDidConnect(observer: Any, selector: Selector) {
@@ -53,9 +49,21 @@ final class GameControllerManager {
         )
     }
     
-    public func getControllerCount() {
-        updateController()
-    }  
+    public func getControlelrInfo() -> Controller? {
+        guard let controller = GCController.current else {
+            return nil
+        }
+        
+        let count = GCController.controllers().count
+        let batteryLevel = controller.battery?.batteryLevel ?? 0.0
+        let state = BatteryState(rawValue: controller.battery!.batteryState.rawValue) ?? .unknown
+        let vendorName = controller.vendorName ?? "Game Controller"
+        
+        return Controller(controllerCount: count,
+                          batteryLevel: batteryLevel,
+                          batteryState: state,
+                          vendorName: vendorName)
+    }
     
     public func getBatteryInfo() -> (level: Float, state: Int)? {
         guard let battery = GCController.current?.battery else {
@@ -72,7 +80,18 @@ final class GameControllerManager {
 
 extension GameControllerManager {
     
-    private func updateController() {
-        controllers = GCController.controllers()
-    }
+}
+
+struct Controller {
+    let controllerCount: Int
+    let batteryLevel: Float
+    let batteryState: BatteryState
+    let vendorName: String
+}
+
+enum BatteryState: Int {
+    case unknown = -1
+    case discharging = 0
+    case charging = 1
+    case full = 2
 }
