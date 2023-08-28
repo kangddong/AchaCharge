@@ -35,13 +35,8 @@ struct Provider: TimelineProvider {
         let isConnected = UserDefaults.shared.value(forKey: StringKey.CONTROLLER_CONNECTED) as? Bool ?? false
         print("filter", #function, "isConnected: \(isConnected)")
         if isConnected {
-            print("filter", "getBatteryInfo(): \(GameControllerManager.shared.getBatteryInfo())")
             if let info = GameControllerManager.shared.getBatteryInfo(), info.state != -1 {
                 let level = info.level
-                
-                if level < 0.3 {
-                    addScehdule(identifier: StringKey.BATTERY_IDENTIFIER, body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
-                }
                 
                 let currentDate = Date()
                 for _ in 0 ..< 25 {
@@ -55,10 +50,6 @@ struct Provider: TimelineProvider {
                 completion(timeline)
             } else {
                 let level = (UserDefaults.shared.value(forKey: StringKey.BATTERY_LEVEL) as? Float) ?? 0
-                
-                if level < 0.3 {
-                    addScehdule(identifier: StringKey.BATTERY_IDENTIFIER, body: "현재 배터리는 \(Int((level) * 100))% 입니다.")
-                }
                 
                 let currentDate = Date()
                 for _ in 0 ..< 25 {
@@ -82,19 +73,6 @@ struct Provider: TimelineProvider {
             print("filter", "entries.count: \(entries.count)")
             completion(timeline)
         }
-    }
-    
-    func addScehdule(identifier: String, body: String) {
-        print("filter",#function)
-        let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        content.title = "아차 충전 !"
-        content.body = body
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        center.add(request)
     }
 }
 

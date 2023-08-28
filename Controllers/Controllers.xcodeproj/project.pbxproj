@@ -7,16 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		369B34072A4C4B4500DBCC29 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
 		369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B34082A4C511E00DBCC29 /* ProgressBar.swift */; };
 		369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
-		369B340D2A4D146500DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
-		EF38A0982A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */; };
 		EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */; };
 		EF789B762A24D6DC006EC6D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B752A24D6DC006EC6D8 /* ViewController.swift */; };
-		EF789B792A24D6DC006EC6D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF789B772A24D6DC006EC6D8 /* Main.storyboard */; };
 		EF789B7B2A24D6DD006EC6D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF789B7A2A24D6DD006EC6D8 /* Assets.xcassets */; };
 		EF789B7E2A24D6DD006EC6D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */; };
 		EF789B862A24DC24006EC6D8 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
@@ -26,6 +22,17 @@
 		EF789B952A30ABFA006EC6D8 /* ControllersWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B942A30ABFA006EC6D8 /* ControllersWidget.swift */; };
 		EF789B972A30ABFB006EC6D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF789B962A30ABFB006EC6D8 /* Assets.xcassets */; };
 		EF789B9B2A30ABFB006EC6D8 /* ControllersWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF789B8B2A30ABFA006EC6D8 /* ControllersWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362292A9645100009E8E8 /* MainTabBarController.swift */; };
+		EF93622C2A9646D50009E8E8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622B2A9646D50009E8E8 /* SettingViewController.swift */; };
+		EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */; };
+		EF9362302A978B090009E8E8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF93622F2A978B090009E8E8 /* StoreKit.framework */; };
+		EF9362322A9A56D50009E8E8 /* ProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF9362312A9A56D50009E8E8 /* ProductIDs.plist */; };
+		EF9362342A9A63890009E8E8 /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362332A9A63890009E8E8 /* StoreKitManager.swift */; };
+		EF9362362A9B49B70009E8E8 /* ColorAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */; };
+		EF9362382A9B4A860009E8E8 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362372A9B4A860009E8E8 /* UIColor+.swift */; };
+		EF93623F2A9B9A690009E8E8 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
+		EF9362402A9B9A770009E8E8 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
+		EF9362412A9B9A8A0009E8E8 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -71,7 +78,6 @@
 		EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EF789B752A24D6DC006EC6D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EF789B782A24D6DC006EC6D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF789B7A2A24D6DD006EC6D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF789B7D2A24D6DD006EC6D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF789B7F2A24D6DD006EC6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +89,14 @@
 		EF789B942A30ABFA006EC6D8 /* ControllersWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersWidget.swift; sourceTree = "<group>"; };
 		EF789B962A30ABFB006EC6D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF789B982A30ABFB006EC6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF9362292A9645100009E8E8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		EF93622B2A9646D50009E8E8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
+		EF93622F2A978B090009E8E8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		EF9362312A9A56D50009E8E8 /* ProductIDs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ProductIDs.plist; sourceTree = "<group>"; };
+		EF9362332A9A63890009E8E8 /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
+		EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAsset.xcassets; sourceTree = "<group>"; };
+		EF9362372A9B4A860009E8E8 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		EFC1A1312A83D6E00023754E /* ControllersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControllersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC1A1332A83D6E00023754E /* ControllersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersTests.swift; sourceTree = "<group>"; };
 		EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
@@ -93,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF9362302A978B090009E8E8 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,17 +156,13 @@
 			isa = PBXGroup;
 			children = (
 				EF1D09C22A4180EB00DCDDDB /* Controllers.entitlements */,
-				EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */,
-				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
-				EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */,
-				EF789B752A24D6DC006EC6D8 /* ViewController.swift */,
-				EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */,
-				EF789B772A24D6DC006EC6D8 /* Main.storyboard */,
+				EF9362392A9B99670009E8E8 /* Applications */,
+				EF93623A2A9B99990009E8E8 /* Sources */,
 				EF789B7A2A24D6DD006EC6D8 /* Assets.xcassets */,
 				EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */,
 				EF789B7F2A24D6DD006EC6D8 /* Info.plist */,
-				EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */,
-				369B340B2A4D13B300DBCC29 /* StringKey+.swift */,
+				EF9362312A9A56D50009E8E8 /* ProductIDs.plist */,
+				EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -159,6 +170,7 @@
 		EF789B8C2A30ABFA006EC6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF93622F2A978B090009E8E8 /* StoreKit.framework */,
 				EF789B8D2A30ABFA006EC6D8 /* WidgetKit.framework */,
 				EF789B8F2A30ABFA006EC6D8 /* SwiftUI.framework */,
 			);
@@ -175,6 +187,64 @@
 				EF789B982A30ABFB006EC6D8 /* Info.plist */,
 			);
 			path = ControllersWidget;
+			sourceTree = "<group>";
+		};
+		EF9362392A9B99670009E8E8 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */,
+				EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		EF93623A2A9B99990009E8E8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EF93623D2A9B9A010009E8E8 /* Extensions */,
+				EF93623E2A9B9A1E0009E8E8 /* Models */,
+				EF9362292A9645100009E8E8 /* MainTabBarController.swift */,
+				EF93623B2A9B99DD0009E8E8 /* Controller */,
+				EF93623C2A9B99EA0009E8E8 /* Setting */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		EF93623B2A9B99DD0009E8E8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF789B752A24D6DC006EC6D8 /* ViewController.swift */,
+				EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EF93623C2A9B99EA0009E8E8 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				EF93622B2A9646D50009E8E8 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		EF93623D2A9B9A010009E8E8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */,
+				369B340B2A4D13B300DBCC29 /* StringKey+.swift */,
+				EF9362372A9B4A860009E8E8 /* UIColor+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EF93623E2A9B9A1E0009E8E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */,
+				EF9362332A9A63890009E8E8 /* StoreKitManager.swift */,
+				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EFC1A1322A83D6E00023754E /* ControllersTests */ = {
@@ -290,8 +360,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF789B7E2A24D6DD006EC6D8 /* LaunchScreen.storyboard in Resources */,
+				EF9362322A9A56D50009E8E8 /* ProductIDs.plist in Resources */,
+				EF9362362A9B49B70009E8E8 /* ColorAsset.xcassets in Resources */,
 				EF789B7B2A24D6DD006EC6D8 /* Assets.xcassets in Resources */,
-				EF789B792A24D6DC006EC6D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,9 +389,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF789B762A24D6DC006EC6D8 /* ViewController.swift in Sources */,
+				EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */,
 				EF789B862A24DC24006EC6D8 /* GameControllerManager.swift in Sources */,
+				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
+				EF9362382A9B4A860009E8E8 /* UIColor+.swift in Sources */,
 				EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */,
+				EF93622C2A9646D50009E8E8 /* SettingViewController.swift in Sources */,
+				EF9362342A9A63890009E8E8 /* StoreKitManager.swift in Sources */,
 				EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */,
 				369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */,
 				EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */,
@@ -332,11 +408,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF789B932A30ABFA006EC6D8 /* ControllersWidgetBundle.swift in Sources */,
-				369B34072A4C4B4500DBCC29 /* GameControllerManager.swift in Sources */,
-				369B340D2A4D146500DBCC29 /* StringKey+.swift in Sources */,
-				EF38A0982A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */,
 				369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */,
+				EF9362412A9B9A8A0009E8E8 /* StringKey+.swift in Sources */,
+				EF9362402A9B9A770009E8E8 /* UserDefaults+.swift in Sources */,
 				EF789B952A30ABFA006EC6D8 /* ControllersWidget.swift in Sources */,
+				EF93623F2A9B9A690009E8E8 /* GameControllerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,14 +440,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EF789B772A24D6DC006EC6D8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EF789B782A24D6DC006EC6D8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -512,7 +580,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "아차 충전 !";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
@@ -548,7 +616,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "아차 충전 !";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
