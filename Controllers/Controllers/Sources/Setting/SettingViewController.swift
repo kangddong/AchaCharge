@@ -154,7 +154,9 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             
             switch type {
             case .info:
-                print("premium tapped!")
+                let vc = InfoViewController()
+                vc.modalPresentationStyle = .pageSheet
+                self.present(vc, animated: true)
             }
         }
     }
