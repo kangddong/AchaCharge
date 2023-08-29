@@ -57,7 +57,7 @@ final class SettingItemCell: UITableViewCell {
     
     public func setData(_ info: SettingItemDTO) {
         typeImageView.image = UIImage(systemName: info.typeImageName)
-        titleLabel.text = info.title
+        titleLabel.text = info.title.localized
         if let buttonTitle = info.buttonTitle {
             // TODO: Button Title
             addButton()

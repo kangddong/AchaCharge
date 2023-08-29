@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Controllers
+
+  Created by 강동영 on 2023/08/29.
+  
+*/
+"Controller" = "コントローラー";
+"Setting" = "設定";
+
+"Not connected.." = "連結なし。。。";
+"Refresh" = "リロード";
+
+"Premium" = "プリミアム";
+"Restore Purchase" = "購入製品のリストア";
+"Info" = "詳細";

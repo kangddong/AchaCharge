@@ -26,10 +26,10 @@ class MainTabBarController: UITabBarController {
         var title: String {
             switch self {
             case .controlelr:
-                return "Controller"
+                return "Controller".localized
             
             case .setting:
-                return "Setting"
+                return "Setting".localized
             }
         }
         

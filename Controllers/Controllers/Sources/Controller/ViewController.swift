@@ -41,7 +41,7 @@ final class ViewController: UIViewController {
     
     private let batteryStateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Not connected.."
+        label.text = "Not connected..".localized
         label.textAlignment = .center
         label.textColor = .label
         label.font = UIFont.boldSystemFont(ofSize: 25)
@@ -63,7 +63,7 @@ final class ViewController: UIViewController {
     
     private let refreshButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Refresh", for: .normal)
+        button.setTitle("Refresh".localized, for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         button.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
@@ -143,7 +143,7 @@ final class ViewController: UIViewController {
             UserDefaults.shared.setValue(info.batteryLevel, forKey: StringKey.BATTERY_LEVEL)
         } else {
             controllerVendorNameLabel.text = ""
-            batteryStateLabel.text = "Not Connected.."
+            batteryStateLabel.text = "Not Connected..".localized
         }
     }
     

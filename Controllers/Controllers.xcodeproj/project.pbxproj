@@ -39,6 +39,9 @@
 		EF93624C2A9BA8DA0009E8E8 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93624B2A9BA8DA0009E8E8 /* Array+.swift */; };
 		EF9362502A9CF5AD0009E8E8 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93624F2A9CF5AD0009E8E8 /* UIApplication+.swift */; };
 		EF9362522A9E0B300009E8E8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362512A9E0B300009E8E8 /* InfoViewController.swift */; };
+		EF9362552A9E26120009E8E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF9362572A9E26120009E8E8 /* InfoPlist.strings */; };
+		EF93625A2A9E2B670009E8E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF93625C2A9E2B670009E8E8 /* Localizable.strings */; };
+		EF9362622A9E2D3E0009E8E8 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362612A9E2D3E0009E8E8 /* String+.swift */; };
 		EFC1A1342A83D6E00023754E /* ControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1A1332A83D6E00023754E /* ControllersTests.swift */; };
 		EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -109,6 +112,13 @@
 		EF93624B2A9BA8DA0009E8E8 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		EF93624F2A9CF5AD0009E8E8 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		EF9362512A9E0B300009E8E8 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		EF9362562A9E26120009E8E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EF93625B2A9E2B670009E8E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF93625D2A9E2B7A0009E8E8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EF93625E2A9E2B7A0009E8E8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF93625F2A9E2B860009E8E8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EF9362602A9E2B860009E8E8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF9362612A9E2D3E0009E8E8 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		EFC1A1312A83D6E00023754E /* ControllersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControllersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC1A1332A83D6E00023754E /* ControllersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersTests.swift; sourceTree = "<group>"; };
 		EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
@@ -246,6 +256,7 @@
 				EF9362372A9B4A860009E8E8 /* UIColor+.swift */,
 				EF93624B2A9BA8DA0009E8E8 /* Array+.swift */,
 				EF93624F2A9CF5AD0009E8E8 /* UIApplication+.swift */,
+				EF9362612A9E2D3E0009E8E8 /* String+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -269,6 +280,8 @@
 				EF789B7F2A24D6DD006EC6D8 /* Info.plist */,
 				EF9362312A9A56D50009E8E8 /* ProductIDs.plist */,
 				EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */,
+				EF9362572A9E26120009E8E8 /* InfoPlist.strings */,
+				EF93625C2A9E2B670009E8E8 /* Localizable.strings */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -367,6 +380,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
+				ko,
 			);
 			mainGroup = EF789B652A24D6DC006EC6D8;
 			productRefGroup = EF789B6F2A24D6DC006EC6D8 /* Products */;
@@ -386,9 +401,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF789B7E2A24D6DD006EC6D8 /* LaunchScreen.storyboard in Resources */,
+				EF93625A2A9E2B670009E8E8 /* Localizable.strings in Resources */,
 				EF9362322A9A56D50009E8E8 /* ProductIDs.plist in Resources */,
 				EF9362362A9B49B70009E8E8 /* ColorAsset.xcassets in Resources */,
 				EF789B7B2A24D6DD006EC6D8 /* Assets.xcassets in Resources */,
+				EF9362552A9E26120009E8E8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +436,7 @@
 				EF93622E2A9657FB0009E8E8 /* StoreObserver.swift in Sources */,
 				EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */,
 				EF9362522A9E0B300009E8E8 /* InfoViewController.swift in Sources */,
+				EF9362622A9E2D3E0009E8E8 /* String+.swift in Sources */,
 				EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */,
 				EF789B862A24DC24006EC6D8 /* GameControllerManager.swift in Sources */,
 				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
@@ -480,6 +498,26 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		EF9362572A9E26120009E8E8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF9362562A9E26120009E8E8 /* en */,
+				EF93625D2A9E2B7A0009E8E8 /* ja */,
+				EF93625F2A9E2B860009E8E8 /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EF93625C2A9E2B670009E8E8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF93625B2A9E2B670009E8E8 /* en */,
+				EF93625E2A9E2B7A0009E8E8 /* ja */,
+				EF9362602A9E2B860009E8E8 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -487,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -547,6 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -609,7 +649,7 @@
 				DEVELOPMENT_TEAM = FL4QTRRKMD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Controllers/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "아차 충전 !";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -645,7 +685,7 @@
 				DEVELOPMENT_TEAM = FL4QTRRKMD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Controllers/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "아차 충전 !";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

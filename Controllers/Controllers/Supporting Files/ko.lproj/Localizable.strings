@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Controllers
+
+  Created by 강동영 on 2023/08/29.
+  
+*/
+"Controller" = "컨트롤러";
+"Setting" = "설정";
+
+"Not connected.." = "연결 안됨..";
+"Refresh" = "새로고침";
+
+"Premium" = "프리미엄";
+"Restore Purchase" = "구매 복원";
+"Info" = "정보";
