@@ -45,6 +45,15 @@ final class InfoViewController: UIViewController {
         return label
     }()
     
+    private let closeButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,27 +66,39 @@ extension InfoViewController {
         view.backgroundColor = .systemBackground
         addSubViews()
         addConstraints()
+        closeButton.addTarget(self, action: #selector(tappedClosedButton), for: .touchUpInside)
     }
     
     private func addSubViews() {
         [appIconImageView,
          appNameLabel,
          appVersionLabel,
+         closeButton,
         ].forEach { view.addSubview($0) }
     }
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            appIconImageView.widthAnchor.constraint(equalToConstant: 100),
-            appIconImageView.heightAnchor.constraint(equalToConstant: 100),
+            appIconImageView.widthAnchor.constraint(equalToConstant: 150),
+            appIconImageView.heightAnchor.constraint(equalToConstant: 150),
             appIconImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             appIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             appNameLabel.topAnchor.constraint(equalTo: appIconImageView.bottomAnchor, constant: 10),
             appNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            appVersionLabel.topAnchor.constraint(equalTo: appNameLabel.bottomAnchor, constant: 5),
+            appVersionLabel.topAnchor.constraint(equalTo: appNameLabel.bottomAnchor, constant: 6),
             appVersionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            closeButton.widthAnchor.constraint(equalToConstant: 50),
+            closeButton.heightAnchor.constraint(equalToConstant: 50),
+            closeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
+            closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+    }
+    
+    @objc
+    private func tappedClosedButton() {
+        self.dismiss(animated: true)
     }
 }
