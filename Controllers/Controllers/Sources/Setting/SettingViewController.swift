@@ -16,7 +16,7 @@ final class SettingViewController: UIViewController {
     
     enum PremiumSectionType: String {
         case premium
-        case restorepurchase
+//        case restorepurchase
     }
     
     enum CsInfoSectionType: String {
@@ -139,8 +139,6 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             case .premium:
                 tappedTestButton()
                 print("premium tapped!")
-            case .restorepurchase:
-                print("restorePurchase tapped!")
             }
             
             
