@@ -74,7 +74,7 @@ extension MainTabBarController {
     }
 }
 
-// MARK: UITabBarControllerDelegate Method
+// MARK: - UITabBarControllerDelegate Method
 extension MainTabBarController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

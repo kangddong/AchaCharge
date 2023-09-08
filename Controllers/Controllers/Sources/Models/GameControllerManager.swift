@@ -78,10 +78,14 @@ final class GameControllerManager {
     }
 }
 
+// MARK: - Private Method
 extension GameControllerManager {
     
 }
 
+// MARK: - User Interaction
+extension GameControllerManager {
+}
 struct Controller {
     let controllerCount: Int
     let batteryLevel: Float

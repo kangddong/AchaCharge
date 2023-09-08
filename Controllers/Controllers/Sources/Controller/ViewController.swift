@@ -9,7 +9,7 @@ import UIKit
 
 final class ViewController: UIViewController {
 
-    // MARK: UI Properties
+    // MARK: - UI Properties
     private let indicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.style = .large
@@ -89,7 +89,7 @@ final class ViewController: UIViewController {
     
     private var circularViewDuration: TimeInterval = 0.5
     
-    // MARK: UI Properties
+    // MARK: - UI Properties
     private let manager = GameControllerManager.shared
     private let _CIRCLEARVIEW_TAG = 20230701
     
@@ -152,9 +152,8 @@ final class ViewController: UIViewController {
     }
 }
 
-// MAKR: UI Methods
+// MARK: - UI Methods
 extension ViewController {
-    
     private func addSubViews() {
         
         view.backgroundColor = .systemBackground
@@ -207,9 +206,8 @@ extension ViewController {
     }
 }
 
-// MARK: Controller Logic
+// MARK: - Controller Logic
 extension ViewController {
-
     private func addControllerObservers() {
         
         manager.addDidConnect(

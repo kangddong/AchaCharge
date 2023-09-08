@@ -90,7 +90,7 @@ extension SettingViewController {
     }
 }
 
-// MARK: UITableViewDataSource, UITableViewDelegate Method
+// MARK: - UITableViewDataSource, UITableViewDelegate Method
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionType.count

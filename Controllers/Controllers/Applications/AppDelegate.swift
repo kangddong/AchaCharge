@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // MARK: UISceneSession Lifecycle
+    // MARK: - UISceneSession Lifecycle
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
-// MARK: Push Notifications Method
+// MARK: - Push Notifications Method
 extension AppDelegate {
     
     private func requestNotificationAuthorization() {
@@ -60,7 +60,7 @@ extension AppDelegate {
     }
 }
 
-// MARK: StoreKit Method
+// MARK: - StoreKit Method
 extension AppDelegate {
     
     private func addStoreKitQueue() {
@@ -69,7 +69,7 @@ extension AppDelegate {
 }
 
 
-// MARK: BGTask Method
+// MARK: - BGTask Method
 extension AppDelegate {
     
     private func registBackgroundTask() {
