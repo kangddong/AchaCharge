@@ -126,12 +126,6 @@ final class ViewController: UIViewController {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        manager.remove(observer: self)
-    }
-    
     public func updateControllerInfo() {
         NSLog("filter: \(#function)")
         guard let info = manager.getControlelrInfo() else {

@@ -34,20 +34,6 @@ final class GameControllerManager {
     
     public var controllers: [GCController] = []
     
-    public func remove(observer: Any) {
-        NotificationCenter.default.removeObserver(
-            observer,
-            name: .GCControllerDidConnect,
-            object: nil
-        )
-        
-        NotificationCenter.default.removeObserver(
-            observer,
-            name: .GCControllerDidDisconnect,
-            object: nil
-        )
-    }
-    
     public func getControlelrInfo() -> Controller? {
         guard let controller = GCController.current else {
             return nil
