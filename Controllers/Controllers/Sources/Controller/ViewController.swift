@@ -133,18 +133,20 @@ final class ViewController: UIViewController {
     }
     
     public func updateControllerInfo() {
-        guard let info = manager.getControlelrInfo() else { return }
-        
-        if isConnected {
-            batteryStateLabel.text = "\(Int(info.batteryLevel * 100)) %"
-            controllerVendorNameLabel.text = info.vendorName
-            circularProgressBarView.progressAnimation(duration: circularViewDuration, value: info.batteryLevel)
-            
-            UserDefaults.shared.setValue(info.batteryLevel, forKey: StringKey.BATTERY_LEVEL)
-        } else {
+        NSLog("filter: \(#function)")
+        guard let info = manager.getControlelrInfo() else {
             controllerVendorNameLabel.text = ""
             batteryStateLabel.text = "Not Connected..".localized
+            return
         }
+        
+        NSLog("filter: info.batteryLevel")
+        NSLog("filter: \(info.batteryLevel)")
+        batteryStateLabel.text = "\(Int(info.batteryLevel * 100)) %"
+        controllerVendorNameLabel.text = info.vendorName
+        circularProgressBarView.progressAnimation(duration: circularViewDuration, value: info.batteryLevel)
+        
+        UserDefaults.shared.setValue(info.batteryLevel, forKey: StringKey.BATTERY_LEVEL)
     }
     
     private func refreshBatteryInfo() {
@@ -209,38 +211,29 @@ extension ViewController {
 // MARK: - Controller Logic
 extension ViewController {
     private func addControllerObservers() {
-        
-        manager.addDidConnect(
-            observer: self,
-            selector: #selector(didConnectedController)
-        )
-        
-        manager.addDidDisconnect(
-            observer: self,
-            selector: #selector(didDisConnectedController)
-        )
-    }
-    
-    @objc
-    private func didConnectedController() {
-        
-        isConnected = true
-        indicatorView.stopAnimating()
-        updateControllerInfo()
-    }
-    
-    @objc
-    private func didDisConnectedController() {
-        
-        isConnected = false
-        indicatorView.startAnimating()
-        updateControllerInfo()
+        NSLog("filter: \(#function)")
+        manager.delegate = self
     }
     
     @objc
     private func tappedRefresh() {
         guard let info = manager.getBatteryInfo() else { return }
         circularProgressBarView.progressAnimation(duration: circularViewDuration, value: info.level)
+    }
+}
+
+// MARK: - GameControllerDelegate Method
+extension ViewController: GameControllerDelegate {
+    func didConnectedController() {
+        isConnected = true
+        indicatorView.stopAnimating()
+        updateControllerInfo()
+    }
+    
+    func didDisConnectedController() {
+        isConnected = false
+        indicatorView.startAnimating()
+        updateControllerInfo()
     }
 }
 

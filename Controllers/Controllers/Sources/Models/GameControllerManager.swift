@@ -8,32 +8,31 @@
 import Foundation
 import GameController
 
+protocol GameControllerDelegate: AnyObject {
+    func didConnectedController()
+    func didDisConnectedController()
+}
+
 final class GameControllerManager {
     
-    private init() {}
+    private init() {
+        NSLog(#fileID)
+        NSLog(#function)
+        NSLog("filter: init")
+        addObserver()
+    }
     
+    deinit {
+        NSLog(#fileID)
+        NSLog(#function)
+        NSLog("filter: deinit")
+        removeObserver()
+    }
+    
+    public weak var delegate: GameControllerDelegate?
     static let shared = GameControllerManager.init()
     
     public var controllers: [GCController] = []
-    
-    public func addDidConnect(observer: Any, selector: Selector) {
-        NotificationCenter.default.addObserver(
-            observer,
-            selector: selector,
-            name: .GCControllerDidConnect,
-            object: nil
-        )
-    }
-    
-    public func addDidDisconnect(observer: Any, selector: Selector) {
-        
-        NotificationCenter.default.addObserver(
-            observer,
-            selector: selector,
-            name: .GCControllerDidDisconnect,
-            object: nil
-        )
-    }
     
     public func remove(observer: Any) {
         NotificationCenter.default.removeObserver(
@@ -56,12 +55,13 @@ final class GameControllerManager {
         
         let count = GCController.controllers().count
         let batteryLevel = controller.battery?.batteryLevel ?? 0.0
-        let state = BatteryState(rawValue: controller.battery!.batteryState.rawValue) ?? .unknown
+        let rawValue = (controller.battery?.batteryState ?? .unknown).rawValue
+        let state = BatteryState(rawValue: rawValue)
         let vendorName = controller.vendorName ?? "Game Controller"
         
         return Controller(controllerCount: count,
                           batteryLevel: batteryLevel,
-                          batteryState: state,
+                          batteryState: state ?? .unknown,
                           vendorName: vendorName)
     }
     
@@ -80,7 +80,49 @@ final class GameControllerManager {
 
 // MARK: - Private Method
 extension GameControllerManager {
+    private func addObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didConnectedController),
+            name: .GCControllerDidConnect,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didDisConnectedController),
+            name: .GCControllerDidDisconnect,
+            object: nil
+        )
+    }
     
+    private func removeObserver() {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: .GCControllerDidConnect,
+            object: nil
+        )
+        
+        NotificationCenter.default.removeObserver(
+            self,
+            name: .GCControllerDidDisconnect,
+            object: nil
+        )
+    }
+    
+    @objc
+    private func didConnectedController() {
+        NSLog("filter: GameControllerManager")
+        NSLog("filter: \(#function)")
+        delegate?.didConnectedController()
+    }
+    
+    @objc
+    private func didDisConnectedController() {
+        NSLog("filter: GameControllerManager")
+        NSLog("filter: \(#function)")
+        delegate?.didDisConnectedController()
+    }
 }
 
 // MARK: - User Interaction
