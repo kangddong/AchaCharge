@@ -87,35 +87,26 @@ extension AppDelegate {
             
         // Be sure to call the completion handler when the task is complete
         scheduleAppRefresh()
-        GameControllerManager.shared.getControllerCount()
-        if GameControllerManager.shared.controllers.count > 0 {
-            let info = GameControllerManager.shared.getBatteryInfo()
-            let center = UNUserNotificationCenter.current()
-            let content = UNMutableNotificationContent()
-            content.title = "아차 충전 !"
-            content.body = "level: \(info?.level), state: \(info?.state)"
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: "batterPush", content: content, trigger: trigger)
-            center.add(request)
-        } else {
-            let center = UNUserNotificationCenter.current()
-            let content = UNMutableNotificationContent()
-            content.title = "아차 충전 !"
-            content.body = "컨트롤러 연결 안되어있음 !"
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: "batterPush.off", content: content, trigger: trigger)
-            center.add(request)
-        }
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
         
-        task.setTaskCompleted(success: true)
+        let operation = FetchGameControllerOperation(manager: GameControllerManager.shared)
+        queue.addOperation(operation)
+        
+        task.expirationHandler = {
+            // After all operations are cancelled, the completion block below is called to set the task to complete.
+            queue.cancelAllOperations()
+        }
+
+        operation.completionBlock = {
+            task.setTaskCompleted(success: !operation.isCancelled)
+        }
+
+        queue.waitUntilAllOperationsAreFinished()
     }
     
     // STEP3
-    func scheduleAppRefresh() {
+    public func scheduleAppRefresh() {
         
         //1. 원하는 형태의 TaskRequest를 만듭니다. 이 때, 사용되는 identifier는 위의 1, 2과정에서 등록한 info.plist의 identifier여야 해요!
         let request = BGAppRefreshTaskRequest(identifier: StringKey.BATTERY_IDENTIFIER)

@@ -47,36 +47,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        scheduleAppRefresh()
+        let appDeleagate = UIApplication.shared.delegate as! AppDelegate
+        appDeleagate.scheduleAppRefresh()
         isBackground = true
         print(#function)
-    }
-
-
-    // STEP3
-    func scheduleAppRefresh() {
-        
-        //1. 원하는 형태의 TaskRequest를 만듭니다. 이 때, 사용되는 identifier는 위의 1, 2과정에서 등록한 info.plist의 identifier여야 해요!
-        let request = BGAppRefreshTaskRequest(identifier: StringKey.BATTERY_IDENTIFIER)
-        
-        //2. 리퀘스트가 언제 실행되면 좋겠는지 지정합니다. 기존의 setMinimumFetchInterval과 동일하다고 합니다.
-        //여전히, 언제 실행될지는 시스템의 마음입니다...
-        request.earliestBeginDate = Date(timeIntervalSinceNow: 15 * 60)
-        
-        
-        //3. 실제로 task를 submit 합니다.
-        //이 때 주의사항은, submit은 synchronous한 함수라, launching 때 실행하면 메인 스레드가 블락 될 수 있으니
-        //OperationQueue, GCD등을 이용해 다른 스레드에서 호출하는 것을 권장한다고 하네요.
-        /*
-         디버깅용도
-         e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.controller.battery"]
-         */
-        
-        do {
-            try BGTaskScheduler.shared.submit(request)
-        } catch {
-            print("Could not schedule app refresh: \(error)")
-        }
     }
 }
 
