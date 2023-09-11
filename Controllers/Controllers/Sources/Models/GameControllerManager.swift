@@ -16,16 +16,10 @@ protocol GameControllerDelegate: AnyObject {
 final class GameControllerManager {
     
     private init() {
-        NSLog(#fileID)
-        NSLog(#function)
-        NSLog("filter: init")
         addObserver()
     }
     
     deinit {
-        NSLog(#fileID)
-        NSLog(#function)
-        NSLog("filter: deinit")
         removeObserver()
     }
     
@@ -109,10 +103,6 @@ extension GameControllerManager {
         NSLog("filter: \(#function)")
         delegate?.didDisConnectedController()
     }
-    
-    static func isAddedObserver() -> Bool {
-        return NotificationCenter.default.debugDescription.localizedStandardContains("GCControllerDidConnectNotification")
-    }
 }
 
 // MARK: - User Interaction
@@ -140,42 +130,18 @@ class FetchGameControllerOperation: Operation {
     }
     
     override func main() {
-        let isAddedObserver = GameControllerManager.isAddedObserver()
-        
-        guard let info = manager.getControlelrInfo() else {
-            let center = UNUserNotificationCenter.current()
-            let content = UNMutableNotificationContent()
-            content.title = "아차 충전 !"
-            content.body = "guard else 탓다 !"
-            NSLog("filter: guard else 탓다 ! \(isAddedObserver)")
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: "batterPush.off", content: content, trigger: trigger)
-            center.add(request)
-            return
-        }
-        
-        guard info.controllerCount > 0 else {
-            let center = UNUserNotificationCenter.current()
-            let content = UNMutableNotificationContent()
-            content.title = "아차 충전 !"
-            content.body = "controller Count가 0이다"
-            NSLog("filter: controller Count가 0이다 \(isAddedObserver)")
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: "batterPush.off", content: content, trigger: trigger)
-            center.add(request)
-            
-            return
-        }
+        guard
+            let info = manager.getControlelrInfo(),
+            info.controllerCount > 0
+        else { return }
         
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
-        content.title = "아차 충전 !"
+        let appName = Bundle.main.infoDictionary["CFBundleDisplayName"] as! String
+        content.title = appName
         let level = Int(info.batteryLevel * 100)
-        content.body = "현재 배터리가 \(level)% 입니다 ! \(isAddedObserver)"
-        NSLog("filter: Push 성공, 배터리 레벨 : \(level) \(isAddedObserver)")
+        content.body = "현재 배터리가 \(level)% 입니다 !"
+        NSLog("filter: Push 성공, 배터리 레벨 : \(level)")
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         
