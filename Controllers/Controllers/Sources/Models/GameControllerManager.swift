@@ -137,7 +137,7 @@ class FetchGameControllerOperation: Operation {
         
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
-        let appName = Bundle.main.infoDictionary["CFBundleDisplayName"] as! String
+        let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as! String
         content.title = appName
         let level = Int(info.batteryLevel * 100)
         content.body = "현재 배터리가 \(level)% 입니다 !"
