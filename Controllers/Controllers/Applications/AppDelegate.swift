@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         requestNotificationAuthorization()
 //        addStoreKitQueue()
-        registBackgroundTask()
+//        registBackgroundTask() // 1.0.1 disable
         
         return true
     }
@@ -71,7 +71,6 @@ extension AppDelegate {
 
 // MARK: - BGTask Method
 extension AppDelegate {
-    
     private func registBackgroundTask() {
         // STEP1
         // Register for background app refresh task
@@ -81,7 +80,7 @@ extension AppDelegate {
         }
     }
     
-    func handleAppRefreshTask(task: BGAppRefreshTask) {
+    private func handleAppRefreshTask(task: BGAppRefreshTask) {
         // STEP2
         // Perform background fetch here
             
