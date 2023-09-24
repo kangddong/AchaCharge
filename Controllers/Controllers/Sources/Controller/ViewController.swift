@@ -103,6 +103,7 @@ final class ViewController: UIViewController {
     
     private var batteryInfo: (level: Float, state: Int) = (0.0, -1)
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
