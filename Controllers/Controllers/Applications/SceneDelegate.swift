@@ -47,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        let appDeleagate = UIApplication.shared.delegate as! AppDelegate
+//        let appDeleagate = UIApplication.shared.delegate as! AppDelegate
 //        appDeleagate.scheduleAppRefresh()
         isBackground = true
         print(#function)
