@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B34082A4C511E00DBCC29 /* ProgressBar.swift */; };
 		369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
+		B5F403FE2AC126EB00D4A6BD /* FetchGameControllerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */; };
 		EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */; };
 		EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */; };
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		369B34082A4C511E00DBCC29 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		369B340B2A4D13B300DBCC29 /* StringKey+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringKey+.swift"; sourceTree = "<group>"; };
+		B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameControllerOperation.swift; sourceTree = "<group>"; };
 		EF1D09C22A4180EB00DCDDDB /* Controllers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controllers.entitlements; sourceTree = "<group>"; };
 		EF38A0952A4C736500DF1AF9 /* ControllersWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ControllersWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				EF9362332A9A63890009E8E8 /* StoreKitManager.swift */,
 				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
 				EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */,
+				B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */,
 				EF9362502A9CF5AD0009E8E8 /* UIApplication+.swift in Sources */,
 				EF93622C2A9646D50009E8E8 /* SettingViewController.swift in Sources */,
+				B5F403FE2AC126EB00D4A6BD /* FetchGameControllerOperation.swift in Sources */,
 				EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */,
 				369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */,
 				EFF2FF922A30DEFF0070F271 /* CircularProgressBarView.swift in Sources */,
