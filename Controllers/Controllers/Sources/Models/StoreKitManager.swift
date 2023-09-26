@@ -21,28 +21,7 @@ final class StoreKitManager: NSObject {
         validate(productIdentifiers: productIDs)
     }
     
-    func getProductIdentifiers() {
-        guard let url = Bundle.main.url(forResource: "ProductIDs", withExtension: "plist") else { fatalError("Unable to resolve url for in the bundle.") }
-        do {
-            let data = try Data(contentsOf: url)
-            let productIdentifiers = try PropertyListSerialization.propertyList(from: data, options: .mutableContainersAndLeaves, format: nil) as? [String]
-            print("productIdentifiers: \(productIdentifiers)")
-            productIDs = productIdentifiers ?? []
-        } catch let error as NSError {
-            print("\(error.localizedDescription)")
-        }
-    }
-    
-    func validate(productIdentifiers: [String]) {
-        print(#function)
-        let productIdentifiers = Set(productIdentifiers)
-        
-        request = SKProductsRequest(productIdentifiers: productIdentifiers)
-        request.delegate = self
-        request.start()
-    }
-    
-    func requestMonthSubscription() {
+    public func requestMonthSubscription() {
         guard let product = products.first else { return }
         let payment = SKMutablePayment(product: product)
         payment.quantity = 1
@@ -52,7 +31,6 @@ final class StoreKitManager: NSObject {
 }
 
 extension StoreKitManager: SKProductsRequestDelegate {
-    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print(#function)
         if !response.products.isEmpty {
@@ -67,8 +45,32 @@ extension StoreKitManager: SKProductsRequestDelegate {
             print("invalidIdentifier: \(invalidIdentifier)")
         }
     }
+}
+
+// MARK: - StoreKit Private Method
+extension StoreKitManager {
+    private func getProductIdentifiers() {
+        guard let url = Bundle.main.url(forResource: "ProductIDs", withExtension: "plist") else { fatalError("Unable to resolve url for in the bundle.") }
+        do {
+            let data = try Data(contentsOf: url)
+            let productIdentifiers = try PropertyListSerialization.propertyList(from: data, options: .mutableContainersAndLeaves, format: nil) as? [String]
+            print("productIdentifiers: \(productIdentifiers)")
+            productIDs = productIdentifiers ?? []
+        } catch let error as NSError {
+            print("\(error.localizedDescription)")
+        }
+    }
     
-    func displayStore(_ products: [SKProduct]) {
+    private func validate(productIdentifiers: [String]) {
+        print(#function)
+        let productIdentifiers = Set(productIdentifiers)
+        
+        request = SKProductsRequest(productIdentifiers: productIdentifiers)
+        request.delegate = self
+        request.start()
+    }
+    
+    private func displayStore(_ products: [SKProduct]) {
         print(#function)
         print("products: \(products)")
         self.products = products
