@@ -33,7 +33,7 @@ final class SettingViewController: UIViewController {
         return tableView
     }()
     
-//    private let storKitManager: StoreKitManager = StoreKitManager()
+    private let storKitManager: StoreKitManager = StoreKitManager()
     
     private var sectionType: [SectionType] = [.premium, .csInfo]
     private var settingItems: [SettingItemDTO] = []
@@ -48,11 +48,6 @@ final class SettingViewController: UIViewController {
         initLayout()
         configureTableView()
     }
-    
-//    @objc
-//    private func tappedTestButton() {
-//        storKitManager.requestMonthSubscription()
-//    }
 }
 
 extension SettingViewController {
@@ -137,7 +132,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             guard let type = PremiumSectionType(rawValue: typeString) else { return }
             switch type {
             case .premium:
-//                tappedTestButton()
+                tappedTestButton()
                 print("premium tapped!")
             }
             
@@ -159,4 +154,12 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+}
+
+// MARK: - User Interaction
+extension SettingViewController {
+    @objc
+    private func tappedTestButton() {
+        storKitManager.requestMonthSubscription()
+    }
 }

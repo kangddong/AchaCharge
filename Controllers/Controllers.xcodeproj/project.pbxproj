@@ -10,6 +10,8 @@
 		369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B34082A4C511E00DBCC29 /* ProgressBar.swift */; };
 		369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		B5F403FE2AC126EB00D4A6BD /* FetchGameControllerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */; };
+		B5F403FF2AC2CF7B00D4A6BD /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */; };
+		B5F404002AC2CFD400D4A6BD /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362332A9A63890009E8E8 /* StoreKitManager.swift */; };
 		EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B712A24D6DC006EC6D8 /* AppDelegate.swift */; };
 		EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B732A24D6DC006EC6D8 /* SceneDelegate.swift */; };
@@ -432,12 +434,14 @@
 				EF93624C2A9BA8DA0009E8E8 /* Array+.swift in Sources */,
 				EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */,
 				EF9362522A9E0B300009E8E8 /* InfoViewController.swift in Sources */,
+				B5F404002AC2CFD400D4A6BD /* StoreKitManager.swift in Sources */,
 				EF9362622A9E2D3E0009E8E8 /* String+.swift in Sources */,
 				EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */,
 				EF789B862A24DC24006EC6D8 /* GameControllerManager.swift in Sources */,
 				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
 				EF9362382A9B4A860009E8E8 /* UIColor+.swift in Sources */,
+				B5F403FF2AC2CF7B00D4A6BD /* StoreObserver.swift in Sources */,
 				EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */,
 				EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */,
 				EF9362502A9CF5AD0009E8E8 /* UIApplication+.swift in Sources */,

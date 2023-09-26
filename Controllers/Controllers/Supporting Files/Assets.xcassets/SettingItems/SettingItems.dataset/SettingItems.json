@@ -1,5 +1,12 @@
 [
     {
+        "sectionTypeCode":0,
+        "typeImageName":"crown.fill",
+        "title":"Premium",
+        "isNewBadge":"N",
+        "buttonTitle":"Upgrade"
+    },
+    {
         "sectionTypeCode":1,
         "typeImageName":"info.circle.fill",
         "title":"Info",
