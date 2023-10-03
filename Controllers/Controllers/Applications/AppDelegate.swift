@@ -12,14 +12,19 @@ import StoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     let iapObserver = StoreObserver()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       
-        requestNotificationAuthorization()
+        
+        //        requestNotificationAuthorization()
         addStoreKitQueue()
-//        registBackgroundTask() // 1.0.1 disable
+        
+        let isSubscribed = UserDefaults.standard.value(forKey: StringKey.IS_SUBSCRIBED) as? Bool ?? false
+        if isSubscribed {
+            registBackgroundTask() // 1.0.1 disable
+        }
+        
         
         return true
     }
@@ -39,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         
-//        SKPaymentQueue.default().remove(iapObserver)
+        //        SKPaymentQueue.default().remove(iapObserver)
     }
 }
 
