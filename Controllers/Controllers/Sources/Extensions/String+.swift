@@ -12,4 +12,8 @@ extension String {
     var localized: String {
         return NSLocalizedString(self, tableName: "", bundle: Bundle.main, value: "", comment: "")
     }
+    
+    func localized(with argument: [CVarArg] = []) -> String {
+        return String(format: self.localized, arguments: argument)
+    }
 }

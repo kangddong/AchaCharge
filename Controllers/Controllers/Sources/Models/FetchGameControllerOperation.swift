@@ -26,7 +26,7 @@ class FetchGameControllerOperation: Operation {
         let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as! String
         content.title = appName.localized
         let level = Int(info.batteryLevel * 100)
-        content.body = "현재 배터리가 \(level)% 입니다 !"
+        content.body = "Current Battery is %@".localized(with: ["\(level)%"])
         NSLog("filter: Push 성공, 배터리 레벨 : \(level)")
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)

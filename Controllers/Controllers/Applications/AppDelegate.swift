@@ -88,7 +88,7 @@ extension AppDelegate {
         // Perform background fetch here
             
         // Be sure to call the completion handler when the task is complete
-        scheduleAppRefresh()
+//        scheduleAppRefresh()
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
         
@@ -121,6 +121,7 @@ extension AppDelegate {
         //3. 실제로 task를 submit 합니다.
         //이 때 주의사항은, submit은 synchronous한 함수라, launching 때 실행하면 메인 스레드가 블락 될 수 있으니
         //OperationQueue, GCD등을 이용해 다른 스레드에서 호출하는 것을 권장한다고 하네요.
+        // TEST: e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.controller.battery"]
         do {
             try BGTaskScheduler.shared.submit(request)
         } catch {

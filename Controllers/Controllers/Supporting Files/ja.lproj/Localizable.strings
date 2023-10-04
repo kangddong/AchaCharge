@@ -6,6 +6,7 @@
   
 */
 "Controllers" = "忘れないで！";
+"아차 충전 !" = "忘れないで！";
 "Controller" = "コントローラー";
 "Setting" = "設定";
 
@@ -15,3 +16,5 @@
 "Premium" = "プリミアム";
 "Restore Purchase" = "購入製品のリストア";
 "Info" = "詳細";
+
+"Current Battery is %@" = "今バッテリーが%@残りました !";
