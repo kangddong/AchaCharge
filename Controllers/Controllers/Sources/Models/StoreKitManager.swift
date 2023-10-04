@@ -10,11 +10,13 @@ import StoreKit
 
 final class StoreKitManager: NSObject {
     
+    static let shared: StoreKitManager = StoreKitManager()
+    
     var request: SKProductsRequest!
     var products = [SKProduct]()
     var productIDs: [String] = []
     
-    override init() {
+    private override init() {
         super.init()
         print(#function, "StoreKitManager")
         getProductIdentifiers()

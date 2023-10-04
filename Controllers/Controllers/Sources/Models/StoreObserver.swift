@@ -8,18 +8,19 @@
 import Foundation
 import StoreKit
 
-class StoreObserver: NSObject, SKPaymentTransactionObserver {
+final class StoreObserver: NSObject {
     
-    override init() {
-        super.init()
-        
-    }
+    static let shared: StoreObserver = StoreObserver()
+    
+    // MARK: - Initializer
+    private override init() {}
     
     deinit {
         print("deinit StoreObserver")
     }
-    
-    
+}
+
+extension StoreObserver: SKPaymentTransactionObserver {
     //Observe transaction updates.
     func paymentQueue(_ queue: SKPaymentQueue,updatedTransactions transactions: [SKPaymentTransaction]) {
         //Handle transaction states here.
@@ -36,7 +37,9 @@ class StoreObserver: NSObject, SKPaymentTransactionObserver {
             case .deferred: print("deferred")
             case .failed: print("failed")
             case .purchased: print("purchased")
+                UserDefaults.standard.setValue(true, forKey: StringKey.IS_SUBSCRIBED)
             case .restored: print("restored")
+                UserDefaults.standard.setValue(true, forKey: StringKey.IS_SUBSCRIBED)
                 
                 // For debugging purposes.
             @unknown default: print("Unexpected transaction state \(transaction.transactionState)")

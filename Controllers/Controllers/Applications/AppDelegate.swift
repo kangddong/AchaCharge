@@ -13,8 +13,6 @@ import StoreKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    let iapObserver = StoreObserver()
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //        requestNotificationAuthorization()
@@ -43,8 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        
-        //        SKPaymentQueue.default().remove(iapObserver)
+        removeStoreKitQueue()
     }
 }
 
@@ -67,7 +64,11 @@ extension AppDelegate {
 // MARK: - StoreKit Method
 extension AppDelegate {
     private func addStoreKitQueue() {
-        SKPaymentQueue.default().add(iapObserver)
+        SKPaymentQueue.default().add(StoreObserver.shared)
+    }
+    
+    private func removeStoreKitQueue() {
+        SKPaymentQueue.default().remove(StoreObserver.shared)
     }
 }
 
