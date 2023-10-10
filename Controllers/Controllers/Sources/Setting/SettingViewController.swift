@@ -33,7 +33,7 @@ final class SettingViewController: UIViewController {
         return tableView
     }()
     
-    private let storKitManager: StoreKitManager = StoreKitManager()
+    private let storKitManager: StoreKitManager = StoreKitManager.shared
     
     private var sectionType: [SectionType] = [.premium, .csInfo]
     private var settingItems: [SettingItemDTO] = []
