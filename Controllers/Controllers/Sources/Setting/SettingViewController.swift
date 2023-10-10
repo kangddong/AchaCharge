@@ -33,8 +33,6 @@ final class SettingViewController: UIViewController {
         return tableView
     }()
     
-    private let storKitManager: StoreKitManager = StoreKitManager.shared
-    
     private var sectionType: [SectionType] = [.premium, .csInfo]
     private var settingItems: [SettingItemDTO] = []
     
@@ -160,6 +158,9 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
 extension SettingViewController {
     @objc
     private func tappedTestButton() {
-        storKitManager.requestMonthSubscription()
+        let onboardingVC = IAPOnboardingViewController()
+        onboardingVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(onboardingVC, animated: true)
     }
 }

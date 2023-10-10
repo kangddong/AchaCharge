@@ -23,6 +23,10 @@ final class StoreKitManager: NSObject {
         validate(productIdentifiers: productIDs)
     }
     
+    public var isAuthorizedForPayments: Bool {
+        return SKPaymentQueue.canMakePayments()
+    }
+    
     public func requestMonthSubscription() {
         guard let product = products.first else { return } // TODO: 에러 처리 팝업
         let payment = SKMutablePayment(product: product)
