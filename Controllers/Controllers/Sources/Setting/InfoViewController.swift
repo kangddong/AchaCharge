@@ -22,7 +22,7 @@ final class InfoViewController: UIViewController {
     private let appNameLabel: UILabel = {
         let label = UILabel()
         let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? ""
-        label.text = appName
+        label.text = appName.localized
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textAlignment = .center
         label.textColor = .label
@@ -34,10 +34,9 @@ final class InfoViewController: UIViewController {
     private let appVersionLabel: UILabel = {
         let label = UILabel()
         let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0"
-        let buildString = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0.0"
         
-        label.text = "\(versionString) (\(buildString))"
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.text = "v\(versionString)"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
         label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
