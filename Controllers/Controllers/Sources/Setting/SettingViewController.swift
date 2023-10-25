@@ -9,6 +9,7 @@ import UIKit
 
 final class SettingViewController: UIViewController {
     
+    // MARK: - Section & TableView
     enum SectionType: Int {
         case premium = 0
         case csInfo = 1
@@ -33,6 +34,14 @@ final class SettingViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var indicatorView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return indicator
+    }()
+    
+    // MARK: - Property
     private var sectionType: [SectionType] = [.premium, .csInfo]
     private var settingItems: [SettingItemDTO] = []
     
@@ -71,7 +80,7 @@ extension SettingViewController {
     }
 
     private func addSubViews() {
-        view.addSubview(tableView)
+        [tableView, indicatorView].forEach { view.addSubview($0) }
     }
     
     private func addConstraints() {
@@ -80,6 +89,9 @@ extension SettingViewController {
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 }
@@ -170,12 +182,20 @@ extension SettingViewController {
     
     @objc
     private func tappedRestoreButton() {
+        DispatchQueue.main.async {
+            self.indicatorView.startAnimating()
+        }
+        
         StoreObserver.shared.restore()
     }
 }
 
 extension SettingViewController: StoreObserverDelegate {
     func storeObserverRestoreDidSucceed() {
+        DispatchQueue.main.async {
+            self.indicatorView.stopAnimating()
+        }
+        
         let alert = UIAlertController(title: "Done".localized,
                                       message: "Purchase is completed".localized,
                                       preferredStyle: .alert)
