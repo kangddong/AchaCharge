@@ -17,3 +17,8 @@
 "Premium" = "Premium";
 "Restore Purchase" = "Restore Purchase";
 "Info" = "info";
+
+// MARK: - Alert
+"Ok!" = "Ok!";
+"Done" = "Done";
+"Purchase is completed" = "Purchase is completed";

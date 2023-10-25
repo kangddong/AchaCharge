@@ -17,3 +17,8 @@
 "Info" = "정보";
 
 "Current Battery is %@" = "현재 배터리가 %@ 입니다 !";
+
+// MARK: - Alert
+"Ok!" = "확인";
+"Done" = "완료";
+"Purchase is completed" = "구매가 완료되었습니다.";

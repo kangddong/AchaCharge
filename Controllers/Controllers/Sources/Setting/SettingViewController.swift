@@ -16,7 +16,7 @@ final class SettingViewController: UIViewController {
     
     enum PremiumSectionType: String {
         case premium
-//        case restorepurchase
+        case restorepurchase
     }
     
     enum CsInfoSectionType: String {
@@ -45,6 +45,7 @@ final class SettingViewController: UIViewController {
         fetchJSON()
         initLayout()
         configureTableView()
+        StoreObserver.shared.delegate = self
     }
 }
 
@@ -130,8 +131,11 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             guard let type = PremiumSectionType(rawValue: typeString) else { return }
             switch type {
             case .premium:
-                tappedTestButton()
+                tappedPurchaseButton()
                 print("premium tapped!")
+            case .restorepurchase:
+                tappedRestoreButton()
+                print("restorepurchase")
             }
             
             
@@ -157,10 +161,29 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: - User Interaction
 extension SettingViewController {
     @objc
-    private func tappedTestButton() {
+    private func tappedPurchaseButton() {
         let onboardingVC = IAPOnboardingViewController()
         onboardingVC.modalPresentationStyle = .overFullScreen
         
         self.present(onboardingVC, animated: true)
     }
+    
+    @objc
+    private func tappedRestoreButton() {
+        StoreObserver.shared.restore()
+    }
+}
+
+extension SettingViewController: StoreObserverDelegate {
+    func storeObserverRestoreDidSucceed() {
+        let alert = UIAlertController(title: "Done".localized,
+                                      message: "Purchase is completed".localized,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok!".localized, style: .default)
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
+    }
+    
+    
 }

@@ -18,3 +18,8 @@
 "Info" = "詳細";
 
 "Current Battery is %@" = "今バッテリーが%@残りました !";
+
+// MARK: - Alert
+"Ok!" = "オッケー";
+"Done" = "完了";
+"Purchase is completed" = "購入が完了しました。";

@@ -8,12 +8,21 @@
 import Foundation
 import StoreKit
 
+protocol StoreObserverDelegate: AnyObject {
+    func storeObserverRestoreDidSucceed()
+}
+
 final class StoreObserver: NSObject {
     
     static let shared: StoreObserver = StoreObserver()
     
+    weak var delegate: StoreObserverDelegate?
     // MARK: - Initializer
     private override init() {}
+    
+    public func restore() {
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
     
     deinit {
         print("deinit StoreObserver")
@@ -39,11 +48,22 @@ extension StoreObserver: SKPaymentTransactionObserver {
             case .purchased: print("purchased")
                 UserDefaults.standard.setValue(true, forKey: StringKey.IS_SUBSCRIBED)
             case .restored: print("restored")
-                UserDefaults.standard.setValue(true, forKey: StringKey.IS_SUBSCRIBED)
-                
+                handleRestored(with: transaction)
                 // For debugging purposes.
             @unknown default: print("Unexpected transaction state \(transaction.transactionState)")
             }
         }
+    }
+}
+
+extension StoreObserver {
+    func handleRestored(with transaction: SKPaymentTransaction) {
+        UserDefaults.standard.setValue(true, forKey: StringKey.IS_SUBSCRIBED)
+        
+        DispatchQueue.main.async {
+            self.delegate?.storeObserverRestoreDidSucceed()
+        }
+        // Finishes the restored transaction.
+        SKPaymentQueue.default().finishTransaction(transaction)
     }
 }
