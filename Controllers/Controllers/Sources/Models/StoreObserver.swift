@@ -34,6 +34,7 @@ extension StoreObserver: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue,updatedTransactions transactions: [SKPaymentTransaction]) {
         //Handle transaction states here.
         for transaction in transactions {
+            print(#function, "transaction: \(transaction.description)")
             switch transaction.transactionState {
                 // Call the appropriate custom method for the transaction state.
 //            case .purchasing: showTransactionAsInProgress(transaction, deferred: false)
@@ -58,6 +59,7 @@ extension StoreObserver: SKPaymentTransactionObserver {
 
 extension StoreObserver {
     func handleRestored(with transaction: SKPaymentTransaction) {
+        print(#function)
         UserDefaults.standard.setValue(true, forKey: StringKey.IS_SUBSCRIBED)
         
         DispatchQueue.main.async {

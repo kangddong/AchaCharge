@@ -8,6 +8,12 @@
 import Foundation
 import StoreKit
 
+enum SubscriptionType: String {
+    case week = "weekly"
+    case month = "monthly.10percent"
+    case yearly = "yearly.25percent"
+}
+
 final class StoreKitManager: NSObject {
     
     static let shared: StoreKitManager = StoreKitManager()
@@ -24,11 +30,19 @@ final class StoreKitManager: NSObject {
     }
     
     public var isAuthorizedForPayments: Bool {
-        return SKPaymentQueue.canMakePayments()
+        let result = SKPaymentQueue.canMakePayments()
+        print("storKitManager.isAuthorizedForPayments: \(result)")
+        return result
     }
     
-    public func requestMonthSubscription() {
-        guard let product = products.first else { return } // TODO: 에러 처리 팝업
+    public func requestSubscription(with type: SubscriptionType) {
+        print("products.count: \(products.count)")
+        products.forEach { print("productIdentifier: \($0.productIdentifier)") }
+        let selectedProduct = products.filter { $0.productIdentifier == type.rawValue }
+        guard let product = selectedProduct.first else { return } // TODO: 에러 처리 팝업
+//        guard let product = products.first else { return } // TODO: 에러 처리 팝업
+        guard isAuthorizedForPayments else { return }
+        
         let payment = SKMutablePayment(product: product)
         payment.quantity = 1
         // 결제 요청 제출
