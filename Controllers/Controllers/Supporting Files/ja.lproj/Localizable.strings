@@ -14,7 +14,7 @@
 "Refresh" = "リロード";
 
 "Premium" = "プリミアム";
-"Restore Purchase" = "購入製品のリストア";
+"restorepurchase" = "購入製品のリストア";
 "Info" = "詳細";
 
 "Current Battery is %@" = "今バッテリーが%@残りました !";
