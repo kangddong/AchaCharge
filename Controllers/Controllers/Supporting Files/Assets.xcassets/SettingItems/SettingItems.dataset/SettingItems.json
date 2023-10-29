@@ -7,6 +7,13 @@
         "buttonTitle":"Upgrade"
     },
     {
+        "sectionTypeCode":0,
+        "typeImageName":"arrow.clockwise",
+        "title":"restorepurchase",
+        "isNewBadge":"N",
+        "buttonTitle":"Upgrade"
+    },
+    {
         "sectionTypeCode":1,
         "typeImageName":"info.circle.fill",
         "title":"Info",
