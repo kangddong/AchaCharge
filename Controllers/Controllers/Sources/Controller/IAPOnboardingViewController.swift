@@ -131,19 +131,19 @@ extension IAPOnboardingViewController {
     
     @objc
     private func tappedTryButton() {
-        print("storKitManager.isAuthorizedForPayments: \(storKitManager.isAuthorizedForPayments)")
         print(#function)
-        storKitManager.requestMonthSubscription()
     }
     
     @objc
     private func tappedMonthlyButton() {
         print(#function)
+        storKitManager.requestSubscription(with: .month)
     }
     
     @objc
     private func tappedWeeklyButton() {
         print(#function)
+        storKitManager.requestSubscription(with: .week)
     }
 }
 
