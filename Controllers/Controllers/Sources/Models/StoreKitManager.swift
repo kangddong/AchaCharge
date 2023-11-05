@@ -26,7 +26,6 @@ final class StoreKitManager: NSObject {
         super.init()
         print(#function, "StoreKitManager")
         getProductIdentifiers()
-        validate(productIdentifiers: productIDs)
     }
     
     public var isAuthorizedForPayments: Bool {
@@ -38,12 +37,11 @@ final class StoreKitManager: NSObject {
     public func requestSubscription(with type: SubscriptionType) {
         print("products.count: \(products.count)")
         products.forEach { print("productIdentifier: \($0.productIdentifier)") }
-        let selectedProduct = products.filter { $0.productIdentifier == type.rawValue }
-        guard let product = selectedProduct.first else { return } // TODO: 에러 처리 팝업
+        guard let selectedProduct = products.filter({ $0.productIdentifier == type.rawValue }).first else { return }
 //        guard let product = products.first else { return } // TODO: 에러 처리 팝업
         guard isAuthorizedForPayments else { return }
         
-        let payment = SKMutablePayment(product: product)
+        let payment = SKMutablePayment(product: selectedProduct)
         payment.quantity = 1
         // 결제 요청 제출
         SKPaymentQueue.default().add(payment)
@@ -76,6 +74,7 @@ extension StoreKitManager {
             let productIdentifiers = try PropertyListSerialization.propertyList(from: data, options: .mutableContainersAndLeaves, format: nil) as? [String]
             print("productIdentifiers: \(productIdentifiers)")
             productIDs = productIdentifiers ?? []
+            validate(productIdentifiers: productIDs)
         } catch let error as NSError {
             print("\(error.localizedDescription)")
         }
