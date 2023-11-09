@@ -8,19 +8,28 @@
 import Foundation
 import StoreKit
 
-protocol StoreObserverDelegate: AnyObject {
-    func storeObserverRestoreDidSucceed()
+protocol DidResotreDelegate: AnyObject {
+    func didRestored()
+}
+
+protocol InAppPurchaseUIDelegate: AnyObject {
+    func purchasing()
+    func deferred()
+    func failed(with error: Error?)
+    func purchased()
+    func restored()
 }
 
 final class StoreObserver: NSObject {
     
     static let shared: StoreObserver = StoreObserver()
     
-    weak var delegate: StoreObserverDelegate?
+    weak var resotreDelegate: DidResotreDelegate?
+    weak var uiDelegate: InAppPurchaseUIDelegate?
     // MARK: - Initializer
     private override init() {}
     
-    public func restore() {
+    public func restorePurchases() {
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
     
@@ -36,21 +45,25 @@ extension StoreObserver: SKPaymentTransactionObserver {
         for transaction in transactions {
             print(#function, "transaction: \(transaction.description)")
             switch transaction.transactionState {
-                // Call the appropriate custom method for the transaction state.
-//            case .purchasing: showTransactionAsInProgress(transaction, deferred: false)
-//            case .deferred: showTransactionAsInProgress(transaction, deferred: true)
-//            case .failed: failedTransaction(transaction)
-//            case .purchased: completeTransaction(transaction)
-//            case .restored: restoreTransaction(transaction)
-                
             case .purchasing: print("purchasing")
+                showTransactionAsInProgress(with: transaction, deferred: false)
+            
             case .deferred: print("deferred")
+                showTransactionAsInProgress(with: transaction, deferred: true)
+            
             case .failed: print("failed")
+                self.uiDelegate?.failed(with: transaction.error)
+                SKPaymentQueue.default().finishTransaction(transaction)
+            
             case .purchased: print("purchased")
                 UserDefaults.standard.setValue(true, forKey: StringKey.IS_SUBSCRIBED)
+                self.uiDelegate?.restored()
+                SKPaymentQueue.default().finishTransaction(transaction)
+            
             case .restored: print("restored")
                 handleRestored(with: transaction)
                 // For debugging purposes.
+            
             @unknown default: print("Unexpected transaction state \(transaction.transactionState)")
             }
         }
@@ -58,12 +71,21 @@ extension StoreObserver: SKPaymentTransactionObserver {
 }
 
 extension StoreObserver {
-    func handleRestored(with transaction: SKPaymentTransaction) {
+    private func showTransactionAsInProgress(with transaction: SKPaymentTransaction, deferred: Bool) {
+        if deferred {
+            self.uiDelegate?.deferred()
+        } else {
+            self.uiDelegate?.purchasing()
+        }
+    }
+    
+    private func handleRestored(with transaction: SKPaymentTransaction) {
         print(#function)
         UserDefaults.standard.setValue(true, forKey: StringKey.IS_SUBSCRIBED)
         
         DispatchQueue.main.async {
-            self.delegate?.storeObserverRestoreDidSucceed()
+            self.uiDelegate?.restored()
+            self.resotreDelegate?.didRestored()
         }
         // Finishes the restored transaction.
         SKPaymentQueue.default().finishTransaction(transaction)

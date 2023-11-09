@@ -34,8 +34,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {}
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        let appDeleagate = UIApplication.shared.delegate as! AppDelegate
-        appDeleagate.scheduleAppRefresh()
+        let isSubscribed = UserDefaults.standard.value(forKey: StringKey.IS_SUBSCRIBED) as? Bool ?? false
+        if isSubscribed {
+            let appDeleagate = UIApplication.shared.delegate as! AppDelegate
+            appDeleagate.scheduleAppRefresh()
+        }
         isBackground = true
         print(#function)
     }

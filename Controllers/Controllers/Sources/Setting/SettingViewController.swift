@@ -34,13 +34,6 @@ final class SettingViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var indicatorView: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .medium)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        
-        return indicator
-    }()
-    
     // MARK: - Property
     private var sectionType: [SectionType] = [.premium, .csInfo]
     private var settingItems: [SettingItemDTO] = []
@@ -54,7 +47,7 @@ final class SettingViewController: UIViewController {
         fetchJSON()
         initLayout()
         configureTableView()
-        StoreObserver.shared.delegate = self
+        StoreObserver.shared.resotreDelegate = self
     }
 }
 
@@ -80,7 +73,7 @@ extension SettingViewController {
     }
 
     private func addSubViews() {
-        [tableView, indicatorView].forEach { view.addSubview($0) }
+        [tableView].forEach { view.addSubview($0) }
     }
     
     private func addConstraints() {
@@ -89,10 +82,17 @@ extension SettingViewController {
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
+    }
+    
+    private func donePurchases() {
+        let alert = UIAlertController(title: "Done".localized,
+                                      message: "Purchase is completed".localized,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok!".localized, style: .default)
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
     }
 }
 
@@ -182,27 +182,14 @@ extension SettingViewController {
     
     @objc
     private func tappedRestoreButton() {
-        DispatchQueue.main.async {
-            self.indicatorView.startAnimating()
-        }
-        
-        StoreObserver.shared.restore()
+        StoreObserver.shared.restorePurchases()
     }
 }
 
-extension SettingViewController: StoreObserverDelegate {
-    func storeObserverRestoreDidSucceed() {
-        DispatchQueue.main.async {
-            self.indicatorView.stopAnimating()
-        }
-        
-        let alert = UIAlertController(title: "Done".localized,
-                                      message: "Purchase is completed".localized,
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok!".localized, style: .default)
-        alert.addAction(okAction)
-        
-        present(alert, animated: true)
+// MARK: - DidRestoredDelegate Method
+extension SettingViewController: DidResotreDelegate {
+    func didRestored() {
+        donePurchases()
     }
     
     

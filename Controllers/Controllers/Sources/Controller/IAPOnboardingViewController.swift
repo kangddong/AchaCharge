@@ -79,6 +79,7 @@ final class IAPOnboardingViewController: UIViewController {
         super.viewDidLoad()
 
         initLayout()
+        StoreObserver.shared.uiDelegate = self
     }
 }
 
@@ -120,6 +121,16 @@ extension IAPOnboardingViewController {
             tryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
         ])
     }
+    
+    private func donePurchases() {
+        let alert = UIAlertController(title: "Done".localized,
+                                      message: "Purchase is completed".localized,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok!".localized, style: .default)
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - User Interactions
@@ -147,3 +158,29 @@ extension IAPOnboardingViewController {
     }
 }
 
+extension IAPOnboardingViewController: InAppPurchaseUIDelegate {
+    func purchasing() {
+        print(#function)
+    }
+    
+    func deferred() {
+        print(#function)
+    }
+    
+    func failed(with error: Error?) {
+        print(#function, "by delegate")
+        
+        let alert = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
+    }
+    
+    func purchased() {
+        donePurchases()
+    }
+    
+    func restored() {
+        donePurchases()
+    }
+}
