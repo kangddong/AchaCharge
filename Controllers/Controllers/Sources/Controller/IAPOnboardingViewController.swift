@@ -22,7 +22,7 @@ final class IAPOnboardingViewController: UIViewController {
         return button
     }()
     
-    private let infoLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -34,12 +34,26 @@ final class IAPOnboardingViewController: UIViewController {
         return label
     }()
     
+    private let infoLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Notifications can also be sent to the controller's battery information during game play"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 26)
+        
+        return label
+    }()
+    
     private lazy var monthlyButton: UIButton = {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(tappedMonthlyButton), for: .touchUpInside)
-        button.setTitle("$4.99 / Month", for: .normal)
+        button.setTitle("Month Plan", for: .normal)
         button.tintColor = .label
         button.layer.cornerRadius = 10
         button.backgroundColor = .green
@@ -52,7 +66,7 @@ final class IAPOnboardingViewController: UIViewController {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(tappedWeeklyButton), for: .touchUpInside)
-        button.setTitle("$1.99 / Week", for: .normal)
+        button.setTitle("Week Plan", for: .normal)
         button.tintColor = .label
         button.layer.cornerRadius = 10
         button.backgroundColor = .green
@@ -60,12 +74,12 @@ final class IAPOnboardingViewController: UIViewController {
         return button
     }()
     
-    private lazy var tryButton: UIButton = {
+    private lazy var yearlyButton: UIButton = {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedTryButton), for: .touchUpInside)
-        button.setTitle("Try it free", for: .normal)
+        button.addTarget(self, action: #selector(tappedYearlyButton), for: .touchUpInside)
+        button.setTitle("Year Plan", for: .normal)
         button.tintColor = .label
         button.layer.cornerRadius = 10
         button.backgroundColor = .systemPink
@@ -91,7 +105,7 @@ extension IAPOnboardingViewController {
     }
     
     private func addSubViews() {
-        [closeButton, infoLabel, monthlyButton, weeklyButton, tryButton].forEach { view.addSubview($0) }
+        [closeButton, titleLabel, infoLabel, monthlyButton, weeklyButton, yearlyButton].forEach { view.addSubview($0) }
     }
     
     private func addConstraints() {
@@ -101,24 +115,28 @@ extension IAPOnboardingViewController {
             closeButton.widthAnchor.constraint(equalToConstant: 100),
             closeButton.heightAnchor.constraint(equalToConstant: 100),
             
-            infoLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 50),
-            infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            titleLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 50),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            monthlyButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
-            monthlyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            monthlyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            monthlyButton.bottomAnchor.constraint(equalTo: weeklyButton.topAnchor, constant: -15),
+            infoLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
+            infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             
             weeklyButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
             weeklyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             weeklyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            weeklyButton.bottomAnchor.constraint(equalTo: tryButton.topAnchor, constant: -15),
+            weeklyButton.bottomAnchor.constraint(equalTo: monthlyButton.topAnchor, constant: -15),
             
-            tryButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
-            tryButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            tryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            tryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            monthlyButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
+            monthlyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            monthlyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            monthlyButton.bottomAnchor.constraint(equalTo: yearlyButton.topAnchor, constant: -15),
+            
+            yearlyButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
+            yearlyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            yearlyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            yearlyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
         ])
     }
     
@@ -141,8 +159,9 @@ extension IAPOnboardingViewController {
     }
     
     @objc
-    private func tappedTryButton() {
+    private func tappedYearlyButton() {
         print(#function)
+        storKitManager.requestSubscription(with: .yearly)
     }
     
     @objc

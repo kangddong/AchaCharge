@@ -22,23 +22,26 @@ final class StoreKitManager: NSObject {
     var products = [SKProduct]()
     var productIDs: [String] = []
     
+    private var isAuthorizedForPayments: Bool {
+        let result = SKPaymentQueue.canMakePayments()
+        return result
+    }
+    
     private override init() {
         super.init()
         print(#function, "StoreKitManager")
         getProductIdentifiers()
     }
     
-    public var isAuthorizedForPayments: Bool {
-        let result = SKPaymentQueue.canMakePayments()
-        print("storKitManager.isAuthorizedForPayments: \(result)")
-        return result
+    public func getProduct() {
+        let product = products.first
+        product?.price
     }
     
     public func requestSubscription(with type: SubscriptionType) {
         print("products.count: \(products.count)")
         products.forEach { print("productIdentifier: \($0.productIdentifier)") }
         guard let selectedProduct = products.filter({ $0.productIdentifier == type.rawValue }).first else { return }
-//        guard let product = products.first else { return } // TODO: 에러 처리 팝업
         guard isAuthorizedForPayments else { return }
         
         let payment = SKMutablePayment(product: selectedProduct)
