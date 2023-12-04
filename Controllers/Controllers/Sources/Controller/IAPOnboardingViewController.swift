@@ -22,6 +22,20 @@ final class IAPOnboardingViewController: UIViewController {
         return button
     }()
     
+    private let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    private let scrollContentsView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         
@@ -87,7 +101,65 @@ final class IAPOnboardingViewController: UIViewController {
         return button
     }()
     
+    private lazy var termOfUseButton: UIButton = {
+        let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(tappedYearlyButton), for: .touchUpInside)
+        button.setTitle("termOfUse", for: .normal)
+        button.tintColor = .label
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .systemPink
+        
+        return button
+    }()
+    
+    private lazy var privacyPolicyButton: UIButton = {
+        let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(tappedYearlyButton), for: .touchUpInside)
+        button.setTitle("privacy Policy", for: .normal)
+        button.tintColor = .label
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .systemPink
+        
+        return button
+    }()
+    
+    private lazy var startPremiumButton: UIButton = {
+        let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(tappedYearlyButton), for: .touchUpInside)
+        button.setTitle("Start Premium", for: .normal)
+        button.tintColor = .label
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .systemPink
+        
+        return button
+    }()
+    
+    private lazy var priceLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = priceInfo
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 10)
+        
+        return label
+    }()
+    
     private let storKitManager: StoreKitManager = StoreKitManager.shared
+    private var priceInfo: String = "₩1,400 /주" {
+        didSet {
+            priceLabel.text = priceInfo
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,38 +177,91 @@ extension IAPOnboardingViewController {
     }
     
     private func addSubViews() {
-        [closeButton, titleLabel, infoLabel, monthlyButton, weeklyButton, yearlyButton].forEach { view.addSubview($0) }
+//        [closeButton, scrollView, titleLabel, infoLabel, monthlyButton, weeklyButton, yearlyButton, startPremiumButton, priceLabel].forEach { view.addSubview($0) }
+        [scrollView, startPremiumButton, priceLabel, closeButton].forEach { view.addSubview($0) }
+        scrollView.addSubview(scrollContentsView)
+        [titleLabel, infoLabel, monthlyButton, weeklyButton, yearlyButton, termOfUseButton, privacyPolicyButton].forEach { scrollContentsView.addSubview($0) }
+//        [titleLabel, infoLabel, termOfUseButton, privacyPolicyButton].forEach { scrollContentsView.addSubview($0) }
     }
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            closeButton.topAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.topAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor),
             closeButton.widthAnchor.constraint(equalToConstant: 100),
             closeButton.heightAnchor.constraint(equalToConstant: 100),
             
-            titleLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 50),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            scrollContentsView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            scrollContentsView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            scrollContentsView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            scrollContentsView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            scrollContentsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            startPremiumButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            startPremiumButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            startPremiumButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            startPremiumButton.heightAnchor.constraint(equalToConstant: 100),
+        ])
+        
+        let contentViewHeight = scrollContentsView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+        contentViewHeight.priority = .defaultLow
+        contentViewHeight.isActive = true
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: closeButton.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -20),
             
             infoLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
-            infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            infoLabel.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
+            infoLabel.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
             
-            weeklyButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
-            weeklyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            weeklyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            weeklyButton.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 50),
+//            weeklyButton.heightAnchor.constraint(equalTo: scrollContentsView.heightAnchor, multiplier: 0.08),
+            weeklyButton.heightAnchor.constraint(equalToConstant: 200),
+            weeklyButton.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
+            weeklyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
             weeklyButton.bottomAnchor.constraint(equalTo: monthlyButton.topAnchor, constant: -15),
             
-            monthlyButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
-            monthlyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            monthlyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+//            monthlyButton.heightAnchor.constraint(equalTo: scrollContentsView.heightAnchor, multiplier: 0.08),
+            monthlyButton.heightAnchor.constraint(equalToConstant: 200),
+            monthlyButton.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
+            monthlyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
             monthlyButton.bottomAnchor.constraint(equalTo: yearlyButton.topAnchor, constant: -15),
             
-            yearlyButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
-            yearlyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            yearlyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            yearlyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            yearlyButton.heightAnchor.constraint(equalToConstant: 200),
+//            yearlyButton.heightAnchor.constraint(equalTo: scrollContentsView.heightAnchor, multiplier: 0.08),
+            yearlyButton.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
+            yearlyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
+            yearlyButton.bottomAnchor.constraint(equalTo: termOfUseButton.safeAreaLayoutGuide.topAnchor, constant: -1500),
+            
+            termOfUseButton.heightAnchor.constraint(equalToConstant: 100),
+//            termOfUseButton.topAnchor.constraint(equalTo: yearlyButton.bottomAnchor),
+            termOfUseButton.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
+            termOfUseButton.bottomAnchor.constraint(equalTo: scrollContentsView.bottomAnchor, constant: -15),
+            
+            privacyPolicyButton.heightAnchor.constraint(equalToConstant: 100),
+//            privacyPolicyButton.topAnchor.constraint(equalTo: yearlyButton.bottomAnchor),
+            privacyPolicyButton.leadingAnchor.constraint(equalTo: termOfUseButton.trailingAnchor, constant: 15),
+            privacyPolicyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
+            privacyPolicyButton.bottomAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+        ])
+        
+        NSLayoutConstraint.activate([
+//            startPremiumButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
+//            startPremiumButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+//            startPremiumButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+//            startPremiumButton.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: -10),
+            
+            priceLabel.heightAnchor.constraint(equalToConstant: 20),
+            priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            priceLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
