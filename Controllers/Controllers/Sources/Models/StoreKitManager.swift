@@ -8,10 +8,18 @@
 import Foundation
 import StoreKit
 
-enum SubscriptionType: String {
-    case week = "weekly"
-    case month = "monthly.10percent"
-    case yearly = "yearly.25percent"
+enum SubscriptionType: Int {
+    case week = 0
+    case month
+    case yearly
+    
+    var identifier: String {
+        switch self {
+        case .week: "weekly"
+        case .month: "monthly.10percent"
+        case .yearly: "yearly.25percent"
+        }
+    }
 }
 
 final class StoreKitManager: NSObject {
@@ -41,7 +49,7 @@ final class StoreKitManager: NSObject {
     public func requestSubscription(with type: SubscriptionType) {
         print("products.count: \(products.count)")
         products.forEach { print("productIdentifier: \($0.productIdentifier)") }
-        guard let selectedProduct = products.filter({ $0.productIdentifier == type.rawValue }).first else { return }
+        guard let selectedProduct = products.filter({ $0.productIdentifier == type.identifier }).first else { return }
         guard isAuthorizedForPayments else { return }
         
         let payment = SKMutablePayment(product: selectedProduct)

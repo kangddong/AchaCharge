@@ -52,7 +52,7 @@ final class IAPOnboardingViewController: UIViewController {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Notifications can also be sent to the controller's battery information during game play"
+        label.text = "Notifications can also be sent to the controller's battery information during game play".localized
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
@@ -62,41 +62,44 @@ final class IAPOnboardingViewController: UIViewController {
         return label
     }()
     
-    private lazy var monthlyButton: UIButton = {
-        let button = UIButton()
+    private lazy var weeklyButton: ImageButton = {
+        let button = ImageButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedMonthlyButton), for: .touchUpInside)
-        button.setTitle("Month Plan", for: .normal)
-        button.tintColor = .label
+        button.tag = SubscriptionType.week.rawValue
+        button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        button.setTitle("Week Plan".localized, for: .normal)
+        button.setTitleColor(.label, for: .normal)
         button.layer.cornerRadius = 10
-        button.backgroundColor = .green
+        button.backgroundColor = .systemBackground
         
         return button
     }()
     
-    private lazy var weeklyButton: UIButton = {
-        let button = UIButton()
+    private lazy var monthlyButton: ImageButton = {
+        let button = ImageButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedWeeklyButton), for: .touchUpInside)
-        button.setTitle("Week Plan", for: .normal)
-        button.tintColor = .label
+        button.tag = SubscriptionType.month.rawValue
+        button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        button.setTitle("Month Plan".localized, for: .normal)
+        button.setTitleColor(.label, for: .normal)
         button.layer.cornerRadius = 10
-        button.backgroundColor = .green
+        button.backgroundColor = .systemBackground
         
         return button
     }()
     
-    private lazy var yearlyButton: UIButton = {
-        let button = UIButton()
+    private lazy var yearlyButton: ImageButton = {
+        let button = ImageButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedYearlyButton), for: .touchUpInside)
-        button.setTitle("Year Plan", for: .normal)
-        button.tintColor = .label
+        button.tag = SubscriptionType.yearly.rawValue
+        button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        button.setTitle("Year Plan".localized, for: .normal)
+        button.setTitleColor(.label, for: .normal)
         button.layer.cornerRadius = 10
-        button.backgroundColor = .systemPink
+        button.backgroundColor = .systemBackground
         
         return button
     }()
@@ -105,9 +108,9 @@ final class IAPOnboardingViewController: UIViewController {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedYearlyButton), for: .touchUpInside)
-        button.setTitle("termOfUse", for: .normal)
-        button.tintColor = .label
+        button.addTarget(self, action: #selector(tappedStartPreminumButton), for: .touchUpInside)
+        button.setTitle("termOfUse".localized, for: .normal)
+        button.tintColor = .systemGreen
         button.layer.cornerRadius = 10
         button.backgroundColor = .systemPink
         
@@ -118,21 +121,30 @@ final class IAPOnboardingViewController: UIViewController {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedYearlyButton), for: .touchUpInside)
-        button.setTitle("privacy Policy", for: .normal)
-        button.tintColor = .label
+        button.addTarget(self, action: #selector(tappedStartPreminumButton), for: .touchUpInside)
+        button.setTitle("privacy Policy".localized, for: .normal)
+        button.tintColor = .systemGreen
         button.layer.cornerRadius = 10
         button.backgroundColor = .systemPink
         
         return button
     }()
     
+    private lazy var premiumContentsView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(startPremiumButton)
+        view.backgroundColor = .systemBackground
+        return view
+    }()
+    
     private lazy var startPremiumButton: UIButton = {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedYearlyButton), for: .touchUpInside)
-        button.setTitle("Start Premium", for: .normal)
+        button.addTarget(self, action: #selector(tappedStartPreminumButton), for: .touchUpInside)
+        button.setTitle("Start Premium".localized, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.tintColor = .label
         button.layer.cornerRadius = 10
         button.backgroundColor = .systemPink
@@ -154,12 +166,15 @@ final class IAPOnboardingViewController: UIViewController {
         return label
     }()
     
+    // MARK: - Properties
     private let storKitManager: StoreKitManager = StoreKitManager.shared
     private var priceInfo: String = "₩1,400 /주" {
         didSet {
             priceLabel.text = priceInfo
         }
     }
+    
+    private var subscriptionType: SubscriptionType = .week
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -177,11 +192,9 @@ extension IAPOnboardingViewController {
     }
     
     private func addSubViews() {
-//        [closeButton, scrollView, titleLabel, infoLabel, monthlyButton, weeklyButton, yearlyButton, startPremiumButton, priceLabel].forEach { view.addSubview($0) }
-        [scrollView, startPremiumButton, priceLabel, closeButton].forEach { view.addSubview($0) }
+        [scrollView, premiumContentsView, priceLabel, closeButton].forEach { view.addSubview($0) }
         scrollView.addSubview(scrollContentsView)
         [titleLabel, infoLabel, monthlyButton, weeklyButton, yearlyButton, termOfUseButton, privacyPolicyButton].forEach { scrollContentsView.addSubview($0) }
-//        [titleLabel, infoLabel, termOfUseButton, privacyPolicyButton].forEach { scrollContentsView.addSubview($0) }
     }
     
     private func addConstraints() {
@@ -202,10 +215,15 @@ extension IAPOnboardingViewController {
             scrollContentsView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             scrollContentsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            startPremiumButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
-            startPremiumButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
-            startPremiumButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            startPremiumButton.heightAnchor.constraint(equalToConstant: 100),
+            premiumContentsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            premiumContentsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            premiumContentsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            premiumContentsView.heightAnchor.constraint(equalToConstant: 100),
+            
+            startPremiumButton.topAnchor.constraint(equalTo: premiumContentsView.safeAreaLayoutGuide.topAnchor, constant: 15),
+            startPremiumButton.leadingAnchor.constraint(equalTo: premiumContentsView.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            startPremiumButton.trailingAnchor.constraint(equalTo: premiumContentsView.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            startPremiumButton.bottomAnchor.constraint(equalTo: premiumContentsView.safeAreaLayoutGuide.bottomAnchor, constant: -15),
         ])
         
         let contentViewHeight = scrollContentsView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
@@ -222,42 +240,32 @@ extension IAPOnboardingViewController {
             infoLabel.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
             
             weeklyButton.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 50),
-//            weeklyButton.heightAnchor.constraint(equalTo: scrollContentsView.heightAnchor, multiplier: 0.08),
-            weeklyButton.heightAnchor.constraint(equalToConstant: 200),
+            weeklyButton.heightAnchor.constraint(equalToConstant: view.frame.height / 10),
             weeklyButton.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
             weeklyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
             weeklyButton.bottomAnchor.constraint(equalTo: monthlyButton.topAnchor, constant: -15),
             
-//            monthlyButton.heightAnchor.constraint(equalTo: scrollContentsView.heightAnchor, multiplier: 0.08),
-            monthlyButton.heightAnchor.constraint(equalToConstant: 200),
+            monthlyButton.heightAnchor.constraint(equalToConstant: view.frame.height / 10),
             monthlyButton.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
             monthlyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
             monthlyButton.bottomAnchor.constraint(equalTo: yearlyButton.topAnchor, constant: -15),
             
-            yearlyButton.heightAnchor.constraint(equalToConstant: 200),
-//            yearlyButton.heightAnchor.constraint(equalTo: scrollContentsView.heightAnchor, multiplier: 0.08),
+            yearlyButton.heightAnchor.constraint(equalToConstant: view.frame.height / 10),
             yearlyButton.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
             yearlyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
-            yearlyButton.bottomAnchor.constraint(equalTo: termOfUseButton.safeAreaLayoutGuide.topAnchor, constant: -1500),
+            yearlyButton.bottomAnchor.constraint(equalTo: termOfUseButton.safeAreaLayoutGuide.topAnchor, constant: -15),
             
             termOfUseButton.heightAnchor.constraint(equalToConstant: 100),
-//            termOfUseButton.topAnchor.constraint(equalTo: yearlyButton.bottomAnchor),
             termOfUseButton.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
-            termOfUseButton.bottomAnchor.constraint(equalTo: scrollContentsView.bottomAnchor, constant: -15),
+            termOfUseButton.bottomAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.bottomAnchor, constant: -(premiumContentsView.frame.height + 15)),
             
             privacyPolicyButton.heightAnchor.constraint(equalToConstant: 100),
-//            privacyPolicyButton.topAnchor.constraint(equalTo: yearlyButton.bottomAnchor),
             privacyPolicyButton.leadingAnchor.constraint(equalTo: termOfUseButton.trailingAnchor, constant: 15),
             privacyPolicyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
-            privacyPolicyButton.bottomAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            privacyPolicyButton.bottomAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.bottomAnchor, constant: -(premiumContentsView.frame.height + 15)),
         ])
         
         NSLayoutConstraint.activate([
-//            startPremiumButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
-//            startPremiumButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-//            startPremiumButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-//            startPremiumButton.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: -10),
-            
             priceLabel.heightAnchor.constraint(equalToConstant: 20),
             priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
@@ -284,21 +292,21 @@ extension IAPOnboardingViewController {
     }
     
     @objc
-    private func tappedYearlyButton() {
+    private func tappedButton(button: UIButton) {
         print(#function)
-        storKitManager.requestSubscription(with: .yearly)
+        guard let type = SubscriptionType(rawValue: button.tag) else { return }
+        
+        subscriptionType = type
+        [weeklyButton, monthlyButton, yearlyButton].forEach { $0.isSelected = false }
+        
+        button.isSelected.toggle()
     }
     
     @objc
-    private func tappedMonthlyButton() {
-        print(#function)
-        storKitManager.requestSubscription(with: .month)
-    }
-    
-    @objc
-    private func tappedWeeklyButton() {
-        print(#function)
-        storKitManager.requestSubscription(with: .week)
+    private func tappedStartPreminumButton() {
+        print(#function, "subscriptionType: \(subscriptionType)")
+        
+//        storKitManager.requestSubscription(with: subscriptionType)
     }
 }
 
