@@ -108,11 +108,10 @@ final class IAPOnboardingViewController: UIViewController {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedStartPreminumButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedTerms), for: .touchUpInside)
         button.setTitle("termOfUse".localized, for: .normal)
-        button.tintColor = .systemGreen
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .systemPink
+        button.setTitleColor(.label, for: .normal)
+        button.setUnderline()
         
         return button
     }()
@@ -121,11 +120,10 @@ final class IAPOnboardingViewController: UIViewController {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedStartPreminumButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedTerms), for: .touchUpInside)
         button.setTitle("privacy Policy".localized, for: .normal)
-        button.tintColor = .systemGreen
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .systemPink
+        button.setTitleColor(.label, for: .normal)
+        button.setUnderline()
         
         return button
     }()
@@ -174,7 +172,18 @@ final class IAPOnboardingViewController: UIViewController {
         }
     }
     
-    private var subscriptionType: SubscriptionType = .week
+    private var subscriptionType: SubscriptionType = .week {
+        didSet {
+            switch subscriptionType {
+            case .week:
+                priceInfo = "₩1,400 /주"
+            case .month:
+                priceInfo = "₩4,400 /월"
+            case .yearly:
+                priceInfo = "₩45,000 /연"
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -255,14 +264,13 @@ extension IAPOnboardingViewController {
             yearlyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
             yearlyButton.bottomAnchor.constraint(equalTo: termOfUseButton.safeAreaLayoutGuide.topAnchor, constant: -15),
             
-            termOfUseButton.heightAnchor.constraint(equalToConstant: 100),
-            termOfUseButton.leadingAnchor.constraint(equalTo: scrollContentsView.leadingAnchor, constant: 15),
-            termOfUseButton.bottomAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.bottomAnchor, constant: -(premiumContentsView.frame.height + 15)),
+            termOfUseButton.heightAnchor.constraint(equalTo: yearlyButton.heightAnchor, multiplier: 0.5),
+            termOfUseButton.trailingAnchor.constraint(equalTo: yearlyButton.centerXAnchor, constant: -15),
+            termOfUseButton.bottomAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.bottomAnchor, constant: -(premiumContentsView.frame.height + 150)),
             
-            privacyPolicyButton.heightAnchor.constraint(equalToConstant: 100),
-            privacyPolicyButton.leadingAnchor.constraint(equalTo: termOfUseButton.trailingAnchor, constant: 15),
-            privacyPolicyButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor, constant: -15),
-            privacyPolicyButton.bottomAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.bottomAnchor, constant: -(premiumContentsView.frame.height + 15)),
+            privacyPolicyButton.heightAnchor.constraint(equalTo: yearlyButton.heightAnchor, multiplier: 0.5),
+            privacyPolicyButton.leadingAnchor.constraint(equalTo: yearlyButton.centerXAnchor, constant: 15),
+            privacyPolicyButton.bottomAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.bottomAnchor, constant: -(premiumContentsView.frame.height + 150)),
         ])
         
         NSLayoutConstraint.activate([
@@ -303,10 +311,24 @@ extension IAPOnboardingViewController {
     }
     
     @objc
+    private func tappedTerms(button: UIButton) {
+        if button == termOfUseButton {
+            let urlString = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+            if let url = URL(string: urlString) {
+                UIApplication.shared.open(url)
+            }
+        } else if button == privacyPolicyButton {
+            let urlString = "https://voracious-pigment-aaf.notion.site/30f23504cad7456e9472ac959c3e95b8?pvs=4"
+            if let url = URL(string: urlString) {
+                UIApplication.shared.open(url)
+            }
+        }
+    }
+    
+    @objc
     private func tappedStartPreminumButton() {
         print(#function, "subscriptionType: \(subscriptionType)")
-        
-//        storKitManager.requestSubscription(with: subscriptionType)
+        storKitManager.requestSubscription(with: subscriptionType)
     }
 }
 
