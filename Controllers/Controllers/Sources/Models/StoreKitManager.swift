@@ -26,6 +26,10 @@ final class StoreKitManager: NSObject {
     
     static let shared: StoreKitManager = StoreKitManager()
     
+    var isSubscribed: Bool {
+        return UserDefaults.standard.value(forKey: StringKey.IS_SUBSCRIBED) as? Bool ?? false
+    }
+    
     var request: SKProductsRequest!
     var products = [SKProduct]()
     var productIDs: [String] = []

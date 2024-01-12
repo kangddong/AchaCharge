@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 final class IAPOnboardingViewController: UIViewController {
 
+    var subject = PassthroughSubject<String, Never>()
     // MARK: - UI Properties
     private lazy var closeButton: UIButton = {
         let button = UIButton()
@@ -72,7 +74,7 @@ final class IAPOnboardingViewController: UIViewController {
         button.setTitleColor(.label, for: .normal)
         button.layer.cornerRadius = 10
         button.backgroundColor = .systemBackground
-        
+        button.isSelected = true
         return button
     }()
     
@@ -281,11 +283,13 @@ extension IAPOnboardingViewController {
         ])
     }
     
-    private func donePurchases() {
+    private func donePurchases(completion: (() -> Void)? = nil) {
         let alert = UIAlertController(title: "Done".localized,
                                       message: "Purchase is completed".localized,
                                       preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok!".localized, style: .default)
+        let okAction = UIAlertAction(title: "Ok!".localized, style: .default) { _ in
+            completion?()
+        }
         alert.addAction(okAction)
         
         present(alert, animated: true)
@@ -351,7 +355,9 @@ extension IAPOnboardingViewController: InAppPurchaseUIDelegate {
     }
     
     func purchased() {
-        donePurchases()
+        donePurchases() {
+            self.dismiss(animated: true)
+        }
     }
     
     func restored() {

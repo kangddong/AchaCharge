@@ -14,8 +14,8 @@ final class ImageButton: UIButton {
     override var isSelected: Bool {
         didSet {
             print("ImageButton.isSelected: \(isSelected)")
-            layer.borderColor = isSelected ? UIColor.systemGreen.cgColor : UIColor.black.cgColor
-            tintColor = isSelected ? UIColor.systemGreen : UIColor.black
+            layer.borderColor = isSelected ? UIColor.systemGreen.cgColor : UIColor.label.cgColor
+            tintColor = isSelected ? UIColor.systemGreen : UIColor.label
         }
     }
     
@@ -34,10 +34,10 @@ final class ImageButton: UIButton {
     }
     
     private func initLayout() {
-        layer.borderColor = UIColor.black.cgColor
+        layer.borderColor = UIColor.label.cgColor
         layer.borderWidth = 2.0
         layer.cornerRadius = 10
-        tintColor = .black
+        tintColor = .label
         backgroundColor = .systemBackground
         
         setImage(resource.offImage, for: .normal)

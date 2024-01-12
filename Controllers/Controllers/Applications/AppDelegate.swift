@@ -17,12 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //        requestNotificationAuthorization()
         addStoreKitQueue()
-        
-        let isSubscribed = UserDefaults.standard.value(forKey: StringKey.IS_SUBSCRIBED) as? Bool ?? false
-        if isSubscribed {
-            registBackgroundTask() // 1.0.1 disable
-        }
-        
+        registBackgroundTask() // 1.0.1 disable
         
         return true
     }
@@ -80,7 +75,10 @@ extension AppDelegate {
         // Register for background app refresh task
         BGTaskScheduler.shared.register(forTaskWithIdentifier: StringKey.BATTERY_IDENTIFIER, using: nil) { task in
             // Perform your background fetch here
-            self.handleAppRefreshTask(task: task as! BGAppRefreshTask)
+            
+            if StoreKitManager.shared.isSubscribed {
+                self.handleAppRefreshTask(task: task as! BGAppRefreshTask)
+            }
         }
     }
     
