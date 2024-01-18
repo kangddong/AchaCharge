@@ -10,7 +10,6 @@ import Combine
 
 final class IAPOnboardingViewController: UIViewController {
 
-    var subject = PassthroughSubject<String, Never>()
     // MARK: - UI Properties
     private lazy var closeButton: UIButton = {
         let button = UIButton()
@@ -110,7 +109,7 @@ final class IAPOnboardingViewController: UIViewController {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedTerms), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedTerms(_:)), for: .touchUpInside)
         button.setTitle("termOfUse".localized, for: .normal)
         button.setTitleColor(.label, for: .normal)
         button.setUnderline()
@@ -122,7 +121,7 @@ final class IAPOnboardingViewController: UIViewController {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedTerms), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedTerms(_:)), for: .touchUpInside)
         button.setTitle("privacy Policy".localized, for: .normal)
         button.setTitleColor(.label, for: .normal)
         button.setUnderline()
@@ -315,9 +314,9 @@ extension IAPOnboardingViewController {
     }
     
     @objc
-    private func tappedTerms(button: UIButton) {
+    private func tappedTerms(_ button: UIButton) {
         if button == termOfUseButton {
-            let urlString = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+            let urlString = "https://voracious-pigment-aaf.notion.site/Terms-edb94eab4fd74b6ca85c3aac0b17b7d1?pvs=4"
             if let url = URL(string: urlString) {
                 UIApplication.shared.open(url)
             }
