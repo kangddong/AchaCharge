@@ -17,9 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //        requestNotificationAuthorization()
         addStoreKitQueue()
-        registBackgroundTask() // 1.0.1 disable
         
+        if validateLocal() {
+            registBackgroundTask() // 1.0.1 disable
+        }
         return true
+    }
+    
+    func validateLocal() -> Bool {
+        let receiptData = StoreKitManager.localReceiptData
+        guard let receiptString = receiptData?.base64EncodedString(options: []) else { validateKit()
+            return false }
+        return true
+    }
+    
+    func validateKit() {
+        StoreKitManager.shared.fetchReceipt(forceRefresh: true) { result in
+            switch result {
+            case .success(let receiptData):
+                let encryptedReceipt = receiptData.base64EncodedString(options: [])
+                print("Fetch receipt success:\n\(encryptedReceipt)")
+            case .error(let error):
+                print("Fetch receipt failed: \(error)")
+            }
+        }
     }
     
     // MARK: - UISceneSession Lifecycle

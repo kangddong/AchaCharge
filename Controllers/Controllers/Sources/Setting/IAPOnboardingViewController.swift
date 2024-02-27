@@ -11,6 +11,26 @@ import Combine
 final class IAPOnboardingViewController: UIViewController {
 
     // MARK: - UI Properties
+    private let dimmedView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .black
+        view.alpha = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    private let indicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.style = .large
+        view.color = .label
+        view.backgroundColor = .systemBackground
+        view.hidesWhenStopped = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         
@@ -202,13 +222,24 @@ extension IAPOnboardingViewController {
     }
     
     private func addSubViews() {
-        [scrollView, premiumContentsView, priceLabel, closeButton].forEach { view.addSubview($0) }
+        [scrollView, premiumContentsView, priceLabel, closeButton, dimmedView].forEach { view.addSubview($0) }
+        dimmedView.addSubview(indicatorView)
         scrollView.addSubview(scrollContentsView)
         [titleLabel, infoLabel, monthlyButton, weeklyButton, yearlyButton, termOfUseButton, privacyPolicyButton].forEach { scrollContentsView.addSubview($0) }
     }
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
+            dimmedView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            dimmedView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            dimmedView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            dimmedView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            indicatorView.centerYAnchor.constraint(equalTo: dimmedView.centerYAnchor),
+            indicatorView.centerXAnchor.constraint(equalTo: dimmedView.centerXAnchor),
+            indicatorView.widthAnchor.constraint(equalToConstant: 120),
+            indicatorView.heightAnchor.constraint(equalToConstant: 120),
+            
             closeButton.topAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.topAnchor),
             closeButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor),
             closeButton.widthAnchor.constraint(equalToConstant: 100),
@@ -293,6 +324,16 @@ extension IAPOnboardingViewController {
         
         present(alert, animated: true)
     }
+    
+    private func startIndicator() {
+        indicatorView.startAnimating()
+        dimmedView.alpha = 0.6
+    }
+    
+    private func stopIndicator() {
+        indicatorView.stopAnimating()
+        dimmedView.alpha = 0
+    }
 }
 
 // MARK: - User Interactions
@@ -338,15 +379,17 @@ extension IAPOnboardingViewController {
 extension IAPOnboardingViewController: InAppPurchaseUIDelegate {
     func purchasing() {
         print(#function)
+        startIndicator()
     }
     
     func deferred() {
         print(#function)
+        stopIndicator()
     }
     
     func failed(with error: Error?) {
         print(#function, "by delegate")
-        
+        stopIndicator()
         let alert = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         alert.addAction(okAction)
@@ -355,11 +398,13 @@ extension IAPOnboardingViewController: InAppPurchaseUIDelegate {
     
     func purchased() {
         donePurchases() {
+            self.stopIndicator()
             self.dismiss(animated: true)
         }
     }
     
     func restored() {
+        stopIndicator()
         donePurchases()
     }
 }
