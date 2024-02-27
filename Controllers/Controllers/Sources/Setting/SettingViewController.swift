@@ -175,8 +175,16 @@ extension SettingViewController {
     @objc
     private func tappedPurchaseButton() {
         let receiptData = StoreKitManager.localReceiptData
-        guard let receiptString = receiptData?.base64EncodedString(options: []) else {
-            return }
+        guard 
+            let receiptString = receiptData?.base64EncodedString(options: []),
+            receiptString.isEmpty else {
+            let alert = UIAlertController(title: nil, message: "Already Subscribing !".localized, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok!".localized, style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+            
+            return
+        }
         let onboardingVC = IAPOnboardingViewController()
         onboardingVC.modalPresentationStyle = .overFullScreen
         
