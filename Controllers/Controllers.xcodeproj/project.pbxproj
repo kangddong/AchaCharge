@@ -11,6 +11,8 @@
 		369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		B511FEE02B20C7A600742111 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511FEDF2B20C7A600742111 /* ImageButton.swift */; };
 		B511FEE22B20C8D600742111 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511FEE12B20C8D600742111 /* UIButton.swift */; };
+		B52050532B8E38670006E63E /* StoreKitManager+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050522B8E38670006E63E /* StoreKitManager+Types.swift */; };
+		B52050552B8E39920006E63E /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050542B8E39920006E63E /* InAppReceiptRefreshRequest.swift */; };
 		B55974362ACDC33100FC01FE /* ProductIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */; };
 		B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */; };
 		B5F403FE2AC126EB00D4A6BD /* FetchGameControllerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */; };
@@ -86,6 +88,8 @@
 		369B340B2A4D13B300DBCC29 /* StringKey+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringKey+.swift"; sourceTree = "<group>"; };
 		B511FEDF2B20C7A600742111 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		B511FEE12B20C8D600742111 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		B52050522B8E38670006E63E /* StoreKitManager+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreKitManager+Types.swift"; sourceTree = "<group>"; };
+		B52050542B8E39920006E63E /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
 		B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIdentifiers.swift; sourceTree = "<group>"; };
 		B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPOnboardingViewController.swift; sourceTree = "<group>"; };
 		B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameControllerOperation.swift; sourceTree = "<group>"; };
@@ -252,7 +256,6 @@
 			children = (
 				EF789B752A24D6DC006EC6D8 /* ViewController.swift */,
 				EFF2FF912A30DEFF0070F271 /* CircularProgressBarView.swift */,
-				B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				EF93622B2A9646D50009E8E8 /* SettingViewController.swift */,
 				EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */,
 				EF9362472A9BA5270009E8E8 /* SettingDTO.swift */,
+				B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */,
 				EF9362512A9E0B300009E8E8 /* InfoViewController.swift */,
 			);
 			path = Setting;
@@ -291,6 +295,8 @@
 				EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */,
 				B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */,
 				B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */,
+				B52050522B8E38670006E63E /* StoreKitManager+Types.swift */,
+				B52050542B8E39920006E63E /* InAppReceiptRefreshRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -466,9 +472,11 @@
 				B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */,
 				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
 				B511FEE22B20C8D600742111 /* UIButton.swift in Sources */,
+				B52050552B8E39920006E63E /* InAppReceiptRefreshRequest.swift in Sources */,
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
 				B55974362ACDC33100FC01FE /* ProductIdentifiers.swift in Sources */,
 				EF9362382A9B4A860009E8E8 /* UIColor+.swift in Sources */,
+				B52050532B8E38670006E63E /* StoreKitManager+Types.swift in Sources */,
 				B5F403FF2AC2CF7B00D4A6BD /* StoreObserver.swift in Sources */,
 				EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */,
 				EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */,
@@ -614,7 +622,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Controllers/Controllers.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = FL4QTRRKMD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Controllers/Supporting Files/Info.plist";
@@ -635,6 +643,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -648,7 +657,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ControllersWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = FL4QTRRKMD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ControllersWidget/Info.plist;
@@ -759,7 +768,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Controllers/Controllers.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = FL4QTRRKMD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Controllers/Supporting Files/Info.plist";
@@ -780,6 +789,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -793,7 +803,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ControllersWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = FL4QTRRKMD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ControllersWidget/Info.plist;

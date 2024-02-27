@@ -22,14 +22,60 @@ enum SubscriptionType: Int {
     }
 }
 
+public protocol InAppRequest: AnyObject {
+    func start()
+    func cancel()
+}
+
 final class StoreKitManager: NSObject {
     
     static let shared: StoreKitManager = StoreKitManager()
+    public static var localReceiptData: Data? {
+        return shared.appStoreReceiptData
+    }
+    private var refreshReceiptRequest: SKReceiptRefreshRequest = SKReceiptRefreshRequest(receiptProperties: nil)
+    private var receiptRefreshRequest: InAppReceiptRefreshRequest?
+    var isSubscribed: Bool {
+        return UserDefaults.standard.value(forKey: StringKey.IS_SUBSCRIBED) as? Bool ?? false
+    }
     
     var request: SKProductsRequest!
     var products = [SKProduct]()
     var productIDs: [String] = []
     
+    var appStoreReceiptURL: URL? = Bundle.main.appStoreReceiptURL
+    var appStoreReceiptData: Data? {
+        guard let receiptDataURL = appStoreReceiptURL,
+            let data = try? Data(contentsOf: receiptDataURL) else {
+            return nil
+        }
+        return data
+    }
+    @discardableResult
+    func fetchReceipt(forceRefresh: Bool, refresh: InAppReceiptRefreshRequest.ReceiptRefresh = InAppReceiptRefreshRequest.refresh, completion: @escaping (FetchReceiptResult) -> Void) -> InAppRequest? {
+        if let receiptData = appStoreReceiptData, forceRefresh == false {
+            completion(.success(receiptData: receiptData))
+            return nil
+        } else {
+            
+            receiptRefreshRequest = refresh(nil) { result in
+                
+                self.receiptRefreshRequest = nil
+                
+                switch result {
+                case .success:
+                    if let receiptData = self.appStoreReceiptData {
+                        completion(.success(receiptData: receiptData))
+                    } else {
+                        completion(.error(error: .noReceiptData))
+                    }
+                case .error(let e):
+                    completion(.error(error: .networkError(error: e)))
+                }
+            }
+            return receiptRefreshRequest
+        }
+    }
     private var isAuthorizedForPayments: Bool {
         let result = SKPaymentQueue.canMakePayments()
         return result
@@ -39,11 +85,6 @@ final class StoreKitManager: NSObject {
         super.init()
         print(#function, "StoreKitManager")
         getProductIdentifiers()
-    }
-    
-    public func getProduct() {
-        let product = products.first
-        product?.price
     }
     
     public func requestSubscription(with type: SubscriptionType) {
@@ -56,6 +97,21 @@ final class StoreKitManager: NSObject {
         payment.quantity = 1
         // 결제 요청 제출
         SKPaymentQueue.default().add(payment)
+    }
+    
+    func isValidateReceipts() {
+        if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
+           FileManager.default.fileExists(atPath: appStoreReceiptURL.path) {
+            do {
+                let receiptData = try Data(contentsOf: appStoreReceiptURL, options: .alwaysMapped)
+                print(receiptData)
+                
+                let receiptString = receiptData.base64EncodedString(options: [])
+                // Read receiptData.
+            }
+            catch { print("Couldn't read receipt data with error: " + error.localizedDescription)
+            }
+        }
     }
 }
 

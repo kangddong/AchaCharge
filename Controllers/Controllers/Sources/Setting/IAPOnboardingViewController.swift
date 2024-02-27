@@ -6,10 +6,31 @@
 //
 
 import UIKit
+import Combine
 
 final class IAPOnboardingViewController: UIViewController {
 
     // MARK: - UI Properties
+    private let dimmedView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .black
+        view.alpha = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    private let indicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.style = .large
+        view.color = .label
+        view.backgroundColor = .systemBackground
+        view.hidesWhenStopped = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         
@@ -72,7 +93,7 @@ final class IAPOnboardingViewController: UIViewController {
         button.setTitleColor(.label, for: .normal)
         button.layer.cornerRadius = 10
         button.backgroundColor = .systemBackground
-        
+        button.isSelected = true
         return button
     }()
     
@@ -108,7 +129,7 @@ final class IAPOnboardingViewController: UIViewController {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedTerms), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedTerms(_:)), for: .touchUpInside)
         button.setTitle("termOfUse".localized, for: .normal)
         button.setTitleColor(.label, for: .normal)
         button.setUnderline()
@@ -120,7 +141,7 @@ final class IAPOnboardingViewController: UIViewController {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tappedTerms), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedTerms(_:)), for: .touchUpInside)
         button.setTitle("privacy Policy".localized, for: .normal)
         button.setTitleColor(.label, for: .normal)
         button.setUnderline()
@@ -201,13 +222,24 @@ extension IAPOnboardingViewController {
     }
     
     private func addSubViews() {
-        [scrollView, premiumContentsView, priceLabel, closeButton].forEach { view.addSubview($0) }
+        [scrollView, premiumContentsView, priceLabel, closeButton, dimmedView].forEach { view.addSubview($0) }
+        dimmedView.addSubview(indicatorView)
         scrollView.addSubview(scrollContentsView)
         [titleLabel, infoLabel, monthlyButton, weeklyButton, yearlyButton, termOfUseButton, privacyPolicyButton].forEach { scrollContentsView.addSubview($0) }
     }
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
+            dimmedView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            dimmedView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            dimmedView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            dimmedView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            indicatorView.centerYAnchor.constraint(equalTo: dimmedView.centerYAnchor),
+            indicatorView.centerXAnchor.constraint(equalTo: dimmedView.centerXAnchor),
+            indicatorView.widthAnchor.constraint(equalToConstant: 120),
+            indicatorView.heightAnchor.constraint(equalToConstant: 120),
+            
             closeButton.topAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.topAnchor),
             closeButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor),
             closeButton.widthAnchor.constraint(equalToConstant: 100),
@@ -281,14 +313,26 @@ extension IAPOnboardingViewController {
         ])
     }
     
-    private func donePurchases() {
+    private func donePurchases(completion: (() -> Void)? = nil) {
         let alert = UIAlertController(title: "Done".localized,
                                       message: "Purchase is completed".localized,
                                       preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok!".localized, style: .default)
+        let okAction = UIAlertAction(title: "Ok!".localized, style: .default) { _ in
+            completion?()
+        }
         alert.addAction(okAction)
         
         present(alert, animated: true)
+    }
+    
+    private func startIndicator() {
+        indicatorView.startAnimating()
+        dimmedView.alpha = 0.6
+    }
+    
+    private func stopIndicator() {
+        indicatorView.stopAnimating()
+        dimmedView.alpha = 0
     }
 }
 
@@ -311,9 +355,9 @@ extension IAPOnboardingViewController {
     }
     
     @objc
-    private func tappedTerms(button: UIButton) {
+    private func tappedTerms(_ button: UIButton) {
         if button == termOfUseButton {
-            let urlString = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+            let urlString = "https://voracious-pigment-aaf.notion.site/Terms-edb94eab4fd74b6ca85c3aac0b17b7d1?pvs=4"
             if let url = URL(string: urlString) {
                 UIApplication.shared.open(url)
             }
@@ -335,15 +379,17 @@ extension IAPOnboardingViewController {
 extension IAPOnboardingViewController: InAppPurchaseUIDelegate {
     func purchasing() {
         print(#function)
+        startIndicator()
     }
     
     func deferred() {
         print(#function)
+        stopIndicator()
     }
     
     func failed(with error: Error?) {
         print(#function, "by delegate")
-        
+        stopIndicator()
         let alert = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         alert.addAction(okAction)
@@ -351,10 +397,14 @@ extension IAPOnboardingViewController: InAppPurchaseUIDelegate {
     }
     
     func purchased() {
-        donePurchases()
+        donePurchases() {
+            self.stopIndicator()
+            self.dismiss(animated: true)
+        }
     }
     
     func restored() {
+        stopIndicator()
         donePurchases()
     }
 }

@@ -18,13 +18,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        requestNotificationAuthorization()
         addStoreKitQueue()
         
-        let isSubscribed = UserDefaults.standard.value(forKey: StringKey.IS_SUBSCRIBED) as? Bool ?? false
-        if isSubscribed {
+        if validateLocal() {
             registBackgroundTask() // 1.0.1 disable
         }
-        
-        
         return true
+    }
+    
+    func validateLocal() -> Bool {
+        let receiptData = StoreKitManager.localReceiptData
+        guard let receiptString = receiptData?.base64EncodedString(options: []) else { validateKit()
+            return false }
+        return true
+    }
+    
+    func validateKit() {
+        StoreKitManager.shared.fetchReceipt(forceRefresh: true) { result in
+            switch result {
+            case .success(let receiptData):
+                let encryptedReceipt = receiptData.base64EncodedString(options: [])
+                print("Fetch receipt success:\n\(encryptedReceipt)")
+            case .error(let error):
+                print("Fetch receipt failed: \(error)")
+            }
+        }
     }
     
     // MARK: - UISceneSession Lifecycle
@@ -80,7 +96,10 @@ extension AppDelegate {
         // Register for background app refresh task
         BGTaskScheduler.shared.register(forTaskWithIdentifier: StringKey.BATTERY_IDENTIFIER, using: nil) { task in
             // Perform your background fetch here
-            self.handleAppRefreshTask(task: task as! BGAppRefreshTask)
+            
+            if StoreKitManager.shared.isSubscribed {
+                self.handleAppRefreshTask(task: task as! BGAppRefreshTask)
+            }
         }
     }
     

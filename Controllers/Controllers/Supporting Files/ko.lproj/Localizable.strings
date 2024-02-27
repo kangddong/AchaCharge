@@ -22,7 +22,7 @@
 "Ok!" = "확인";
 "Done" = "완료";
 "Purchase is completed" = "구매가 완료되었습니다.";
-
+"Already Subscribing !" = "이미 구독하셨습니다 !";
 // MARK: - IAP
 "Notifications can also be sent to the controller's battery information during game play" = "게임 플레이 중에도 컨트롤러의 배터리를 알림을 통해 전달 받을 수 있습니다.";
 
