@@ -174,7 +174,9 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
 extension SettingViewController {
     @objc
     private func tappedPurchaseButton() {
-        let _: StoreKitManager = StoreKitManager.shared
+        let receiptData = StoreKitManager.localReceiptData
+        guard let receiptString = receiptData?.base64EncodedString(options: []) else {
+            return }
         let onboardingVC = IAPOnboardingViewController()
         onboardingVC.modalPresentationStyle = .overFullScreen
         
