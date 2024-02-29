@@ -13,6 +13,7 @@
 		B511FEE22B20C8D600742111 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511FEE12B20C8D600742111 /* UIButton.swift */; };
 		B52050532B8E38670006E63E /* StoreKitManager+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050522B8E38670006E63E /* StoreKitManager+Types.swift */; };
 		B52050552B8E39920006E63E /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050542B8E39920006E63E /* InAppReceiptRefreshRequest.swift */; };
+		B52050572B8F08990006E63E /* ReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050562B8F08990006E63E /* ReceiptValidator.swift */; };
 		B55974362ACDC33100FC01FE /* ProductIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */; };
 		B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */; };
 		B5F403FE2AC126EB00D4A6BD /* FetchGameControllerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */; };
@@ -90,6 +91,7 @@
 		B511FEE12B20C8D600742111 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		B52050522B8E38670006E63E /* StoreKitManager+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreKitManager+Types.swift"; sourceTree = "<group>"; };
 		B52050542B8E39920006E63E /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
+		B52050562B8F08990006E63E /* ReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptValidator.swift; sourceTree = "<group>"; };
 		B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIdentifiers.swift; sourceTree = "<group>"; };
 		B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPOnboardingViewController.swift; sourceTree = "<group>"; };
 		B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameControllerOperation.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */,
 				B52050522B8E38670006E63E /* StoreKitManager+Types.swift */,
 				B52050542B8E39920006E63E /* InAppReceiptRefreshRequest.swift */,
+				B52050562B8F08990006E63E /* ReceiptValidator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				B511FEE02B20C7A600742111 /* ImageButton.swift in Sources */,
 				EF93624C2A9BA8DA0009E8E8 /* Array+.swift in Sources */,
 				EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */,
+				B52050572B8F08990006E63E /* ReceiptValidator.swift in Sources */,
 				EF9362522A9E0B300009E8E8 /* InfoViewController.swift in Sources */,
 				B5F404002AC2CFD400D4A6BD /* StoreKitManager.swift in Sources */,
 				EF9362622A9E2D3E0009E8E8 /* String+.swift in Sources */,
