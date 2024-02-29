@@ -8,28 +8,50 @@
 import XCTest
 
 final class ControllersTests: XCTestCase {
-
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
 
     func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+        measure {}
     }
 
+    func testFetchingProductIdentifiers() {
+        let productType: [String] = TestProductIDs.allCases.map { $0.identifier }
+        let result = getProductIdentifiers()
+        
+        switch result {
+        case .success(let identifiers):
+            let productIdentifiers = Array(Set(identifiers))
+            print("Test >> productIdentifiers: \(productIdentifiers)")
+            print("Test >> productType's identifiers: \(productType)")
+            XCTAssertTrue(productType.count == productIdentifiers.count)
+            XCTAssertTrue(productType.contains(productIdentifiers))
+        case .failure(let error):
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    private func getProductIdentifiers() -> Result<[String], Error> {
+        var productIDs: [String] = []
+        
+        guard let url = Bundle.main.url(forResource: "ProductIDs", withExtension: "plist") else {
+            fatalError("Unable to resolve url for in the bundle.")
+        }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let productIdentifiers = try PropertyListSerialization.propertyList(from: data, options: .mutableContainersAndLeaves, format: nil) as? [String]
+            productIDs = productIdentifiers ?? []
+            
+            return .success(productIDs)
+        } catch let error as NSError {
+            return .failure(error)
+        }
+    }
 }
