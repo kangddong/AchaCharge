@@ -23,24 +23,39 @@ final class ControllersTests: XCTestCase {
 
     func testFetchingProductIdentifiers() {
         let productType: [String] = TestProductIDs.allCases.map { $0.identifier }
-        let result = getProductIdentifiers()
+        let identifiers = fetchingProductIdentifiers(with: .success)
+        XCTAssertTrue(identifiers.count != 0)
+        XCTAssertTrue(productType.count == identifiers.count)
+        XCTAssertTrue(productType.contains(identifiers))
+    }
+    
+    func testInvalidProductIdentifiers() {
+        let productType: [String] = TestProductIDs.allCases.map { $0.identifier }
+        let identifiers = fetchingProductIdentifiers(with: .fail)
+        XCTAssertTrue(identifiers.count != 0)
+        XCTAssertFalse(productType.count == identifiers.count)
+        XCTAssertFalse(productType.contains(identifiers))
+    }
+    
+    private func fetchingProductIdentifiers(with type: FetchingProductIDType) -> [String] {
+        let productType: [String] = TestProductIDs.allCases.map { $0.identifier }
+        let result = getProductIdentifiers(with: type)
         
         switch result {
         case .success(let identifiers):
             let productIdentifiers = Array(Set(identifiers))
             print("Test >> productIdentifiers: \(productIdentifiers)")
             print("Test >> productType's identifiers: \(productType)")
-            XCTAssertTrue(productType.count == productIdentifiers.count)
-            XCTAssertTrue(productType.contains(productIdentifiers))
+            return productIdentifiers
         case .failure(let error):
             print("\(error.localizedDescription)")
+            return []
         }
     }
     
-    private func getProductIdentifiers() -> Result<[String], Error> {
+    private func getProductIdentifiers(with type: FetchingProductIDType) -> Result<[String], Error> {
         var productIDs: [String] = []
-        
-        guard let url = Bundle.main.url(forResource: "ProductIDs", withExtension: "plist") else {
+        guard let url = Bundle.main.url(forResource: type.rawValue, withExtension: "plist") else {
             fatalError("Unable to resolve url for in the bundle.")
         }
         

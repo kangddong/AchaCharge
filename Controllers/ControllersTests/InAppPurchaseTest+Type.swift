@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum FetchingProductIDType: String {
+    case success = "ProductIDs"
+    case fail = "TestProductIDs"
+}
+
 enum TestProductIDs: CaseIterable {
     case year
     case month
