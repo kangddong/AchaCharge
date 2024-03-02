@@ -37,6 +37,12 @@ final class ControllersTests: XCTestCase {
         XCTAssertFalse(productType.contains(identifiers))
     }
     
+    func testMonthRequestProduct() {
+        let monthIdentifier: String = fetchingProductIdentifiers(with: .success).filter { $0 == TestProductIDs.month.identifier }.first!
+        let testProduct = TestProduct(productIdentifier: monthIdentifier)
+        
+    }
+    
     private func fetchingProductIdentifiers(with type: FetchingProductIDType) -> [String] {
         let productType: [String] = TestProductIDs.allCases.map { $0.identifier }
         let result = getProductIdentifiers(with: type)
