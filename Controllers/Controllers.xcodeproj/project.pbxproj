@@ -17,6 +17,8 @@
 		B520505E2B90E1A30006E63E /* InAppPurchaseTest+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520505D2B90E1A30006E63E /* InAppPurchaseTest+Type.swift */; };
 		B52050632B90EBB60006E63E /* TestProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = B520505F2B90E74B0006E63E /* TestProductIDs.plist */; };
 		B52050652B91F3FE0006E63E /* TestProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050642B91F3FE0006E63E /* TestProduct.swift */; };
+		B53ED3552BE146F700EBA2D0 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = B53ED3542BE146F700EBA2D0 /* SwiftyStoreKit */; };
+		B53ED3572BE1474100EBA2D0 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = B53ED3562BE1474100EBA2D0 /* SwiftyStoreKit */; };
 		B55974362ACDC33100FC01FE /* ProductIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */; };
 		B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */; };
 		B5F403FE2AC126EB00D4A6BD /* FetchGameControllerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */; };
@@ -101,8 +103,6 @@
 		B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIdentifiers.swift; sourceTree = "<group>"; };
 		B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPOnboardingViewController.swift; sourceTree = "<group>"; };
 		B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameControllerOperation.swift; sourceTree = "<group>"; };
-		B5F4040C2AC35BA800D4A6BD /* Development_Widget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development_Widget.xcconfig; sourceTree = "<group>"; };
-		B5F4040D2AC35BB600D4A6BD /* Production_Widget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production_Widget.xcconfig; sourceTree = "<group>"; };
 		EF1D09C22A4180EB00DCDDDB /* Controllers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controllers.entitlements; sourceTree = "<group>"; };
 		EF38A0952A4C736500DF1AF9 /* ControllersWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ControllersWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
@@ -151,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53ED3552BE146F700EBA2D0 /* SwiftyStoreKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +161,7 @@
 			files = (
 				EF789B902A30ABFA006EC6D8 /* SwiftUI.framework in Frameworks */,
 				EF789B8E2A30ABFA006EC6D8 /* WidgetKit.framework in Frameworks */,
+				B53ED3572BE1474100EBA2D0 /* SwiftyStoreKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,8 +233,6 @@
 				369B34082A4C511E00DBCC29 /* ProgressBar.swift */,
 				EF789B962A30ABFB006EC6D8 /* Assets.xcassets */,
 				EF789B982A30ABFB006EC6D8 /* Info.plist */,
-				B5F4040C2AC35BA800D4A6BD /* Development_Widget.xcconfig */,
-				B5F4040D2AC35BB600D4A6BD /* Production_Widget.xcconfig */,
 			);
 			path = ControllersWidget;
 			sourceTree = "<group>";
@@ -353,6 +353,9 @@
 				EF789B9A2A30ABFB006EC6D8 /* PBXTargetDependency */,
 			);
 			name = Controllers;
+			packageProductDependencies = (
+				B53ED3542BE146F700EBA2D0 /* SwiftyStoreKit */,
+			);
 			productName = Controllers;
 			productReference = EF789B6E2A24D6DC006EC6D8 /* Controllers.app */;
 			productType = "com.apple.product-type.application";
@@ -370,6 +373,9 @@
 			dependencies = (
 			);
 			name = ControllersWidgetExtension;
+			packageProductDependencies = (
+				B53ED3562BE1474100EBA2D0 /* SwiftyStoreKit */,
+			);
 			productName = ControllersWidgetExtension;
 			productReference = EF789B8B2A30ABFA006EC6D8 /* ControllersWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -425,6 +431,9 @@
 				ko,
 			);
 			mainGroup = EF789B652A24D6DC006EC6D8;
+			packageReferences = (
+				B53ED3532BE146F700EBA2D0 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+			);
 			productRefGroup = EF789B6F2A24D6DC006EC6D8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -901,6 +910,30 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B53ED3532BE146F700EBA2D0 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B53ED3542BE146F700EBA2D0 /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B53ED3532BE146F700EBA2D0 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+		B53ED3562BE1474100EBA2D0 /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B53ED3532BE146F700EBA2D0 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF789B662A24D6DC006EC6D8 /* Project object */;
 }
