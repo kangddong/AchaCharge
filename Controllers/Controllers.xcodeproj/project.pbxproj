@@ -21,6 +21,7 @@
 		B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */; };
 		B5CDDBAF2BE54815007610BC /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		B5CDDBB02BE5482B007610BC /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
+		B5CDDBB72BE7E793007610BC /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */; };
 		B5F403FE2AC126EB00D4A6BD /* FetchGameControllerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */; };
 		B5F403FF2AC2CF7B00D4A6BD /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */; };
 		B5F404002AC2CFD400D4A6BD /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362332A9A63890009E8E8 /* StoreKitManager.swift */; };
@@ -149,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5CDDBB72BE7E793007610BC /* SwiftyStoreKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +352,7 @@
 			);
 			name = Controllers;
 			packageProductDependencies = (
+				B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */,
 			);
 			productName = Controllers;
 			productReference = EF789B6E2A24D6DC006EC6D8 /* Controllers.app */;
@@ -368,8 +371,6 @@
 			dependencies = (
 			);
 			name = ControllersWidgetExtension;
-			packageProductDependencies = (
-			);
 			productName = ControllersWidgetExtension;
 			productReference = EF789B8B2A30ABFA006EC6D8 /* ControllersWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -426,6 +427,7 @@
 			);
 			mainGroup = EF789B652A24D6DC006EC6D8;
 			packageReferences = (
+				B5CDDBB52BE7E793007610BC /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
 			);
 			productRefGroup = EF789B6F2A24D6DC006EC6D8 /* Products */;
 			projectDirPath = "";
@@ -635,7 +637,7 @@
 		B5F404062AC3558E00D4A6BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Controllers/Controllers.entitlements;
@@ -782,7 +784,7 @@
 		EF789B832A24D6DD006EC6D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Controllers/Controllers.entitlements;
@@ -818,6 +820,7 @@
 		EF789B9D2A30ABFB006EC6D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ControllersWidgetExtension.entitlements;
@@ -903,6 +906,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B5CDDBB52BE7E793007610BC /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5CDDBB52BE7E793007610BC /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF789B662A24D6DC006EC6D8 /* Project object */;
 }
