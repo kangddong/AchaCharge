@@ -8,39 +8,32 @@
 import UIKit
 import UserNotifications
 import BackgroundTasks
-import StoreKit
+import SwiftyStoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //        requestNotificationAuthorization()
-        addStoreKitQueue()
-        
-        if validateLocal() {
-            registBackgroundTask() // 1.0.1 disable
-        }
-        return true
-    }
-    
-    func validateLocal() -> Bool {
-        let receiptData = StoreKitManager.localReceiptData
-        guard let receiptString = receiptData?.base64EncodedString(options: []) else { validateKit()
-            return false }
-        return true
-    }
-    
-    func validateKit() {
-        StoreKitManager.shared.fetchReceipt(forceRefresh: true) { result in
-            switch result {
-            case .success(let receiptData):
-                let encryptedReceipt = receiptData.base64EncodedString(options: [])
-                print("Fetch receipt success:\n\(encryptedReceipt)")
-            case .error(let error):
-                print("Fetch receipt failed: \(error)")
+        registBackgroundTask()
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.needsFinishTransaction {
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                case .failed, .purchasing, .deferred:
+                    BGTaskScheduler.shared.cancelAllTaskRequests()
+                @unknown default:
+                    BGTaskScheduler.shared.cancelAllTaskRequests()
+                }
             }
         }
+        
+        requestNotificationAuthorization()
+        
+        let isSubscribed = UserDefaults.standard.value(forKey: StringKey.IS_SUBSCRIBED) as? Bool
+        return true
     }
     
     // MARK: - UISceneSession Lifecycle
@@ -54,10 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        removeStoreKitQueue()
     }
 }
 
@@ -77,17 +66,6 @@ extension AppDelegate {
     }
 }
 
-// MARK: - StoreKit Method
-extension AppDelegate {
-    private func addStoreKitQueue() {
-        SKPaymentQueue.default().add(StoreObserver.shared)
-    }
-    
-    private func removeStoreKitQueue() {
-        SKPaymentQueue.default().remove(StoreObserver.shared)
-    }
-}
-
 
 // MARK: - BGTask Method
 extension AppDelegate {
@@ -97,6 +75,7 @@ extension AppDelegate {
         BGTaskScheduler.shared.register(forTaskWithIdentifier: StringKey.BATTERY_IDENTIFIER, using: nil) { task in
             // Perform your background fetch here
             
+            print(#function, "isSubscribed:", StoreKitManager.shared.isSubscribed)
             if StoreKitManager.shared.isSubscribed {
                 self.handleAppRefreshTask(task: task as! BGAppRefreshTask)
             }

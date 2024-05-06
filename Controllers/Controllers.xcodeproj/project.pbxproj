@@ -11,9 +11,6 @@
 		369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		B511FEE02B20C7A600742111 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511FEDF2B20C7A600742111 /* ImageButton.swift */; };
 		B511FEE22B20C8D600742111 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511FEE12B20C8D600742111 /* UIButton.swift */; };
-		B52050532B8E38670006E63E /* StoreKitManager+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050522B8E38670006E63E /* StoreKitManager+Types.swift */; };
-		B52050552B8E39920006E63E /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050542B8E39920006E63E /* InAppReceiptRefreshRequest.swift */; };
-		B52050572B8F08990006E63E /* ReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050562B8F08990006E63E /* ReceiptValidator.swift */; };
 		B520505E2B90E1A30006E63E /* InAppPurchaseTest+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520505D2B90E1A30006E63E /* InAppPurchaseTest+Type.swift */; };
 		B52050632B90EBB60006E63E /* TestProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = B520505F2B90E74B0006E63E /* TestProductIDs.plist */; };
 		B52050652B91F3FE0006E63E /* TestProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050642B91F3FE0006E63E /* TestProduct.swift */; };
@@ -93,9 +90,6 @@
 		369B340B2A4D13B300DBCC29 /* StringKey+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringKey+.swift"; sourceTree = "<group>"; };
 		B511FEDF2B20C7A600742111 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		B511FEE12B20C8D600742111 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		B52050522B8E38670006E63E /* StoreKitManager+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreKitManager+Types.swift"; sourceTree = "<group>"; };
-		B52050542B8E39920006E63E /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
-		B52050562B8F08990006E63E /* ReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptValidator.swift; sourceTree = "<group>"; };
 		B520505D2B90E1A30006E63E /* InAppPurchaseTest+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InAppPurchaseTest+Type.swift"; sourceTree = "<group>"; };
 		B520505F2B90E74B0006E63E /* TestProductIDs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestProductIDs.plist; sourceTree = "<group>"; };
 		B52050642B91F3FE0006E63E /* TestProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProduct.swift; sourceTree = "<group>"; };
@@ -301,9 +295,6 @@
 				EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */,
 				B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */,
 				B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */,
-				B52050522B8E38670006E63E /* StoreKitManager+Types.swift */,
-				B52050542B8E39920006E63E /* InAppReceiptRefreshRequest.swift */,
-				B52050562B8F08990006E63E /* ReceiptValidator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -481,7 +472,6 @@
 				B511FEE02B20C7A600742111 /* ImageButton.swift in Sources */,
 				EF93624C2A9BA8DA0009E8E8 /* Array+.swift in Sources */,
 				EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */,
-				B52050572B8F08990006E63E /* ReceiptValidator.swift in Sources */,
 				EF9362522A9E0B300009E8E8 /* InfoViewController.swift in Sources */,
 				B5F404002AC2CFD400D4A6BD /* StoreKitManager.swift in Sources */,
 				EF9362622A9E2D3E0009E8E8 /* String+.swift in Sources */,
@@ -490,11 +480,9 @@
 				B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */,
 				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
 				B511FEE22B20C8D600742111 /* UIButton.swift in Sources */,
-				B52050552B8E39920006E63E /* InAppReceiptRefreshRequest.swift in Sources */,
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
 				B55974362ACDC33100FC01FE /* ProductIdentifiers.swift in Sources */,
 				EF9362382A9B4A860009E8E8 /* UIColor+.swift in Sources */,
-				B52050532B8E38670006E63E /* StoreKitManager+Types.swift in Sources */,
 				B5F403FF2AC2CF7B00D4A6BD /* StoreObserver.swift in Sources */,
 				EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */,
 				EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */,

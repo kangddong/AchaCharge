@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyStoreKit
 
 final class SettingViewController: UIViewController {
     
@@ -150,8 +151,6 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
                 print("restorepurchase")
             }
             
-            
-            
         case .csInfo:
             guard let title = csInfoItems[safe: indexPath.row]?.title else { return }
             print("item.title: \(title)")
@@ -172,12 +171,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - User Interaction
 extension SettingViewController {
-    @objc
-    private func tappedPurchaseButton() {
-        let receiptData = StoreKitManager.localReceiptData
-        guard 
-            let receiptString = receiptData?.base64EncodedString(options: []),
-            receiptString.isEmpty else {
+    @objc private func tappedPurchaseButton() {
+        guard !StoreKitManager.shared.isSubscribed else {
             let alert = UIAlertController(title: nil, message: "Already Subscribing !".localized, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok!".localized, style: .default)
             alert.addAction(okAction)

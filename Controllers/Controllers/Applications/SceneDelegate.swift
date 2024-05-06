@@ -34,6 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {}
 
     func sceneDidEnterBackground(_ scene: UIScene) {
+        print(#function, "isSubscribed:", StoreKitManager.shared.isSubscribed)
         if StoreKitManager.shared.isSubscribed {
             let appDeleagate = UIApplication.shared.delegate as! AppDelegate
             appDeleagate.scheduleAppRefresh()

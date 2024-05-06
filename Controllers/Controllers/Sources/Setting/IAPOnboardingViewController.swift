@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Combine
+import SwiftyStoreKit
 
 final class IAPOnboardingViewController: UIViewController {
 
@@ -23,8 +23,8 @@ final class IAPOnboardingViewController: UIViewController {
     private let indicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.style = .large
-        view.color = .label
-        view.backgroundColor = .systemBackground
+        view.color = .white
+        view.backgroundColor = .clear
         view.hidesWhenStopped = true
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -180,7 +180,7 @@ final class IAPOnboardingViewController: UIViewController {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
         label.textColor = .label
-        label.font = .systemFont(ofSize: 10)
+        label.font = .systemFont(ofSize: 25)
         
         return label
     }()
@@ -210,7 +210,7 @@ final class IAPOnboardingViewController: UIViewController {
         super.viewDidLoad()
 
         initLayout()
-        StoreObserver.shared.uiDelegate = self
+//        StoreObserver.shared.uiDelegate = self
     }
 }
 
@@ -230,15 +230,15 @@ extension IAPOnboardingViewController {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            dimmedView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            dimmedView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            dimmedView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            dimmedView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            dimmedView.topAnchor.constraint(equalTo: view.topAnchor),
+            dimmedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            dimmedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            dimmedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             indicatorView.centerYAnchor.constraint(equalTo: dimmedView.centerYAnchor),
             indicatorView.centerXAnchor.constraint(equalTo: dimmedView.centerXAnchor),
-            indicatorView.widthAnchor.constraint(equalToConstant: 120),
-            indicatorView.heightAnchor.constraint(equalToConstant: 120),
+            indicatorView.widthAnchor.constraint(equalToConstant: 240),
+            indicatorView.heightAnchor.constraint(equalToConstant: 240),
             
             closeButton.topAnchor.constraint(equalTo: scrollContentsView.safeAreaLayoutGuide.topAnchor),
             closeButton.trailingAnchor.constraint(equalTo: scrollContentsView.trailingAnchor),
@@ -306,10 +306,9 @@ extension IAPOnboardingViewController {
         ])
         
         NSLayoutConstraint.activate([
-            priceLabel.heightAnchor.constraint(equalToConstant: 20),
             priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            priceLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            priceLabel.bottomAnchor.constraint(equalTo: startPremiumButton.safeAreaLayoutGuide.topAnchor, constant: -20),
         ])
     }
     
@@ -327,11 +326,13 @@ extension IAPOnboardingViewController {
     
     private func startIndicator() {
         indicatorView.startAnimating()
+        indicatorView.alpha = 0.6
         dimmedView.alpha = 0.6
     }
     
     private func stopIndicator() {
         indicatorView.stopAnimating()
+        indicatorView.alpha = 0
         dimmedView.alpha = 0
     }
 }
@@ -372,39 +373,31 @@ extension IAPOnboardingViewController {
     @objc
     private func tappedStartPreminumButton() {
         print(#function, "subscriptionType: \(subscriptionType)")
-        storKitManager.requestSubscription(with: subscriptionType)
-    }
-}
-
-extension IAPOnboardingViewController: InAppPurchaseUIDelegate {
-    func purchasing() {
-        print(#function)
+//        storKitManager.requestSubscription(with: subscriptionType)
         startIndicator()
-    }
-    
-    func deferred() {
-        print(#function)
-        stopIndicator()
-    }
-    
-    func failed(with error: Error?) {
-        print(#function, "by delegate")
-        stopIndicator()
-        let alert = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(okAction)
-        self.present(alert, animated: true)
-    }
-    
-    func purchased() {
-        donePurchases() {
+        SwiftyStoreKit.purchaseProduct(subscriptionType.identifier, quantity: 1, atomically: true) { result in
             self.stopIndicator()
-            self.dismiss(animated: true)
+            switch result {
+            case .success(let purchase):
+                print("Purchase Success: \(purchase.productId)")
+                UserDefaults.standard.setValue(true, forKey: StringKey.IS_SUBSCRIBED)
+            case .error(let error):
+                UserDefaults.standard.setValue(false, forKey: StringKey.IS_SUBSCRIBED)
+                switch error.code {
+                case .unknown: print("Unknown error. Please contact support")
+                case .clientInvalid: print("Not allowed to make the payment")
+                case .paymentCancelled: break
+                case .paymentInvalid: print("The purchase identifier was invalid")
+                case .paymentNotAllowed: print("The device is not allowed to make the payment")
+                case .storeProductNotAvailable: print("The product is not available in the current storefront")
+                case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
+                case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
+                case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
+                default: print((error as NSError).localizedDescription)
+                }
+            case .deferred(purchase: let purchase):
+                print("Purchase deferred: \(purchase.productId)")
+            }
         }
-    }
-    
-    func restored() {
-        stopIndicator()
-        donePurchases()
     }
 }
