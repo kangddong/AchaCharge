@@ -20,6 +20,7 @@
 		B5BE54262BF9D992009BD3EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE54252BF9D992009BD3EF /* ViewController.swift */; };
 		B5BE54282BF9D993009BD3EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5BE54272BF9D993009BD3EF /* Assets.xcassets */; };
 		B5BE542B2BF9D993009BD3EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE54292BF9D993009BD3EF /* Main.storyboard */; };
+		B5BE54352BFB2DC7009BD3EF /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5BE54342BFB2DC7009BD3EF /* ControllerKit */; };
 		B5CDDBAF2BE54815007610BC /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		B5CDDBB02BE5482B007610BC /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		B5CDDBB72BE7E793007610BC /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */; };
@@ -33,7 +34,6 @@
 		EF789B762A24D6DC006EC6D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B752A24D6DC006EC6D8 /* ViewController.swift */; };
 		EF789B7B2A24D6DD006EC6D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF789B7A2A24D6DD006EC6D8 /* Assets.xcassets */; };
 		EF789B7E2A24D6DD006EC6D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */; };
-		EF789B862A24DC24006EC6D8 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
 		EF789B8E2A30ABFA006EC6D8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF789B8D2A30ABFA006EC6D8 /* WidgetKit.framework */; };
 		EF789B902A30ABFA006EC6D8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF789B8F2A30ABFA006EC6D8 /* SwiftUI.framework */; };
 		EF789B932A30ABFA006EC6D8 /* ControllersWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B922A30ABFA006EC6D8 /* ControllersWidgetBundle.swift */; };
@@ -45,7 +45,6 @@
 		EF9362322A9A56D50009E8E8 /* ProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF9362312A9A56D50009E8E8 /* ProductIDs.plist */; };
 		EF9362362A9B49B70009E8E8 /* ColorAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */; };
 		EF9362382A9B4A860009E8E8 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362372A9B4A860009E8E8 /* UIColor+.swift */; };
-		EF93623F2A9B9A690009E8E8 /* GameControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */; };
 		EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362422A9B9CF00009E8E8 /* SettingItemCell.swift */; };
 		EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362472A9BA5270009E8E8 /* SettingDTO.swift */; };
 		EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */; };
@@ -105,6 +104,7 @@
 		B5BE54272BF9D993009BD3EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5BE542A2BF9D993009BD3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5BE542C2BF9D993009BD3EF /* Controllers_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controllers_macOS.entitlements; sourceTree = "<group>"; };
+		B5BE54372BFB2FD4009BD3EF /* ControllerKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ControllerKit; sourceTree = "<group>"; };
 		B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameControllerOperation.swift; sourceTree = "<group>"; };
 		EF1D09C22A4180EB00DCDDDB /* Controllers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controllers.entitlements; sourceTree = "<group>"; };
 		EF38A0952A4C736500DF1AF9 /* ControllersWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ControllersWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -116,7 +116,6 @@
 		EF789B7A2A24D6DD006EC6D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF789B7D2A24D6DD006EC6D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF789B7F2A24D6DD006EC6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerManager.swift; sourceTree = "<group>"; };
 		EF789B8B2A30ABFA006EC6D8 /* ControllersWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ControllersWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF789B8D2A30ABFA006EC6D8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EF789B8F2A30ABFA006EC6D8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -162,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5CDDBB72BE7E793007610BC /* SwiftyStoreKit in Frameworks */,
+				B5BE54352BFB2DC7009BD3EF /* ControllerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +207,7 @@
 		EF789B652A24D6DC006EC6D8 = {
 			isa = PBXGroup;
 			children = (
+				B5BE54372BFB2FD4009BD3EF /* ControllerKit */,
 				EF38A0952A4C736500DF1AF9 /* ControllersWidgetExtension.entitlements */,
 				EF789B702A24D6DC006EC6D8 /* Controllers */,
 				EF789B912A30ABFA006EC6D8 /* ControllersWidget */,
@@ -322,7 +323,6 @@
 			children = (
 				EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */,
 				EF9362332A9A63890009E8E8 /* StoreKitManager.swift */,
-				EF789B852A24DC24006EC6D8 /* GameControllerManager.swift */,
 				EF9362492A9BA61A0009E8E8 /* CustomJSONDecoder.swift */,
 				B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */,
 				B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */,
@@ -392,6 +392,7 @@
 			name = Controllers;
 			packageProductDependencies = (
 				B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */,
+				B5BE54342BFB2DC7009BD3EF /* ControllerKit */,
 			);
 			productName = Controllers;
 			productReference = EF789B6E2A24D6DC006EC6D8 /* Controllers.app */;
@@ -546,7 +547,6 @@
 				B5F404002AC2CFD400D4A6BD /* StoreKitManager.swift in Sources */,
 				EF9362622A9E2D3E0009E8E8 /* String+.swift in Sources */,
 				EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */,
-				EF789B862A24DC24006EC6D8 /* GameControllerManager.swift in Sources */,
 				B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */,
 				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
 				B511FEE22B20C8D600742111 /* UIButton.swift in Sources */,
@@ -574,7 +574,6 @@
 				369B340A2A4C515300DBCC29 /* ProgressBar.swift in Sources */,
 				EF789B952A30ABFA006EC6D8 /* ControllersWidget.swift in Sources */,
 				B5CDDBB02BE5482B007610BC /* UserDefaults+.swift in Sources */,
-				EF93623F2A9B9A690009E8E8 /* GameControllerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,6 +1060,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B5BE54342BFB2DC7009BD3EF /* ControllerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ControllerKit;
+		};
 		B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B5CDDBB52BE7E793007610BC /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;

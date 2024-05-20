@@ -5,7 +5,6 @@
 //  Created by 강동영 on 2023/05/29.
 //
 
-import Foundation
 import GameController
 
 protocol GameControllerDelegate: AnyObject {
