@@ -8,6 +8,7 @@
 import UIKit
 import UserNotifications
 import BackgroundTasks
+import ControllerKit
 import SwiftyStoreKit
 
 @main
