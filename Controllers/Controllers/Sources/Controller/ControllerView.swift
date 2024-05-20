@@ -1,15 +1,17 @@
 //
-//  ViewController.swift
+//  ControllerView.swift
 //  Controllers
 //
-//  Created by 강동영 on 2023/05/29.
+//  Created by 강동영 on 5/20/24.
 //
 
 import UIKit
-import ControllerKit
 
-final class ViewController: UIViewController {
+protocol ControllerViewDelegate: AnyObject {
+    func tappedRefresh(with progresssView: CircularProgressBarView)
+}
 
+final class ControllerView: UIView {
     // MARK: - UI Properties
     private let indicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
@@ -81,18 +83,12 @@ final class ViewController: UIViewController {
     
     private lazy var circularProgressBarView: CircularProgressBarView = {
         let view = CircularProgressBarView(frame: .zero)
-        view.tag = _CIRCLEARVIEW_TAG
+        view.tag = CircularProgressBarView.identifier
         view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
-    
-    private var circularViewDuration: TimeInterval = 0.5
-    
-    // MARK: - UI Properties
-    private let manager = GameControllerManager.shared
-    private let _CIRCLEARVIEW_TAG = 20230701
     
     private var isConnected: Bool = false {
         didSet {
@@ -102,59 +98,62 @@ final class ViewController: UIViewController {
         }
     }
     
-    private var batteryInfo: (level: Float, state: Int) = (0.0, -1)
+    weak var delegate: ControllerViewDelegate?
     
-    // MARK: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        title = MainTabBarController.TabType.controlelr.title
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         addSubViews()
         addConstraints()
         setUpIndicatoreView()
-        addControllerObservers()
-        
-        UserDefaults.shared.setValue(false, forKey: StringKey.CONTROLLER_CONNECTED)
         refreshButton.addTarget(self, action: #selector(tappedRefresh), for: .touchUpInside)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        print(#function)
-        
-        if isConnected {
-            circularProgressBarView.progressAnimation(duration: circularViewDuration, value: batteryInfo.level)
-        }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    public func updateControllerInfo() {
-        NSLog("filter: \(#function)")
-        guard let info = manager.getControlelrInfo() else {
-            controllerVendorNameLabel.text = ""
-            batteryStateLabel.text = "Not Connected..".localized
-            return
-        }
-        
-        NSLog("filter: info.batteryLevel")
-        NSLog("filter: \(info.batteryLevel)")
-        batteryStateLabel.text = "\(Int(info.batteryLevel * 100)) %"
-        controllerVendorNameLabel.text = info.vendorName
-        circularProgressBarView.progressAnimation(duration: circularViewDuration, value: info.batteryLevel)
-        
-        UserDefaults.shared.setValue(info.batteryLevel, forKey: StringKey.BATTERY_LEVEL)
+    public func strartIndicatoreView() {
+        indicatorView.startAnimating()
     }
     
-    private func refreshBatteryInfo() {
-        
+    public func stopIndicatoreView() {
+        indicatorView.stopAnimating()
+    }
+    
+    public func setController(with state: Bool) {
+        isConnected = state
+    }
+    
+    public func updateControllerInfo(with model: ControllerViewModel) {
+        batteryStateLabel.text = "\(Int(model.batteryLevel * 100)) %"
+        controllerVendorNameLabel.text = model.vendorName
+        circularProgressBarView.progressAnimation(value: model.batteryLevel)
+    }
+    
+    public func progressAnimation(duration: TimeInterval = 0.5, value: Float) {
+        guard isConnected else { return }
+        circularProgressBarView.progressAnimation(
+            duration: duration,
+            value: value
+        )
+    }
+    
+    public func clearText() {
+        controllerVendorNameLabel.text = ""
+        batteryStateLabel.text = "Not Connected..".localized
+    }
+    
+    struct ControllerViewModel {
+        let batteryLevel: Float
+        let vendorName: String
     }
 }
 
-// MARK: - UI Methods
-extension ViewController {
+// MARK: - layout Method
+extension ControllerView {
     private func addSubViews() {
         
-        view.backgroundColor = .systemBackground
+        backgroundColor = .systemBackground
         [
             loadingView,
             gamePadImageView,
@@ -162,16 +161,16 @@ extension ViewController {
             batteryStateLabel,
             controllerVendorNameLabel,
             refreshButton,
-        ].forEach { view.addSubview($0) }
+        ].forEach { addSubview($0) }
         loadingView.addSubview(indicatorView)
     }
     
     private func addConstraints() {
         
         NSLayoutConstraint.activate([
-            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            loadingView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            loadingView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            loadingView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             loadingView.heightAnchor.constraint(equalToConstant: 120),
             
             indicatorView.topAnchor.constraint(equalTo: loadingView.topAnchor),
@@ -179,57 +178,34 @@ extension ViewController {
             indicatorView.widthAnchor.constraint(equalToConstant: 80),
             indicatorView.heightAnchor.constraint(equalToConstant: 80),
             
-            circularProgressBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            circularProgressBarView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            circularProgressBarView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            circularProgressBarView.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             gamePadImageView.widthAnchor.constraint(equalToConstant: 180),
             gamePadImageView.heightAnchor.constraint(equalToConstant: 130),
-            gamePadImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gamePadImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            gamePadImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            gamePadImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             batteryStateLabel.topAnchor.constraint(equalTo: gamePadImageView.bottomAnchor, constant: 36),
-            batteryStateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            batteryStateLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             controllerVendorNameLabel.topAnchor.constraint(equalTo: batteryStateLabel.bottomAnchor, constant: 57),
-            controllerVendorNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            controllerVendorNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             refreshButton.topAnchor.constraint(equalTo: controllerVendorNameLabel.bottomAnchor, constant: 20),
-            refreshButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            refreshButton.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
     }
     
     private func setUpIndicatoreView() {
-     
         indicatorView.startAnimating()
     }
 }
 
-// MARK: - Controller Logic
-extension ViewController {
-    private func addControllerObservers() {
-        NSLog("filter: \(#function)")
-        manager.delegate = self
-    }
-    
+// MARK: - UI Gesture Method
+extension ControllerView {
     @objc
     private func tappedRefresh() {
-        guard let info = manager.getBatteryInfo() else { return }
-        circularProgressBarView.progressAnimation(duration: circularViewDuration, value: info.level)
+        delegate?.tappedRefresh(with: circularProgressBarView)
     }
 }
-
-// MARK: - GameControllerDelegate Method
-extension ViewController: GameControllerDelegate {
-    func didConnectedController() {
-        isConnected = true
-        indicatorView.stopAnimating()
-        updateControllerInfo()
-    }
-    
-    func didDisConnectedController() {
-        isConnected = false
-        indicatorView.startAnimating()
-        updateControllerInfo()
-    }
-}
-
