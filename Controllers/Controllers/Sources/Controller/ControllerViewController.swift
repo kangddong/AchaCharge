@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ControllerViewController.swift
 //  Controllers
 //
 //  Created by 강동영 on 2023/05/29.
@@ -8,7 +8,7 @@
 import UIKit
 import ControllerKit
 
-final class ViewController: UIViewController {
+final class ControllerViewController: UIViewController {
 
     // MARK: - UI Properties
     private let indicatorView: UIActivityIndicatorView = {
@@ -151,7 +151,7 @@ final class ViewController: UIViewController {
 }
 
 // MARK: - UI Methods
-extension ViewController {
+extension ControllerViewController {
     private func addSubViews() {
         
         view.backgroundColor = .systemBackground
@@ -205,7 +205,7 @@ extension ViewController {
 }
 
 // MARK: - Controller Logic
-extension ViewController {
+extension ControllerViewController {
     private func addControllerObservers() {
         NSLog("filter: \(#function)")
         manager.delegate = self
@@ -219,7 +219,7 @@ extension ViewController {
 }
 
 // MARK: - GameControllerDelegate Method
-extension ViewController: GameControllerDelegate {
+extension ControllerViewController: GameControllerDelegate {
     func didConnectedController() {
         isConnected = true
         indicatorView.stopAnimating()

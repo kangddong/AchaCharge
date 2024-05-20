@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         isBackground = false
         
-        guard let vc = UIApplication.topViewController() as? ViewController else { return }
+        guard let vc = UIApplication.topViewController() as? ControllerViewController else { return }
         vc.updateControllerInfo()
     }
 
