@@ -7,53 +7,38 @@
 
 import GameController
 
-protocol GameControllerDelegate: AnyObject {
+public protocol GameControllerDelegate: AnyObject {
     func didConnectedController()
     func didDisConnectedController()
 }
 
-final class GameControllerManager {
+public final class GameControllerManager {
+    public static let shared: GameControllerManager = .init()
+    
+    public weak var delegate: GameControllerDelegate?
     
     private init() {
         addObserver()
     }
     
-    deinit {
-        removeObserver()
-    }
-    
-    public weak var delegate: GameControllerDelegate?
-    static let shared = GameControllerManager.init()
-    
     public var controllers: [GCController] = []
+    private var current: Controller?
     
     public func getControlelrInfo() -> Controller? {
-        guard let controller = GCController.current else {
-            return nil
-        }
-        
-        let count = GCController.controllers().count
-        let batteryLevel = controller.battery?.batteryLevel ?? 0.0
-        let rawValue = (controller.battery?.batteryState ?? .unknown).rawValue
-        let state = BatteryState(rawValue: rawValue)
-        let vendorName = controller.vendorName ?? "Game Controller"
-        
-        return Controller(controllerCount: count,
-                          batteryLevel: batteryLevel,
-                          batteryState: state ?? .unknown,
-                          vendorName: vendorName)
+        return current
     }
     
     public func getBatteryInfo() -> (level: Float, state: Int)? {
-        guard let battery = GCController.current?.battery else {
-            return nil
-        }
+        guard let current = current else { return nil }
         
-        print("GCController.current?.battery = \(battery)")
-        print("GCDeviceBattery().batteryLevel = \(battery.batteryLevel)")
-        print("GCDeviceBattery().batteryState = \(battery.batteryState)")
+        print("current gamepad's batteryLevel = \(current.batteryLevel)")
+        print("current gamepad's batteryState = \(current.batteryState)")
         
-        return (battery.batteryLevel, battery.batteryState.rawValue)
+        return (current.batteryLevel, current.batteryState.rawValue)
+    }
+    
+    deinit {
+        removeObserver()
     }
 }
 
@@ -91,32 +76,68 @@ extension GameControllerManager {
     
     @objc
     private func didConnectedController() {
-        NSLog("filter: GameControllerManager")
-        NSLog("filter: \(#function)")
+        NSLog("Connected Game Controller !!)")
+        if let controller = getCurrentController() {
+            NSLog("Connected Controller's count: \(controller.controllerCount)")
+            NSLog("current Controller's vendorName: \(controller.vendorName)")
+            NSLog("current Controller's batteryLevel: \(controller.batteryLevel * 100)%")
+            NSLog("current Controller's batteryState: \(controller.batteryState), \(controller.batteryState.description)")
+            current = controller
+        }
+        
         delegate?.didConnectedController()
+    }
+    
+    private func getCurrentController() -> Controller? {
+        guard let controller = GCController.current else {
+            return nil
+        }
+        
+        let count = GCController.controllers().count
+        let batteryLevel = controller.battery?.batteryLevel ?? 0.0
+        let rawValue = (controller.battery?.batteryState ?? .unknown).rawValue
+        let state = BatteryState(rawValue: rawValue)
+        let vendorName = controller.vendorName ?? "Game Controller"
+        
+        return Controller(controllerCount: count,
+                          batteryLevel: batteryLevel,
+                          batteryState: state ?? .unknown,
+                          vendorName: vendorName)
     }
     
     @objc
     private func didDisConnectedController() {
-        NSLog("filter: GameControllerManager")
-        NSLog("filter: \(#function)")
+        NSLog("Disconnected Game Controller !!)")
         delegate?.didDisConnectedController()
     }
 }
 
 // MARK: - User Interaction
-extension GameControllerManager {
-}
-struct Controller {
-    let controllerCount: Int
-    let batteryLevel: Float
-    let batteryState: BatteryState
-    let vendorName: String
+extension GameControllerManager {}
+
+public struct Controller {
+    public let controllerCount: Int
+    public let batteryLevel: Float
+    public let batteryState: BatteryState
+    public let vendorName: String
 }
 
-enum BatteryState: Int {
+public enum BatteryState: Int, CustomStringConvertible {
     case unknown = -1
     case discharging = 0
     case charging = 1
     case full = 2
+    
+    public var description: String {
+        switch self {
+        case .discharging:
+            "discharging"
+        case .charging:
+            "charging"
+        case .full:
+            "full"
+        case .unknown:
+            "unknown"
+        }
+    }
 }
