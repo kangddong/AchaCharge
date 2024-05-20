@@ -16,7 +16,8 @@ class MainTabBarController: UITabBarController {
         var viewController: UIViewController {
             switch self {
             case .controlelr:
-                return ControllerViewController(view: ControllerView())
+                return ControllerViewController(naviTitle: self.title,
+                                                view: ControllerView())
             
             case .setting:
                 return SettingViewController()
