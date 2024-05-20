@@ -8,6 +8,8 @@
 import UIKit
 
 class CircularProgressBarView: UIView {
+    static let identifier = 20230701
+    static let defaultDuration: TimeInterval = 0.5
     
     private var circleLayer = CAShapeLayer()
     private var progressLayer = CAShapeLayer()
@@ -53,7 +55,7 @@ extension CircularProgressBarView {
         layer.addSublayer(progressLayer)
     }
     
-    func progressAnimation(duration: TimeInterval, value: Float) {
+    func progressAnimation(duration: TimeInterval = 0.5, value: Float) {
         // created circularProgressAnimation with keyPath
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         // set the end time
