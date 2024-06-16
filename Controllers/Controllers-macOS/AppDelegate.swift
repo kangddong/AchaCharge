@@ -61,6 +61,19 @@ extension AppDelegate {
         let menuItem3 = NSMenuItem(title: "잠금모드", action: #selector(toggleShowUsage(_:)), keyEquivalent: "")
         let menuItem4 = NSMenuItem(title: "로그아웃", action: #selector(toggleShowUsage(_:)), keyEquivalent: "")
         let menuItem5 = NSMenuItem(title: "종료", action: #selector(toggleShowUsage(_:)), keyEquivalent: "")
+        
+        let circularProgressBarView: CircularProgressBarView = .init(frame: .init(x: 0, y: 0, width: 100, height: 100))
+        circularProgressBarView.isHidden = false
+        circularProgressBarView.translatesAutoresizingMaskIntoConstraints = false
+        circularProgressBarView.wantsLayer = true
+        let customViewItem = NSMenuItem(title: "why", action: #selector(toggleShowUsage(_:)), keyEquivalent: "")
+        customViewItem.view?.wantsLayer = true
+        customViewItem.view?.makeBackingLayer()
+        circularProgressBarView.progressAnimation(value: 0.5)
+        circularProgressBarView.wantsLayer = true
+        customViewItem.view = circularProgressBarView
+        
+        
         menu.addItem(menuItem1)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(menuItem2)
@@ -70,6 +83,8 @@ extension AppDelegate {
         menu.addItem(menuItem4)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(menuItem5)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(customViewItem)
 //        menu.addItem(withTitle: "Show CPU Usage",
 //                     action: #selector(toggleShowUsage(_:)),
 //                     keyEquivalent: "")
@@ -81,6 +96,7 @@ extension AppDelegate {
 //                     action: #selector(toggleShowUsage(_:)),
 //                     keyEquivalent: "")
         statusItem.menu = menu
+        statusItem.button?.wantsLayer = true
     }
     
     @objc func toggleShowUsage(_ sender: NSMenuItem) {
