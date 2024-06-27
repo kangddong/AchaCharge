@@ -8,7 +8,6 @@
 import Cocoa
 import UserNotifications
 
-@main
 class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var statusItem: NSStatusItem = {
         return NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)

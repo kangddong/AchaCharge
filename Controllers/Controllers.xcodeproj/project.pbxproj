@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,11 +19,12 @@
 		B58AA1B12BFB34C300EAC37F /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B58AA1B02BFB34C300EAC37F /* ControllerKit */; };
 		B58AA1B32BFB4A7300EAC37F /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AA1B22BFB4A7300EAC37F /* ControllerView.swift */; };
 		B58AA1B52BFBA6C500EAC37F /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AA1B42BFBA6C500EAC37F /* CircularProgressBarView.swift */; };
-		B58AA1B72BFBA91400EAC37F /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B58AA1B62BFBA91400EAC37F /* ControllerKit */; };
+		B5A1EA542C2DA2B9002A29BF /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5A1EA532C2DA2B9002A29BF /* ControllerKit */; };
+		B5A1EA562C2DA2CA002A29BF /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5A1EA552C2DA2CA002A29BF /* ControllerKit */; };
+		B5A1EA582C2DA333002A29BF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1EA572C2DA333002A29BF /* main.swift */; };
 		B5BE54242BF9D992009BD3EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE54232BF9D992009BD3EF /* AppDelegate.swift */; };
 		B5BE54262BF9D992009BD3EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE54252BF9D992009BD3EF /* ViewController.swift */; };
 		B5BE54282BF9D993009BD3EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5BE54272BF9D993009BD3EF /* Assets.xcassets */; };
-		B5BE542B2BF9D993009BD3EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE54292BF9D993009BD3EF /* Main.storyboard */; };
 		B5BE54352BFB2DC7009BD3EF /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5BE54342BFB2DC7009BD3EF /* ControllerKit */; };
 		B5CDDBAF2BE54815007610BC /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		B5CDDBB02BE5482B007610BC /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
@@ -104,11 +105,11 @@
 		B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPOnboardingViewController.swift; sourceTree = "<group>"; };
 		B58AA1B22BFB4A7300EAC37F /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		B58AA1B42BFBA6C500EAC37F /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
+		B5A1EA572C2DA333002A29BF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B5BE54212BF9D992009BD3EF /* Controllers-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Controllers-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BE54232BF9D992009BD3EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5BE54252BF9D992009BD3EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5BE54272BF9D993009BD3EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B5BE542A2BF9D993009BD3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5BE542C2BF9D993009BD3EF /* Controllers_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controllers_macOS.entitlements; sourceTree = "<group>"; };
 		B5BE54372BFB2FD4009BD3EF /* ControllerKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ControllerKit; sourceTree = "<group>"; };
 		B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameControllerOperation.swift; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A1EA562C2DA2CA002A29BF /* ControllerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +170,7 @@
 			files = (
 				B5CDDBB72BE7E793007610BC /* SwiftyStoreKit in Frameworks */,
 				B5BE54352BFB2DC7009BD3EF /* ControllerKit in Frameworks */,
+				B5A1EA542C2DA2B9002A29BF /* ControllerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,9 +208,9 @@
 				B5BE54232BF9D992009BD3EF /* AppDelegate.swift */,
 				B5BE54252BF9D992009BD3EF /* ViewController.swift */,
 				B5BE54272BF9D993009BD3EF /* Assets.xcassets */,
-				B5BE54292BF9D993009BD3EF /* Main.storyboard */,
 				B5BE542C2BF9D993009BD3EF /* Controllers_macOS.entitlements */,
 				B58AA1B42BFBA6C500EAC37F /* CircularProgressBarView.swift */,
+				B5A1EA572C2DA333002A29BF /* main.swift */,
 			);
 			path = "Controllers-macOS";
 			sourceTree = "<group>";
@@ -380,6 +383,9 @@
 			dependencies = (
 			);
 			name = "Controllers-macOS";
+			packageProductDependencies = (
+				B5A1EA552C2DA2CA002A29BF /* ControllerKit */,
+			);
 			productName = "Controllers-macOS";
 			productReference = B5BE54212BF9D992009BD3EF /* Controllers-macOS.app */;
 			productType = "com.apple.product-type.application";
@@ -402,6 +408,7 @@
 			packageProductDependencies = (
 				B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */,
 				B5BE54342BFB2DC7009BD3EF /* ControllerKit */,
+				B5A1EA532C2DA2B9002A29BF /* ControllerKit */,
 			);
 			productName = Controllers;
 			productReference = EF789B6E2A24D6DC006EC6D8 /* Controllers.app */;
@@ -483,6 +490,7 @@
 			mainGroup = EF789B652A24D6DC006EC6D8;
 			packageReferences = (
 				B5CDDBB52BE7E793007610BC /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+				B5A1EA522C2DA2B9002A29BF /* XCLocalSwiftPackageReference "ControllerKit" */,
 			);
 			productRefGroup = EF789B6F2A24D6DC006EC6D8 /* Products */;
 			projectDirPath = "";
@@ -502,7 +510,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5BE54282BF9D993009BD3EF /* Assets.xcassets in Resources */,
-				B5BE542B2BF9D993009BD3EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +551,7 @@
 			files = (
 				B5BE54262BF9D992009BD3EF /* ViewController.swift in Sources */,
 				B58AA1B52BFBA6C500EAC37F /* CircularProgressBarView.swift in Sources */,
+				B5A1EA582C2DA333002A29BF /* main.swift in Sources */,
 				B5BE54242BF9D992009BD3EF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,14 +625,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B5BE54292BF9D993009BD3EF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B5BE542A2BF9D993009BD3EF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EF789B7C2A24D6DD006EC6D8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -672,7 +672,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -706,7 +705,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1062,6 +1060,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		B5A1EA522C2DA2B9002A29BF /* XCLocalSwiftPackageReference "ControllerKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ControllerKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		B5CDDBB52BE7E793007610BC /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1075,6 +1080,14 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		B58AA1B02BFB34C300EAC37F /* ControllerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ControllerKit;
+		};
+		B5A1EA532C2DA2B9002A29BF /* ControllerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ControllerKit;
+		};
+		B5A1EA552C2DA2CA002A29BF /* ControllerKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ControllerKit;
 		};
