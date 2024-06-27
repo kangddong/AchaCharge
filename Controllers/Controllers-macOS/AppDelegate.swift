@@ -55,11 +55,9 @@ extension AppDelegate {
             statusItem.button?.font = font
         }
         
-        let menuItem1 = NSMenuItem(title: "카카오톡 열기", action: #selector(toggleShowUsage(_:)), keyEquivalent: "s")
-        let menuItem2 = NSMenuItem(title: "모두 읽음 처리", action: #selector(toggleShowUsage(_:)), keyEquivalent: "S")
-        let menuItem3 = NSMenuItem(title: "잠금모드", action: #selector(toggleShowUsage(_:)), keyEquivalent: "")
-        let menuItem4 = NSMenuItem(title: "로그아웃", action: #selector(toggleShowUsage(_:)), keyEquivalent: "")
-        let menuItem5 = NSMenuItem(title: "종료", action: #selector(toggleShowUsage(_:)), keyEquivalent: "")
+        let openMenuItem = NSMenuItem(title: "앱 열기", action: #selector(toggleShowUsage(_:)), keyEquivalent: "s")
+        
+        let exitMenuItem = NSMenuItem(title: "종료", action: #selector(toggleShowUsage(_:)), keyEquivalent: "")
         
         let circularProgressBarView: CircularProgressBarView = .init(frame: .init(x: 0, y: 0, width: 100, height: 100))
         circularProgressBarView.isHidden = false
@@ -73,27 +71,12 @@ extension AppDelegate {
         customViewItem.view = circularProgressBarView
         
         
-        menu.addItem(menuItem1)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(menuItem2)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(menuItem3)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(menuItem4)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(menuItem5)
+        menu.addItem(openMenuItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(customViewItem)
-//        menu.addItem(withTitle: "Show CPU Usage",
-//                     action: #selector(toggleShowUsage(_:)),
-//                     keyEquivalent: "")
-//        menu.addItem(NSMenuItem.separator())
-//        menu.addItem(withTitle: "About Menubar RunCat",
-//                     action: #selector(toggleShowUsage(_:)),
-//                     keyEquivalent: "")
-//        menu.addItem(withTitle: "Quit Menubar RunCat",
-//                     action: #selector(toggleShowUsage(_:)),
-//                     keyEquivalent: "")
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(exitMenuItem)
+        
         statusItem.menu = menu
         statusItem.button?.wantsLayer = true
     }
