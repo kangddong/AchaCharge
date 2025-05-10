@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class MainTabBarController: UITabBarController {
 
@@ -16,8 +17,9 @@ class MainTabBarController: UITabBarController {
         var viewController: UIViewController {
             switch self {
             case .controlelr:
-                return ControllerViewController(naviTitle: self.title,
-                                                view: ControllerView())
+                return UIHostingController(
+                    rootView: ControllerView()
+                )
             
             case .setting:
                 return SettingViewController()
