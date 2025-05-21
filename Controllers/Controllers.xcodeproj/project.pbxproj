@@ -43,7 +43,7 @@
 		EF789B952A30ABFA006EC6D8 /* ControllersWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF789B942A30ABFA006EC6D8 /* ControllersWidget.swift */; };
 		EF789B972A30ABFB006EC6D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF789B962A30ABFB006EC6D8 /* Assets.xcassets */; };
 		EF789B9B2A30ABFB006EC6D8 /* ControllersWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF789B8B2A30ABFA006EC6D8 /* ControllersWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362292A9645100009E8E8 /* MainTabBarController.swift */; };
+		EF93622A2A9645100009E8E8 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9362292A9645100009E8E8 /* MainTabView.swift */; };
 		EF93622C2A9646D50009E8E8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93622B2A9646D50009E8E8 /* SettingViewController.swift */; };
 		EF9362322A9A56D50009E8E8 /* ProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF9362312A9A56D50009E8E8 /* ProductIDs.plist */; };
 		EF9362362A9B49B70009E8E8 /* ColorAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF9362352A9B49B70009E8E8 /* ColorAsset.xcassets */; };
@@ -127,7 +127,7 @@
 		EF789B942A30ABFA006EC6D8 /* ControllersWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersWidget.swift; sourceTree = "<group>"; };
 		EF789B962A30ABFB006EC6D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF789B982A30ABFB006EC6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EF9362292A9645100009E8E8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		EF9362292A9645100009E8E8 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		EF93622B2A9646D50009E8E8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EF93622D2A9657FB0009E8E8 /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
 		EF9362312A9A56D50009E8E8 /* ProductIDs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ProductIDs.plist; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 				B511FEDE2B20C78F00742111 /* Component */,
 				EF93623D2A9B9A010009E8E8 /* Extensions */,
 				EF93623E2A9B9A1E0009E8E8 /* Models */,
-				EF9362292A9645100009E8E8 /* MainTabBarController.swift */,
+				EF9362292A9645100009E8E8 /* MainTabView.swift */,
 				EF93623B2A9B99DD0009E8E8 /* Controller */,
 				EF93623C2A9B99EA0009E8E8 /* Setting */,
 			);
@@ -556,7 +556,7 @@
 				EF9362622A9E2D3E0009E8E8 /* String+.swift in Sources */,
 				EF9362432A9B9CF00009E8E8 /* SettingItemCell.swift in Sources */,
 				B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */,
-				EF93622A2A9645100009E8E8 /* MainTabBarController.swift in Sources */,
+				EF93622A2A9645100009E8E8 /* MainTabView.swift in Sources */,
 				B511FEE22B20C8D600742111 /* UIButton.swift in Sources */,
 				EF789B722A24D6DC006EC6D8 /* AppDelegate.swift in Sources */,
 				B55974362ACDC33100FC01FE /* ProductIdentifiers.swift in Sources */,

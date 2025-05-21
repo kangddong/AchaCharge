@@ -10,10 +10,6 @@ import ControllerKit
 
 struct ControllerView: View {
     @StateObject private var model = ControllerModel()
-    /// 새로고침 버튼 액션
-    func onRefresh() {
-        model.updateControllerInfo()
-    }
 
     var body: some View {
         VStack {
@@ -72,6 +68,11 @@ struct ControllerView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             model.updateControllerInfo()
         }
+    }
+    
+    /// 새로고침 버튼 액션
+    private func onRefresh() {
+        model.updateControllerInfo()
     }
 }
 
