@@ -24,7 +24,7 @@ class FetchGameControllerOperation: Operation {
         
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
-        let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as! String
+        let appName = Bundle.main.displayName
         content.title = appName.localized
         let level = Int(info.batteryLevel * 100)
         content.body = "Current Battery is %@".localized(with: ["\(level)%"])
