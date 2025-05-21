@@ -161,7 +161,9 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             
             switch type {
             case .info:
-                let vc = InfoViewController()
+                let vc = UIHostingController(rootView: InfoView(
+                    isPresented: { self.dismiss(animated: true)}
+                ))
                 vc.modalPresentationStyle = .pageSheet
                 self.present(vc, animated: true)
             }
