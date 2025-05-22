@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SwiftyStoreKit
 
 final class SettingViewController: UIViewController {
@@ -62,7 +63,7 @@ extension SettingViewController {
     }
     
     private func initLayout() {
-        title = MainTabBarController.TabType.setting.title
+        title = MainTabView.TabType.setting.title
         view.backgroundColor = .systemBackground
         addSubViews()
         addConstraints()
@@ -160,7 +161,9 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             
             switch type {
             case .info:
-                let vc = InfoViewController()
+                let vc = UIHostingController(rootView: InfoView(
+                    isPresented: { self.dismiss(animated: true)}
+                ))
                 vc.modalPresentationStyle = .pageSheet
                 self.present(vc, animated: true)
             }
@@ -198,5 +201,18 @@ extension SettingViewController: DidResotreDelegate {
         donePurchases()
     }
     
+    
+}
+
+
+struct SettingViewRepresentable: UIViewControllerRepresentable {
+    typealias UIViewControllerType = UIViewController
+    func makeUIViewController(context: Self.Context) -> UIViewController {
+        return SettingViewController()
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Self.Context) {
+        
+    }
     
 }
