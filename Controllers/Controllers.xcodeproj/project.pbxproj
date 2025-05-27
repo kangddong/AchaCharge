@@ -16,19 +16,19 @@
 		B52050652B91F3FE0006E63E /* TestProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050642B91F3FE0006E63E /* TestProduct.swift */; };
 		B55974362ACDC33100FC01FE /* ProductIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */; };
 		B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */; };
-		B58AA1B12BFB34C300EAC37F /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B58AA1B02BFB34C300EAC37F /* ControllerKit */; };
 		B58AA1B32BFB4A7300EAC37F /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AA1B22BFB4A7300EAC37F /* ControllerView.swift */; };
 		B5BE54242BF9D992009BD3EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE54232BF9D992009BD3EF /* AppDelegate.swift */; };
 		B5BE54262BF9D992009BD3EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE54252BF9D992009BD3EF /* ViewController.swift */; };
 		B5BE54282BF9D993009BD3EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5BE54272BF9D993009BD3EF /* Assets.xcassets */; };
 		B5BE542B2BF9D993009BD3EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE54292BF9D993009BD3EF /* Main.storyboard */; };
-		B5BE54352BFB2DC7009BD3EF /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5BE54342BFB2DC7009BD3EF /* ControllerKit */; };
 		B5C7FAE42DDE247C009F6BD1 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7FAE32DDE247C009F6BD1 /* InfoView.swift */; };
 		B5C7FAE62DDE24C0009F6BD1 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7FAE52DDE24C0009F6BD1 /* Bundle+.swift */; };
 		B5CDDBAF2BE54815007610BC /* StringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B340B2A4D13B300DBCC29 /* StringKey+.swift */; };
 		B5CDDBB02BE5482B007610BC /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38A0962A4C745A00DF1AF9 /* UserDefaults+.swift */; };
 		B5CDDBB72BE7E793007610BC /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */; };
 		B5E2A1A82DDF6B8900ED4327 /* TesterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2A1A72DDF6B8900ED4327 /* TesterView.swift */; };
+		B5E2A1CC2DDF734100ED4327 /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5E2A1CB2DDF734100ED4327 /* ControllerKit */; };
+		B5E2A1CE2DDF734800ED4327 /* ControllerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5E2A1CD2DDF734800ED4327 /* ControllerKit */; };
 		B5E3BDC52DCF8C2A000622FD /* ControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3BDC42DCF8C2A000622FD /* ControllerModel.swift */; };
 		B5E3BDC72DCF901F000622FD /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3BDC62DCF901F000622FD /* ProgressBarView.swift */; };
 		B5F403FE2AC126EB00D4A6BD /* FetchGameControllerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F403FD2AC126EB00D4A6BD /* FetchGameControllerOperation.swift */; };
@@ -109,7 +109,6 @@
 		B5BE54272BF9D993009BD3EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5BE542A2BF9D993009BD3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5BE542C2BF9D993009BD3EF /* Controllers_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controllers_macOS.entitlements; sourceTree = "<group>"; };
-		B5BE54372BFB2FD4009BD3EF /* ControllerKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ControllerKit; sourceTree = "<group>"; };
 		B5C7FAE32DDE247C009F6BD1 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		B5C7FAE52DDE24C0009F6BD1 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		B5E2A1A72DDF6B8900ED4327 /* TesterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesterView.swift; sourceTree = "<group>"; };
@@ -168,7 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5CDDBB72BE7E793007610BC /* SwiftyStoreKit in Frameworks */,
-				B5BE54352BFB2DC7009BD3EF /* ControllerKit in Frameworks */,
+				B5E2A1CC2DDF734100ED4327 /* ControllerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +177,7 @@
 			files = (
 				EF789B902A30ABFA006EC6D8 /* SwiftUI.framework in Frameworks */,
 				EF789B8E2A30ABFA006EC6D8 /* WidgetKit.framework in Frameworks */,
-				B58AA1B12BFB34C300EAC37F /* ControllerKit in Frameworks */,
+				B5E2A1CE2DDF734800ED4327 /* ControllerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +222,6 @@
 		EF789B652A24D6DC006EC6D8 = {
 			isa = PBXGroup;
 			children = (
-				B5BE54372BFB2FD4009BD3EF /* ControllerKit */,
 				EF38A0952A4C736500DF1AF9 /* ControllersWidgetExtension.entitlements */,
 				EF789B702A24D6DC006EC6D8 /* Controllers */,
 				EF789B912A30ABFA006EC6D8 /* ControllersWidget */,
@@ -411,7 +409,7 @@
 			name = Controllers;
 			packageProductDependencies = (
 				B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */,
-				B5BE54342BFB2DC7009BD3EF /* ControllerKit */,
+				B5E2A1CB2DDF734100ED4327 /* ControllerKit */,
 			);
 			productName = Controllers;
 			productReference = EF789B6E2A24D6DC006EC6D8 /* Controllers.app */;
@@ -431,7 +429,7 @@
 			);
 			name = ControllersWidgetExtension;
 			packageProductDependencies = (
-				B58AA1B02BFB34C300EAC37F /* ControllerKit */,
+				B5E2A1CD2DDF734800ED4327 /* ControllerKit */,
 			);
 			productName = ControllersWidgetExtension;
 			productReference = EF789B8B2A30ABFA006EC6D8 /* ControllersWidgetExtension.appex */;
@@ -493,6 +491,7 @@
 			mainGroup = EF789B652A24D6DC006EC6D8;
 			packageReferences = (
 				B5CDDBB52BE7E793007610BC /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+				B5E2A1CA2DDF733600ED4327 /* XCLocalSwiftPackageReference "ControllerKit" */,
 			);
 			productRefGroup = EF789B6F2A24D6DC006EC6D8 /* Products */;
 			projectDirPath = "";
@@ -1073,6 +1072,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		B5E2A1CA2DDF733600ED4327 /* XCLocalSwiftPackageReference "ControllerKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ControllerKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		B5CDDBB52BE7E793007610BC /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1085,18 +1091,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B58AA1B02BFB34C300EAC37F /* ControllerKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ControllerKit;
-		};
-		B5BE54342BFB2DC7009BD3EF /* ControllerKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ControllerKit;
-		};
 		B5CDDBB62BE7E793007610BC /* SwiftyStoreKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B5CDDBB52BE7E793007610BC /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
 			productName = SwiftyStoreKit;
+		};
+		B5E2A1CB2DDF734100ED4327 /* ControllerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5E2A1CA2DDF733600ED4327 /* XCLocalSwiftPackageReference "ControllerKit" */;
+			productName = ControllerKit;
+		};
+		B5E2A1CD2DDF734800ED4327 /* ControllerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5E2A1CA2DDF733600ED4327 /* XCLocalSwiftPackageReference "ControllerKit" */;
+			productName = ControllerKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

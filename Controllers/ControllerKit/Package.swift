@@ -3,7 +3,7 @@
 
 /*
 Abstract:
-The FoodTruckKit package.
+The ControllerKit package.
 */
 
 import PackageDescription
