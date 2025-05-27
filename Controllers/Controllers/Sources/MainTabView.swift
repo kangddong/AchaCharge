@@ -26,6 +26,10 @@ struct MainTabView: View {
         switch type {
         case .controlelr:
             ControllerView()
+        
+        case .tester:
+            TesterView()
+            
         case .setting:
             SettingViewRepresentable()
         }
@@ -35,12 +39,16 @@ struct MainTabView: View {
 extension MainTabView {
     enum TabType: CaseIterable {
         case controlelr
+        case tester
         case setting
         
         var title: String {
             switch self {
             case .controlelr:
                 return "Controller".localized
+            
+            case .tester:
+                return "Tester".localized
             
             case .setting:
                 return "Setting".localized
@@ -52,6 +60,10 @@ extension MainTabView {
             case .controlelr:
                 return "gamecontroller"
             
+                
+            case .tester:
+                return "formfitting.gamecontroller"
+                
             case .setting:
                 return "gearshape"
             }
@@ -62,6 +74,9 @@ extension MainTabView {
             case .controlelr:
                 return "gamecontroller.fill"
             
+            case .tester:
+                return "formfitting.gamecontroller.fill"
+                
             case .setting:
                 return "gearshape.fill"
             }
