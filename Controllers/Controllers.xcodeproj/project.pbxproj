@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,12 @@
 		B52050652B91F3FE0006E63E /* TestProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52050642B91F3FE0006E63E /* TestProduct.swift */; };
 		B55974362ACDC33100FC01FE /* ProductIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */; };
 		B57482242AD59EC200172B48 /* IAPOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */; };
+		B58A16DD2DE46D19005CEA4F /* DPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A16DC2DE46D19005CEA4F /* DPadView.swift */; };
+		B58A16DF2DE46D26005CEA4F /* ThumbstickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A16DE2DE46D26005CEA4F /* ThumbstickView.swift */; };
+		B58A16E12DE46D32005CEA4F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A16E02DE46D32005CEA4F /* Direction.swift */; };
+		B58A16E32DE46D43005CEA4F /* ControllerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A16E22DE46D43005CEA4F /* ControllerButton.swift */; };
+		B58A16E52DE46D58005CEA4F /* TesterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A16E42DE46D58005CEA4F /* TesterModel.swift */; };
+		B58A16E72DE46D98005CEA4F /* TriggerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A16E62DE46D98005CEA4F /* TriggerButtonView.swift */; };
 		B58AA1B32BFB4A7300EAC37F /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AA1B22BFB4A7300EAC37F /* ControllerView.swift */; };
 		B5BE54242BF9D992009BD3EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE54232BF9D992009BD3EF /* AppDelegate.swift */; };
 		B5BE54262BF9D992009BD3EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE54252BF9D992009BD3EF /* ViewController.swift */; };
@@ -102,6 +108,12 @@
 		B52050642B91F3FE0006E63E /* TestProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProduct.swift; sourceTree = "<group>"; };
 		B55974352ACDC33100FC01FE /* ProductIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIdentifiers.swift; sourceTree = "<group>"; };
 		B57482232AD59EC200172B48 /* IAPOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPOnboardingViewController.swift; sourceTree = "<group>"; };
+		B58A16DC2DE46D19005CEA4F /* DPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPadView.swift; sourceTree = "<group>"; };
+		B58A16DE2DE46D26005CEA4F /* ThumbstickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbstickView.swift; sourceTree = "<group>"; };
+		B58A16E02DE46D32005CEA4F /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		B58A16E22DE46D43005CEA4F /* ControllerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerButton.swift; sourceTree = "<group>"; };
+		B58A16E42DE46D58005CEA4F /* TesterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesterModel.swift; sourceTree = "<group>"; };
+		B58A16E62DE46D98005CEA4F /* TriggerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerButtonView.swift; sourceTree = "<group>"; };
 		B58AA1B22BFB4A7300EAC37F /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		B5BE54212BF9D992009BD3EF /* Controllers-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Controllers-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BE54232BF9D992009BD3EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +211,18 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		B58A16E82DE57847005CEA4F /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				B58A16E22DE46D43005CEA4F /* ControllerButton.swift */,
+				B58A16E62DE46D98005CEA4F /* TriggerButtonView.swift */,
+				B58A16DC2DE46D19005CEA4F /* DPadView.swift */,
+				B58A16E02DE46D32005CEA4F /* Direction.swift */,
+				B58A16DE2DE46D26005CEA4F /* ThumbstickView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		B5BE54222BF9D992009BD3EF /* Controllers-macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +238,9 @@
 		B5E2A1A92DDF6B8E00ED4327 /* Tester */ = {
 			isa = PBXGroup;
 			children = (
+				B58A16E42DE46D58005CEA4F /* TesterModel.swift */,
 				B5E2A1A72DDF6B8900ED4327 /* TesterView.swift */,
+				B58A16E82DE57847005CEA4F /* SubViews */,
 			);
 			path = Tester;
 			sourceTree = "<group>";
@@ -560,9 +586,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58A16DD2DE46D19005CEA4F /* DPadView.swift in Sources */,
 				B511FEE02B20C7A600742111 /* ImageButton.swift in Sources */,
 				EF93624C2A9BA8DA0009E8E8 /* Array+.swift in Sources */,
 				EF93624A2A9BA61A0009E8E8 /* CustomJSONDecoder.swift in Sources */,
+				B58A16E12DE46D32005CEA4F /* Direction.swift in Sources */,
 				B5E2A1A82DDF6B8900ED4327 /* TesterView.swift in Sources */,
 				B5E3BDC52DCF8C2A000622FD /* ControllerModel.swift in Sources */,
 				B5F404002AC2CFD400D4A6BD /* StoreKitManager.swift in Sources */,
@@ -575,7 +603,9 @@
 				B55974362ACDC33100FC01FE /* ProductIdentifiers.swift in Sources */,
 				EF9362382A9B4A860009E8E8 /* UIColor+.swift in Sources */,
 				B58AA1B32BFB4A7300EAC37F /* ControllerView.swift in Sources */,
+				B58A16DF2DE46D26005CEA4F /* ThumbstickView.swift in Sources */,
 				B5F403FF2AC2CF7B00D4A6BD /* StoreObserver.swift in Sources */,
+				B58A16E32DE46D43005CEA4F /* ControllerButton.swift in Sources */,
 				EF789B742A24D6DC006EC6D8 /* SceneDelegate.swift in Sources */,
 				EF9362482A9BA5270009E8E8 /* SettingDTO.swift in Sources */,
 				EF9362502A9CF5AD0009E8E8 /* UIApplication+.swift in Sources */,
@@ -584,6 +614,8 @@
 				EF38A0972A4C745A00DF1AF9 /* UserDefaults+.swift in Sources */,
 				B5E3BDC72DCF901F000622FD /* ProgressBarView.swift in Sources */,
 				B5C7FAE62DDE24C0009F6BD1 /* Bundle+.swift in Sources */,
+				B58A16E52DE46D58005CEA4F /* TesterModel.swift in Sources */,
+				B58A16E72DE46D98005CEA4F /* TriggerButtonView.swift in Sources */,
 				B5C7FAE42DDE247C009F6BD1 /* InfoView.swift in Sources */,
 				369B340C2A4D13B300DBCC29 /* StringKey+.swift in Sources */,
 			);
